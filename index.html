@@ -2,8 +2,7 @@
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f2eb"><meta name="description" content="私人 AI 劇評日記，支援本機自動保存與圖片收藏。"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><title>AI 劇評室</title>
 <style>
 
-:root{--bg:#f7f2eb;--paper:#fffdf9;--ink:#292720;--muted:#847d72;--line:#e8dfd3;--red:#9d594b;--rose:#ead5c9;--sage:#667b65}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Noto Sans TC",sans-serif}.app{max-width:1050px;margin:auto;padding:18px 15px 90px}.top,.brand,.nav,.row,.actions,.entry,.head{display:flex;align-items:center;gap:10px}.top,.head,.entry{justify-content:space-between}.brand{gap:11px}.logo{background:var(--red);color:white;border-radius:14px;width:42px;height:42px;display:grid;place-items:center;font-size:23px}h1{font-size:20px;margin:0}.muted,.tiny{font-size:12px;color:var(--muted)}.nav{background:#ece4d9;padding:4px;border-radius:13px}.nav button{border:0;background:none;color:var(--muted);padding:9px 12px;border-radius:10px}.nav button.active{background:white;color:var(--ink)}.page{display:none}.page.active{display:block}.hero{background:var(--rose);border-radius:22px;padding:22px;margin:20px 0 16px;position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;right:25px;top:-38px;font-size:130px;color:#fff8}.eyebrow{font-size:11px;letter-spacing:.14em;color:#86594d;font-weight:800}.hero h2{margin:5px 0;font-size:26px}.hero p{margin:0;color:#755e53;font-size:13px;max-width:450px}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:15px;box-shadow:0 7px 25px #50371c0a}.head{margin-bottom:14px}.head h3{font-size:16px;margin:0}.field{margin-bottom:14px}label{display:block;font-size:12px;font-weight:750;color:#635d53;margin-bottom:6px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:11px;background:#fffefa;padding:11px 12px;color:var(--ink);outline:none}textarea{min-height:84px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#c78c79;box-shadow:0 0 0 3px #d9a18e30}.rating{display:grid;grid-template-columns:54px 1fr 31px;align-items:center;gap:7px;margin:14px 0}.rname{font-size:13px;font-weight:800}.scores{display:flex;gap:4px;flex-wrap:wrap}.score{border:1px solid var(--line);border-radius:8px;background:white;color:#777064;width:29px;height:31px;padding:0;font-size:11px}.score.sel{background:var(--red);border-color:var(--red);color:white;font-weight:800}.rval{text-align:right;color:var(--red);font-weight:850}.total{background:#f3eae0;border-radius:13px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.total strong{font-size:23px}.btn{border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font-weight:750;font-size:13px;padding:10px 13px}.btn.primary{background:var(--red);border-color:var(--red);color:white}.btn.soft{background:#f3e7df;color:#75483e}.actions{flex-wrap:wrap;margin-top:13px}.actions .btn{flex:1}.tip{padding:12px;background:#f5eee6;border-radius:12px;font-size:13px;margin:9px 0}.tag{display:inline-block;background:#e9eee6;color:#52684f;padding:4px 8px;border-radius:20px;font-size:11px}.entry{border:1px solid var(--line);border-radius:13px;padding:12px;margin:9px 0;gap:8px}.entryname{font-size:14px;font-weight:800;overflow-wrap:anywhere}.entrymeta{font-size:11px;color:var(--muted);margin-top:3px}.entryscore{font-size:18px;color:var(--red);font-weight:850;white-space:nowrap}.mini{border:0;border-radius:7px;padding:5px 8px;background:#f0e9df;font-size:11px;margin:5px 4px 0 0}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:14px}.stat span{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:23px;margin-top:5px}.bar{height:9px;background:#eee6dc;border-radius
-:20px;overflow:hidden;flex:1}.fill{height:100%;background:#d4a18e;border-radius:20px}.barline{display:flex;align-items:center;gap:10px;margin:13px 0;font-size:12px}.preview{background:#f4ece3;padding:17px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;margin:13px 0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#292720;color:white;padding:10px 15px;border-radius:11px;opacity:0;pointer-events:none}.toast.show{opacity:1}.bottom{display:none}.save-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);padding:6px 9px;border-radius:9px;background:#f5eee6}.save-dot{width:7px;height:7px;border-radius:50%;background:#b9a98f;display:inline-block}.save-dot.ok{background:#668b64}.save-dot.err{background:#b84b3f}.image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}.image-card{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f5eee6}.image-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}.image-card button{width:100%;border:0;background:#fffaf4;padding:7px 4px;font-size:11px;color:#7e453b}.image-card input{border:0;border-top:1px solid var(--line);border-radius:0;padding:7px;font-size:11px}.image-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.storage-box{background:#f5eee6;border-radius:12px;padding:12px;margin-top:10px;font-size:12px;color:var(--muted)}.install-btn{display:none}.backup-alert{border-left:3px solid #c58a72;padding:9px 11px;background:#f8eee8;border-radius:0 9px 9px 0;font-size:12px;margin-top:10px}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:20px}
+:root{--bg:#f7f2eb;--paper:#fffdf9;--ink:#292720;--muted:#847d72;--line:#e8dfd3;--red:#9d594b;--rose:#ead5c9;--sage:#667b65}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Noto Sans TC",sans-serif}.app{max-width:1050px;margin:auto;padding:18px 15px 90px}.top,.brand,.nav,.row,.actions,.entry,.head{display:flex;align-items:center;gap:10px}.top,.head,.entry{justify-content:space-between}.brand{gap:11px}.logo{background:var(--red);color:white;border-radius:14px;width:42px;height:42px;display:grid;place-items:center;font-size:23px}h1{font-size:20px;margin:0}.muted,.tiny{font-size:12px;color:var(--muted)}.nav{background:#ece4d9;padding:4px;border-radius:13px}.nav button{border:0;background:none;color:var(--muted);padding:9px 12px;border-radius:10px}.nav button.active{background:white;color:var(--ink)}.page{display:none}.page.active{display:block}.hero{background:var(--rose);border-radius:22px;padding:22px;margin:20px 0 16px;position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;right:25px;top:-38px;font-size:130px;color:#fff8}.eyebrow{font-size:11px;letter-spacing:.14em;color:#86594d;font-weight:800}.hero h2{margin:5px 0;font-size:26px}.hero p{margin:0;color:#755e53;font-size:13px;max-width:450px}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:15px;box-shadow:0 7px 25px #50371c0a}.head{margin-bottom:14px}.head h3{font-size:16px;margin:0}.field{margin-bottom:14px}label{display:block;font-size:12px;font-weight:750;color:#635d53;margin-bottom:6px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:11px;background:#fffefa;padding:11px 12px;color:var(--ink);outline:none}textarea{min-height:84px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#c78c79;box-shadow:0 0 0 3px #d9a18e30}.rating{display:grid;grid-template-columns:54px 1fr 31px;align-items:center;gap:7px;margin:14px 0}.rname{font-size:13px;font-weight:800}.scores{display:flex;gap:4px;flex-wrap:wrap}.score{border:1px solid var(--line);border-radius:8px;background:white;color:#777064;width:29px;height:31px;padding:0;font-size:11px}.score.sel{background:var(--red);border-color:var(--red);color:white;font-weight:800}.rval{text-align:right;color:var(--red);font-weight:850}.total{background:#f3eae0;border-radius:13px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.total strong{font-size:23px}.btn{border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font-weight:750;font-size:13px;padding:10px 13px}.btn.primary{background:var(--red);border-color:var(--red);color:white}.btn.soft{background:#f3e7df;color:#75483e}.actions{flex-wrap:wrap;margin-top:13px}.actions .btn{flex:1}.tip{padding:12px;background:#f5eee6;border-radius:12px;font-size:13px;margin:9px 0}.tag{display:inline-block;background:#e9eee6;color:#52684f;padding:4px 8px;border-radius:20px;font-size:11px}.entry{border:1px solid var(--line);border-radius:13px;padding:12px;margin:9px 0;gap:8px}.entryname{font-size:14px;font-weight:800;overflow-wrap:anywhere}.entrymeta{font-size:11px;color:var(--muted);margin-top:3px}.entryscore{font-size:18px;color:var(--red);font-weight:850;white-space:nowrap}.mini{border:0;border-radius:7px;padding:5px 8px;background:#f0e9df;font-size:11px;margin:5px 4px 0 0}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:14px}.stat span{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:23px;margin-top:5px}.bar{height:9px;background:#eee6dc;border-radius:20px;overflow:hidden;flex:1}.fill{height:100%;background:#d4a18e;border-radius:20px}.barline{display:flex;align-items:center;gap:10px;margin:13px 0;font-size:12px}.preview{background:#f4ece3;padding:17px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;margin:13px 0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#292720;color:white;padding:10px 15px;border-radius:11px;opacity:0;pointer-events:none}.toast.show{opacity:1}.bottom{display:none}.save-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);padding:6px 9px;border-radius:9px;background:#f5eee6}.save-dot{width:7px;height:7px;border-radius:50%;background:#b9a98f;display:inline-block}.save-dot.ok{background:#668b64}.save-dot.err{background:#b84b3f}.image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}.image-card{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f5eee6}.image-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}.image-card button{width:100%;border:0;background:#fffaf4;padding:7px 4px;font-size:11px;color:#7e453b}.image-card input{border:0;border-top:1px solid var(--line);border-radius:0;padding:7px;font-size:11px}.image-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.storage-box{background:#f5eee6;border-radius:12px;padding:12px;margin-top:10px;font-size:12px;color:var(--muted)}.install-btn{display:none}.backup-alert{border-left:3px solid #c58a72;padding:9px 11px;background:#f8eee8;border-radius:0 9px 9px 0;font-size:12px;margin-top:10px}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:20px}
 @media(max-width:720px){.app{padding:12px 11px 90px}.top{align-items:flex-start;flex-wrap:wrap}.brand{flex:1}.nav{width:100%;order:2}.nav button{flex:1;padding:9px 3px;font-size:12px}.hero{padding:18px;border-radius:18px}.hero h2{font-size:23px}.hero:after{right:5px;font-size:95px}.layout{grid-template-columns:1fr;gap:0}.panel{padding:15px}.rating{grid-template-columns:51px 1fr 27px;gap:5px}.score{width:27px;height:30px;font-size:10px}.statgrid{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}body.on-write:not(.kb) .bottom{display:flex}.bottom{position:fixed;bottom:0;left:0;right:0;padding:9px 11px calc(9px + env(safe-area-inset-bottom));background:#fffdf9f2;backdrop-filter:blur(10px);border-top:1px solid var(--line);gap:8px;z-index:4}.bottom .btn{flex:1}.hero:after{opacity:.6}}
 
 /* ===== v2 新增樣式 ===== */
@@ -29,3 +28,333 @@ textarea{min-height:120px;resize:none;overflow:hidden;line-height:1.6}
 .hint:empty{display:none}
 #kbBtn{position:fixed;right:12px;top:0;display:none;z-index:40;border:0;border-radius:20px;background:#292720;color:white;font-size:14px;font-weight:700;padding:9px 16px;box-shadow:0 4px 14px #0004}
 /* 收藏列表 */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters input{flex:1 1 100%}
+.filters select{flex:1;min-width:0}
+.entry{align-items:flex-start;cursor:pointer}
+.entry:active{background:#faf4ec}
+.thumb{width:62px;height:62px;border-radius:10px;object-fit:cover;flex:none;background:#efe6da}
+.ebody{min-width:0;flex:1}
+.snip{font-size:12px;color:#6b645a;margin-top:5px;overflow-wrap:anywhere;line-height:1.5}
+.snip b{color:#9d594b;font-weight:800}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+mark{background:#f5d9a8;color:inherit;border-radius:3px;padding:0 1px}
+.tag.red{background:#f1ddd5;color:#8a4a3c}
+.tags{margin-top:5px;display:flex;gap:5px;flex-wrap:wrap}
+/* 詳情視窗 */
+.modal{position:fixed;inset:0;background:#000a;display:none;z-index:30;align-items:flex-end;justify-content:center}
+.modal.show{display:flex}
+body.modal-open{overflow:hidden}
+.sheet{background:var(--paper);width:100%;max-width:720px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 16px calc(24px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
+@media(min-width:721px){.modal{align-items:center}.sheet{border-radius:20px;padding:22px}}
+.dtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.dtop h2{margin:0;font-size:21px;overflow-wrap:anywhere}
+.xbtn{flex:none;border:0;background:#f0e9df;border-radius:50%;width:34px;height:34px;font-size:18px;color:var(--muted)}
+.dmeta{margin:8px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}
+.chip{background:#f3eae0;border-radius:12px;padding:9px 6px;text-align:center}
+.chip span{display:block;font-size:11px;color:var(--muted)}
+.chip b{font-size:20px;color:var(--red)}
+.dsec{margin:16px 0}
+.dsec h4{margin:0 0 5px;font-size:14px;display:flex;gap:8px;align-items:center}
+.dsec h4 span{background:var(--red);color:white;border-radius:8px;padding:1px 8px;font-size:12px}
+.dsec p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75}
+.dquote{border-left:3px solid #c58a72;background:#f8eee8;padding:10px 12px;border-radius:0 10px 10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.dimgs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.dimgs figure{margin:0;border-radius:11px;overflow:hidden;background:#f5eee6;border:1px solid var(--line)}
+.dimgs img{display:block;width:100%;cursor:zoom-in}
+.dimgs figcaption{font-size:11px;color:var(--muted);padding:5px 8px}
+.dimgs figcaption:empty{display:none}
+.relrow{display:flex;justify-content:space-between;gap:8px;padding:9px 11px;border:1px solid var(--line);border-radius:11px;margin:6px 0;cursor:pointer;font-size:13px}
+.dacts{display:flex;gap:8px;margin-top:20px}
+.dacts .btn{flex:1}
+.btn.danger{color:#b84b3f}
+#lightbox{z-index:70;align-items:center;background:#000d}
+#lightbox img{max-width:96vw;max-height:92vh;object-fit:contain}
+/* 輸出頁 */
+.outbox{margin-top:16px;text-align:center}
+.outbox img{max-width:100%;border-radius:12px;border:1px solid var(--line);box-shadow:0 6px 24px #0002}
+.sep{border:0;border-top:1px dashed var(--line);margin:20px 0}
+.checkrow{display:flex;gap:8px;align-items:center;font-size:13px;margin:10px 0;font-weight:600}
+.arow{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px dashed var(--line);cursor:pointer;font-size:13px}
+.arow:last-child{border-bottom:0}
+@media(max-width:720px){.save-inline{display:none}.dimgs{grid-template-columns:repeat(2,1fr)}}
+</style></head><body class="on-write"><main class="app">
+<header class="top"><div class="brand"><div class="logo">✦</div><div><h1>AI 劇評室</h1><div class="muted">把喜歡、吐槽和好吃都記下來。</div></div></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="saveStatus" class="save-status"><i id="saveDot" class="save-dot"></i><span id="saveStatusText">正在載入資料…</span></span><button class="btn install-btn" id="installApp">安裝 App</button></div><nav class="nav"><button class="active" data-page="write">✎ 寫劇評</button><button data-page="library">▤ 收藏</button><button data-page="stats">◒ 我的口味</button></nav></header>
+
+<section id="write" class="page active"><div class="hero"><div class="eyebrow">YOUR PRIVATE DRAMA JOURNAL</div><h2>今天又嗑到什麼了？</h2><p>劇情、製作、建模分開評分。可以很認真，也可以只寫「頂級！！！」。</p></div>
+<div class="layout"><div>
+
+<div class="panel"><div class="head"><h3>這部叫什麼名字？</h3><span class="tag" id="mode">新增劇評</span></div>
+<div class="field"><label>劇名 *</label><input id="title" enterkeyhint="done" placeholder="例如：Surrender On Ice"></div>
+<div class="field"><label>CP／角色（選填）</label><input id="pair" enterkeyhint="done" placeholder="例如：Cain × Cecil"></div>
+<div class="field"><label>演員（選填，多位請用逗號分隔）</label><input id="actors" list="actorList" enterkeyhint="done" placeholder="例如：Alex, Ben（劇名、角色不同也能認出同演員）"><datalist id="actorList"></datalist><div id="actorHint" class="hint"></div></div>
+<div class="field"><label>這組演員的第幾搭（選填）</label><select id="nth"><option value="">不分類</option><option>一搭</option><option>二搭</option><option>三搭</option><option>四搭以上</option></select></div>
+<div class="field"><label>觀看狀態</label><select id="status"><option>已完結</option><option>未完結</option><option>沒看完</option><option>重看中</option></select></div>
+<div class="field"><label>日期（選填）</label><input id="date" type="date"></div></div>
+
+<div class="panel"><div class="head"><h3>先打分</h3><span class="tiny">點大數字，再用 −／＋ 或下拉選單微調 0.1</span></div><div id="ratings"></div>
+<div class="total"><div><div class="tiny">已評項目總分</div><strong id="total">0</strong><span class="tiny"> / 15</span></div><div id="scoreSummary" class="tiny">— · — · —</div></div>
+<div class="tiny" style="margin-top:9px">沒看完的劇可以先評部分項目；空白不會被算成 0 分。</div></div>
+
+<div class="panel"><div class="head"><h3>寫下你的心得</h3><span class="tiny">不用寫成正式影評</span></div>
+<div class="field"><label>劇情心得</label><textarea id="plot" placeholder="人設、角色自主性、CP互動、劇情轉折……"></textarea></div>
+<div class="field"><label>製作心得</label><textarea id="production" placeholder="變臉、音樂、服裝、分鏡、穿幫……"></textarea></div>
+<div class="field"><label>建模心得</label><textarea id="model" placeholder="普通的帥、頂級、配合人設好吃……"></textarea></div>
+<div class="field"><label>想留下的台詞（選填）</label><textarea id="quotes" style="min-height:90px" placeholder="有些台詞值得單獨保存……"></textarea></div>
+<div class="field"><label>個人標籤（逗號分隔）</label><input id="tags" enterkeyhint="done" placeholder="小狗＋1, 強制愛, 好吃"></div></div>
+
+</div><div>
+
+<div class="panel"><div class="head"><h3>收藏圖片</h3><span class="tiny" id="imageCount">0 / 10 張</span></div><p class="tiny">每部劇最多 10 張。上傳時會縮小過大的圖片（長邊最多約 2000 px），盡量保留畫質並節省手機空間。</p><div class="image-toolbar"><label class="btn soft" for="imageInput" style="margin:0;cursor:pointer">＋ 上傳圖片</label><input id="imageInput" type="file" accept="image/*" multiple hidden><span class="tiny" id="imageHint">支援 JPG、PNG、WebP 等常見圖片</span></div><div id="imageGrid" class="image-grid"></div></div>
+
+<div class="panel"><div class="head"><h3>完成</h3><span class="tiny">草稿會自動保存</span></div><div class="actions" style="margin-top:0"><button class="btn primary save-inline" id="save">完成並收進收藏</button><button class="btn" id="reset">清空表單</button></div></div>
+
+</div></div></section>
+
+<section id="library" class="page"><div class="hero"><div class="eyebrow">THE COLLECTION</div><h2>你的劇評收藏</h2><p>找回好吃的、難吃的，還有值得吐槽三百字的。點一篇就能直接閱讀。</p></div><div class="panel"><div class="filters"><input id="search" placeholder="搜尋劇名、CP、演員、心得、標籤……（空格可多關鍵字）"><select id="sort"><option value="new">最近新增</option><option value="edit">最近編輯</option><option value="high">總分由高到低</option><option value="low">總分由低到高</option></select><select id="fstatus"><option value="">全部狀態</option><option>已完結</option><option>未完結</option><option>沒看完</option><option>重看中</option></select></div><div class="tiny" id="resultInfo" style="margin-bottom:6px"></div><div id="entries"></div></div></section>
+
+<section id="stats" class="page"><div class="hero"><div class="eyebrow">YOUR WATCHING TASTE</div><h2>我的口味分析</h2><p>不是客觀排名，是從你的評分裡看出自己的偏好。每次儲存、修改、刪除劇評後會自動更新。</p></div>
+<div class="statgrid"><div class="stat"><span>已儲存劇評</span><strong id="count">0</strong></div><div class="stat"><span>完整評分平均總分</span><strong id="avg">—</strong></div><div class="stat"><span>最高分作品</span><strong id="top" style="font-size:14px;line-height:1.4">—</strong></div></div>
+<div class="layout" style="margin-top:14px"><div class="panel"><div class="head"><h3>三項平均分</h3></div><div id="averages"></div></div><div class="panel"><div class="head"><h3>演員／搭檔紀錄</h3><span class="tiny">點一下可查看作品</span></div><div id="actorStats"></div></div></div>
+<div class="panel"><div class="head"><h3>資料備份</h3></div><p class="tiny">劇評與圖片會自動保存在這台裝置的瀏覽器資料庫，不必逐篇按保存。清除網站資料、換手機或裝置損壞仍可能造成資料遺失，請定期備份。</p><div id="backupAlert" class="backup-alert">備份提醒：建議每兩週下載一次完整備份。</div><div class="actions"><button class="btn primary" id="backup">下載完整備份（含圖片）</button><button class="btn" id="csv">匯出 CSV（不含圖片）</button><button class="btn" id="import">還原 JSON 備份</button><input type="file" id="file" accept=".json,application/json" hidden></div><div class="storage-box" id="storageInfo">正在檢查本機儲存空間…</div></div></section>
+
+<section id="export" class="page"><div class="panel"><div class="head"><h3>輸出劇評</h3><button class="btn" id="closeExport">返回</button></div>
+<div class="tiny" style="margin-bottom:6px">① 文字版（直接貼到社群）</div><div id="preview" class="preview"></div><div class="actions"><button class="btn primary" id="copy">複製文字</button></div>
+<hr class="sep">
+<div class="tiny" style="margin-bottom:6px">② 圖片版（文字＋分數＋收藏圖片合成一張）</div>
+<label class="checkrow" id="incRow"><input type="checkbox" id="incImg" checked> 附上收藏的圖片</label>
+<div class="actions"><button class="btn primary" id="image">產生劇評圖片</button></div>
+<div id="imgOut" class="outbox" hidden><img id="outImg" alt="劇評圖片"><div class="tiny" style="margin:8px 0">可長按圖片儲存，或按下方按鈕</div><div class="actions"><button class="btn primary" id="saveImg">儲存／分享圖片</button></div></div></div></section>
+
+<div class="foot">AI 劇評室 · 私人使用 · 分數由你定義</div></main>
+
+<div class="bottom"><button class="btn primary" id="mobileSave">完成並收進收藏</button></div>
+<button id="kbBtn" type="button">收起鍵盤 ⌄</button>
+<div id="detail" class="modal"><div class="sheet" id="sheet"></div></div>
+<div id="lightbox" class="modal"><img id="lbImg" alt=""></div>
+<div id="toast" class="toast"></div>
+<script>
+const seed=[
+["越界指令",4,2,4,"一直罵fack跟idiot真的很好笑","臉會變來變去，也會把心聲唸出來","普通的好看^ ^"],
+["輸掉隊長後 我拿下了Alpha",4,3,3,"能分成兩段。前半段夢中夢很好笑。後半段drama不斷，瘋狂吃瓜[吃瓜]。此外足球戲做的很認真。","",""],
+["觸碰禁區：千萬合同與消失的他",4,3,3,"編排有點問題，但去其糟粕取其精華，仍有亮點^ ^","大吼大叫摔東西，但音樂配的不錯",""],
+["His Ice Captive",4,2,2,"Toxic[馋嘴]","變臉。",""],
+["冰場之外",3,3,2,"簡而言之，前面很爽後面不爽。","變臉，但比賽做的不錯隊友有配合，對手有對抗。",""],
+["Surrender On Ice",5,4,4,"不是爆點爽劇風格，像小眾電影順著時間發現真相與解決。每個人的智商在線，非刻板人物。","其實可以給到5，但音效太雷霆，而且沒有bgm。全劇人物建模維持的很好，沒有變來變去。衣服有點少。常出錯的隊服的號碼基本上都在8、9之間移動，滿穩定。","Cole長的像Lando Norris，全劇瘋狂幻視。"],
+["禁忌枷鎖",2,3,4,"人物動機不連貫，時長短角色刻板。最後找奶奶救場的行為是全劇的智商高地。","變臉。其中1分給酒吧的變裝舞會，衣服做的很精緻。","普通的帥。"],
+["完美圈套",null,null,5,"（沒看完）","（沒看完）","需要美顏爆擊再去看。Reid給人的感覺像Zephon。","沒看完"],
+["The Heir They Threw Away Kissed the Deadliest Base's Man",5,4,4,"瑕不掩瑜。如果能縮短時長、把劇情仔細打磨一下，絕對有機會成為爆劇。目前光靠人設就很吸引人。前後段的劇情設定不一致，但Adrian冷靜地用正當手段解決問題，找律師、找證人，甚至直接結婚，用合法配偶的身分和權利對抗軍事法庭，最後成功把Marcus救出來，這段很漂亮。","有幾次人物建模輸入錯誤，明明跟配角說話，畫面人物卻是主角。音樂、音效不錯，服裝飾品有出包但整體還行。","Marcus的美國大兵建模剛開始看覺得醜，後來也習慣了。Adrian一直說他好看……情人眼裡出西施吧。而且我嚴重懷疑Adrian喜歡的根本是他的肌肉😋 Adrian就普通的好看。"],
+["榮譽學生與壞男孩",3,3,4,"誰是壞學生看一集就知道。Hunter嘴上說要保護Leo，卻根本沒有實際行動。不要聽他說什麼，要看他做什麼。Leo仍被前女友Brooke霸凌，最後甩了Hunter並小黑化。Hunter自己才是最大禍源。中間父母嘴上威脅取消繼承權，孩子真要跑出去威脅就消失。為了大學保送還安排小提琴比賽，明明一開始打冰球。後面上大學不太重要，但求婚那段製作組特別用心。","音樂音效不錯。Leo的服裝好看，連包包都有吊飾。其他就是AI劇常會出現的穿幫鏡頭，整體普通水準。","普通的好看。"],
+["硬漢警官和他的小甜豆",2,1,3,"人設太好吃了😋雖然劇情一坨屎，我還是看完了。","完全的屎。為啥重複劇情不刪掉？服裝基本都穿同一套，還會莫名出現圍裙。製作與劇情至少要一個好的吧？","配合人設好吃😋"],
+["Too Late to Be Family",4,3,4,"兩個苦瓜。現實中高中懷孕就是這個調調。","貫徹始終的背包，其實滿可愛哈哈","普通的好看。"],
+["Saving the Mafia Boss",3,2,4,"無聊，爽點不是我喜歡的。","變臉嚴重。","本來打算退出，但因為建模又默默看完[允悲]"],
+["黑手黨老大的玫瑰男孩",4.9,5,5,"兩個人的性格我都喜歡。Cecil能力強，遇事不會等待別人拯救，想要光明正大的戀愛。Cain顧慮多、壓抑情緒，想確保兩人安全再談，但忍著忍著老婆都快被搞死，直接拿槍奪權。監禁往後的劇情太崩人設，讓Cain學會尊重Cecil、追妻和成長會更好。Cecil敢愛敢恨有能力，最後卻成為刻板人物，跳海後前因後果、情緒轉折皆未說明，突然變成教授、突然相遇和好END，不尊重觀眾也不尊重Cecil。0.1分扣在收尾。Cain在Cecil出事時喊過兩次Cece，卻沒在他面前這樣叫過，偷偷取暱稱是最甜的地方。","打戲多且製作得很好。衣服好看。","頂級！！！！！太好吃了[馋嘴]"],
+["豪門總裁和保鏢的禁制之戀",3,3,2,"超級清水0.0。無論正反派都像正常人，不發瘋不神經，雖然沒有精彩爆點，但能順心看完。這句值得Cain學習：「I spent a long time thinking that keeping you safe meant making your decisions for you.」","人物臉都短短扁扁的，不知道是被壓縮還是建模如此。","其實就是普通帥哥但扁扁的，年輕時比較好看。"],
+["You Are My Eyes 你是我的眼",4,4,4,"有趣、細膩。一本正經地在盲人雇主面前開玩笑真好玩，遇到尷尬問題就露出雷霆微笑。","正版在YouTube有4K。橫屏、音效庫豐富，雖然bgm缺失。分鏡設計不錯。衣服少但能忍受。","如果Cavendish摘掉墨鏡，至少露臉10分鐘我就給5[馋嘴]現在露幾秒就[馋嘴]。金毛狗狗太可愛！","未完結"],
+["吸血鬼之王",5,5,5,"搞笑向。兩人真可愛，食物東食物西的，真的有厭食症啊！最後還是不吃東西，哈哈！","韓劇bgm扎堆。衣服很多且沒出包，也沒變臉或錯值，應該仔細校對過，棒棒噠。","權威[馋嘴]"],
+["億萬總裁的復仇婚約",3,3,3,"復仇在哪？全程甜甜甜法法法。劇情線基本能忽略。","","普通的帥。"],
+["總裁的難忘之夜",3,3,3,"甜甜甜，全公司都在嗑cp。乾淨利落地解決問題，兩個人都有可愛萌點，但劇情像趕火車，30分鐘太短了。","整間房子都在搖晃是否有點……？並且有重複劇情未刪。衣服跟音效還行。",""],
+["海洋契約",5,4,4,"又顛又甜，有缺點，但我很喜歡每個人都不在同一個頻道上的聊天，整部亂成一鍋粥，太好吃了[馋嘴]。父母的混沌善也很可愛。Caleb有時太抽象，不吃海鮮、喜歡炸雞就算了，誘惑老婆時莫名其妙在吃冰；跟下屬開會還拿黃色小鴨模擬。Kyle一直否認真心，最後變戀愛腦也很抽象有趣。","衣服不多，但金魚衣太好笑。有一點變臉，不過後面的戰鬥戲製作很好。","Caleb是耐看型。Kyle就是純粹的帥。","已完結","Caleb × Kyle","「Your heart's trembling.」\n「It's answering mine.」"],
+["我的狼人對月亮過敏",null,null,3,"人設好吃[馋嘴]但劇情太跳躍，製作也沒彌補，亂糟糟的，有閒心再補。","（沒看完）","普通的好吃[馋嘴]","沒看完"],
+["Double King",5,4,4,"能把前期的強制情節流暢轉為純愛，劇情設計很棒。Julian武力、心智天花板級別，對問題無所畏懼，終於知道記者大叔在他巔峰退役時為啥那麼激動了。","拳擊題材打鬥做得不錯，配樂也很好，可惜衣服太少。Julian有個斷眉但常常出包。","不普通的帥。"],
+["阿爾法的宿命緣",3,1,2,"搞笑又有趣。","屎中屎。",""],
+["致命偏愛",3,3,5,"普通水準。劇情其實可預料，但看到轉換偏執狂主動權的情節，還是很高興。","變臉，只有一件衣服。音樂配得不錯，分鏡有設計、有鏡頭感。","頂級，即使有點變臉，但看到藍眼珠我又原諒了[馋嘴]"],
+["億萬富翁的男奶媽",null,null,4,"（未完結）","（未完結）","配合人設好吃[馋嘴]","未完結"],
+["Veil of the Dragon",3,4,5,"跳躍不流暢，但劇情好嗑。被求婚時說ask again，有點dom感，對方就軟軟地再求一次[馋嘴]。這段也很甜：「Ask properly.」「Stay.」「That was not a question.」「Please stay.」","衣服多到爆炸，並且建模完全在線。","神😇"],
+["假戲真做愛上你",4.5,4,4,"看到人物正向成長就會開心。是一個超絕笨蛋哭哭小狗。分手後看到他成長是最好嗑的地方。中間腦幹缺失的撒嬌小狗也好可愛：「Leon, when are you gonna grow up?」「I don't care about growing up. I only care about you. If you come see me, I'll take my meds like a good boy.」兩種都吃到了，真的[馋嘴]","棒棒噠！衣服好多，配樂也不錯。","普通的帥。","已完結","","Leon, when are you gonna grow up?\nI don't care about growing up. I only care about you. If you come see me, I'll take my meds like a good boy."],
+["被替補宿敵俘獲",4,4,3,"橄欖球劇情，看點在Cade的口是心非。全員嗑CP，女配、站哥跟隊友的性格設計可愛，也沒莫名其妙搞事。光看劇情普通，製作完美達到1+1>2。","場景多、衣服多、配樂好。浴場打架、公益洗車跟天台表白做得不錯。手機備註有小巧思（Calling Cade ❤️）。","普通的好看。"],
+["殿下 我很敏感",3,4,4,"一搭>三搭>二搭。艾力克斯是王儲，卡西恩是影子守衛，但全程沒突破限制解決問題，還是靠國王父親死掉才能在一起。沒有公開出櫃，是假結婚、雙方另有情人。希望卡西恩回憶起黑手黨身份把那些人突突了。獸人世界卻沒有把一搭的爽感做出來，艾力克斯誘惑卡西恩時天真，沒想好身份與聯姻問題，害卡西恩去邊境五年。一搭兩人都勇敢獨立。終於懂為什麼有人會為了演員去看爛劇。","獸人的耳朵跟尾巴做得好，動來動去很可愛，可惜卡西恩尾環設定不穩。音樂好，衣服不多但好看。","卡西恩體型變正常，不像二搭是個超人，三部都有帶耳墜，怪時尚的。艾力克斯變銀髮，金髮明明更好看。"],
+["女裝後，我馴服了獸王",4.5,3.5,5,"如果雙方沒這麼愛彼此，整個故事都會改寫。Lynn是在給自己一個愛上他的理由，說服自己留下，結果獸王看出Lynn早已深愛著自己，不拒絕美人的誘惑，讓他承認心意。獸王知道Lynn是男人、給自己下藥（但已替換藥水）都不生氣，並假死肅清政權蛀蟲。世界觀推翻獸人搶人類卻很平淡，Lynn推動劇情與拯救同胞的戲不夠，最後仍靠獸王。","有一點變臉，音樂普通。肉很香可惜太短。為什麼不讓Lynn有模獸王尾巴的劇情。","特別好看與好吃[馋嘴]可惜Lynn女裝有點醜。"],
+["I Smashed His Tank, Now the Merman Prince Claims Me",2.5,0,1.5,"有出彩的地方，但劇情編排很爛。劇情線、感情線食之無味，沒有設計好衝突轉折。坦白偽裝後沒啥挫折，結尾只是每個人加深出場時的刻板印象。主角團四個人很適合搞Sedoretu，亂成一鍋粥不如全吃了[馋嘴]。劇情太長，分三次才看完。","馴服AI失敗集大成者。變臉非常嚴重，畫風從真人變卡通，建模輸錯，製作不連貫，衣服很少。目前看到最爛的製作。","變臉嚴重，有時候甚至出現老頭。"]
+];
+
+const $=id=>document.getElementById(id), esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const FIELDS=['title','pair','actors','nth','status','date','plot','production','model','quotes'];
+const KEYS=[['plot','production','model']];
+let data=[],scores={plot:null,production:null,model:null},editId=null,exportId=null,detailId=null,currentImages=[],draftTimer=null,db=null,installPrompt=null,lastBackup=0,outBlob=null,outUrl=null;
+const DB_NAME='dramaRoomPWA', DB_VERSION=1;
+function setStatus(text,state='busy'){ $('saveStatusText').textContent=text; $('saveDot').className='save-dot'+(state==='ok'?' ok':state==='err'?' err':''); }
+function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains('kv'))d.createObjectStore('kv',{keyPath:'key'});};req.onsuccess=()=>{db=req.result;resolve(db)};req.onerror=()=>reject(req.error);});}
+function kvGet(key){return new Promise((resolve,reject)=>{const tx=db.transaction('kv','readonly'),r=tx.objectStore('kv').get(key);r.onsuccess=()=>resolve(r.result?.value);r.onerror=()=>reject(r.error);});}
+function kvSet(key,value){return new Promise((resolve,reject)=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').put({key,value});tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('儲存失敗'));tx.onabort=()=>reject(tx.error||new Error('儲存中止'));});}
+
+/* ---------- 工具 ---------- */
+const r1=v=>Math.round(Number(v)*10)/10;
+function fmt(v){if(v==null||v==="")return"—";let n=r1(v);return Number.isInteger(n)?String(n):n.toFixed(1)}
+function total(r){let a=[r.plotScore,r.productionScore,r.modelScore].filter(x=>x!==null&&x!==undefined&&x!=="").map(Number);return a.length?r1(a.reduce((x,y)=>x+y,0)):null}
+function createdKey(r){if(r.createdAt)return +r.createdAt;let id=r.id||'',m=/^(?:r|import)(\d{10,})/.exec(id);if(m)return +m[1].slice(0,13);m=/^seed(\d+)/.exec(id);if(m)return +m[1];return Date.parse(r.updatedAt)||0}
+function actorsOf(r){return String(r.actors||'').split(/[,，、\/／]/).map(s=>s.trim()).filter(Boolean)}
+function related(r){let mine=actorsOf(r).map(a=>a.toLowerCase());if(!mine.length)return[];return data.filter(x=>x.id!==r.id&&actorsOf(x).some(a=>mine.includes(a.toLowerCase())))}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2200)}
+const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function hl(text,toks){text=String(text??'');if(!toks.length)return esc(text);let re=new RegExp('('+toks.map(rx).join('|')+')','gi');return text.split(re).map((s,i)=>i%2?`<mark>${esc(s)}</mark>`:esc(s)).join('')}
+
+/* ---------- 評分 ---------- */
+const RK=[['plot','劇情'],['production','製作'],['model','建模']];
+const fineOpts='<option value="">未評</option>'+Array.from({length:51},(_,i)=>`<option value="${(i/10).toFixed(1)}">${fmt(i/10)}</option>`).join('');
+$('ratings').innerHTML=RK.map(([k,n])=>`<div class="rate"><div class="rhead"><span class="rname">${n}</span><span class="rval" id="v-${k}">—</span></div><div class="bigs">${[0,1,2,3,4,5].map(v=>`<button type="button" class="big" data-k="${k}" data-v="${v}">${v}</button>`).join('')}</div><div class="fine"><button type="button" class="step" data-k="${k}" data-step="-1">－0.1</button><select data-fine="${k}" aria-label="${n}精確分數">${fineOpts}</select><button type="button" class="step" data-k="${k}" data-step="1">＋0.1</button></div></div>`).join('');
+function setScore(k,v){scores[k]=v==null?null:Math.min(5,Math.max(0,r1(v)));updateScore();scheduleDraft()}
+$('ratings').onclick=e=>{let b=e.target.closest('[data-v]');if(b){setScore(b.dataset.k,+b.dataset.v);return}let s=e.target.closest('[data-step]');if(s){let k=s.dataset.k,base=scores[k]??0;setScore(k,base+ +s.dataset.step/10)}};
+$('ratings').onchange=e=>{let k=e.target.dataset.fine;if(!k)return;setScore(k,e.target.value===''?null:+e.target.value)};
+function updateScore(){document.querySelectorAll('.big').forEach(b=>b.classList.toggle('sel',scores[b.dataset.k]===+b.dataset.v));document.querySelectorAll('[data-fine]').forEach(s=>{let v=scores[s.dataset.fine];s.value=v==null?'':v.toFixed(1)});RK.forEach(([k])=>$('v-'+k).textContent=fmt(scores[k]));let a=Object.values(scores).filter(x=>x!==null);$('total').textContent=a.length?fmt(a.reduce((x,y)=>x+y,0)):'0';$('scoreSummary').textContent=RK.map(([k])=>fmt(scores[k])).join(' · ')}
+
+/* ---------- 表單 ---------- */
+function form(){return {title:$('title').value.trim(),pair:$('pair').value.trim(),actors:$('actors').value.trim(),nth:$('nth').value,status:$('status').value,date:$('date').value,plotScore:scores.plot,productionScore:scores.production,modelScore:scores.model,plot:$('plot').value,production:$('production').value,model:$('model').value,quotes:$('quotes').value,tags:$('tags').value.split(/[,，、]/).map(x=>x.trim()).filter(Boolean),images:currentImages,updatedAt:new Date().toISOString()}}
+function fillForm(r){for(let k of FIELDS)$(k).value=r[k]||(k==='status'?'已完結':'');$('tags').value=(r.tags||[]).join(', ');scores={plot:r.plotScore??null,production:r.productionScore??null,model:r.modelScore??null};currentImages=Array.isArray(r.images)?structuredClone(r.images):[];updateScore();renderImages();actorHint();growAll()}
+function setSaveLabel(t){$('save').textContent=t;$('mobileSave').textContent=t}
+function clear(){clearTimeout(draftTimer);editId=null;fillForm({});$('mode').textContent='新增劇評';setSaveLabel('完成並收進收藏');kvSet('draft',null).catch(()=>{});setStatus('已清空表單','ok')}
+async function save(){let r=form();if(!r.title){toast('先填劇名啦！');page('write');$('title').focus();return}
+ if(editId){let i=data.findIndex(x=>x.id===editId);if(i>=0)data[i]={...data[i],...r};else data.unshift({...r,id:editId,createdAt:Date.now()})}else data.unshift({...r,id:'r'+Date.now(),createdAt:Date.now()});
+ await persist();await kvSet('draft',null).catch(()=>{});clear();toast('劇評已收進收藏 ✦');page('library')}
+function edit(id){let r=data.find(x=>x.id===id);if(!r)return;closeDetail();editId=id;fillForm(r);$('mode').textContent='編輯中（自動保存草稿）';setSaveLabel('完成並保存修改');page('write');scrollTo(0,0)}
+function del(id){if(confirm('確定刪除這篇劇評？')){data=data.filter(x=>x.id!==id);closeDetail();persist().then(()=>toast('已刪除'))}}
+async function persist(){try{setStatus('正在保存…');await kvSet('reviews',data);renderAll();setStatus('已自動保存','ok');updateStorageInfo()}catch(e){setStatus('保存失敗，請立即備份','err');toast('保存失敗！請檢查裝置空間並匯出備份。')}}
+function actorHint(){let list=actorsOf({actors:$('actors').value}).map(a=>a.toLowerCase()),h=$('actorHint');if(!list.length){h.textContent='';return}let rel=data.filter(x=>x.id!==editId&&actorsOf(x).some(a=>list.includes(a.toLowerCase())));h.textContent=rel.length?`收藏裡已有 ${rel.length} 部同演員：${rel.slice(0,4).map(x=>x.title).join('、')}${rel.length>4?'…':''}。這部可能是第 ${rel.length+1} 搭。`:'收藏裡還沒有這位演員的其他作品（一搭）。'}
+$('actors').addEventListener('input',actorHint);
+
+/* ---------- 頁面切換 ---------- */
+function page(p){closeDetail();document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===p));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===p));document.body.classList.toggle('on-write',p==='write');if(p==='stats')stats();if(p==='library')library();if(p==='write')requestAnimationFrame(growAll);scrollTo(0,0)}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
+
+/* ---------- 收藏列表 ---------- */
+function snippetOf(text,toks){let t=String(text||''),low=t.toLowerCase(),best=-1,len=0;for(let k of toks){let i=low.indexOf(k);if(i>=0&&(best<0||i<best)){best=i;len=k.length}}if(best<0)return null;let s=Math.max(0,best-22),e=Math.min(t.length,best+len+44);return (s>0?'…':'')+t.slice(s,e).replace(/\s+/g,' ')+(e<t.length?'…':'')}
+function library(){
+ let q=$('search').value.trim(),toks=q.toLowerCase().split(/\s+/).filter(Boolean),s=$('sort').value,st=$('fstatus').value;
+ let a=data.filter(r=>{if(st&&r.status!==st)return false;let hay=[r.title,r.pair,r.actors,r.nth,r.status,r.plot,r.production,r.model,r.quotes,(r.tags||[]).join(' ')].join(' ').toLowerCase();return toks.every(t=>hay.includes(t))});
+ let byNew=(x,y)=>createdKey(y)-createdKey(x);
+ a.sort((x,y)=>s==='high'?((total(y)??-1)-(total(x)??-1))||byNew(x,y):s==='low'?((total(x)??99)-(total(y)??99))||byNew(x,y):s==='edit'?(Date.parse(y.updatedAt)||createdKey(y))-(Date.parse(x.updatedAt)||createdKey(x)):byNew(x,y));
+ $('resultInfo').textContent=toks.length||st?`找到 ${a.length} 筆（共 ${data.length} 筆）`:`共 ${data.length} 筆`;
+ $('entries').innerHTML=a.length?a.map(r=>{
+  let snips=[];if(toks.length){for(let [n,t] of [['劇情',r.plot],['製作',r.production],['建模',r.model],['台詞',r.quotes],['標籤',(r.tags||[]).join('、')]]){let sn=snippetOf(t,toks);if(sn)snips.push(`<div class="snip"><b>${n}</b>　${hl(sn,toks)}</div>`)}}else{let t=r.plot||r.production||r.model||'';if(t)snips.push(`<div class="snip clamp2">${esc(t)}</div>`)}
+  let meta=[r.pair?hl(r.pair,toks):'',r.actors?'演員：'+hl(r.actors,toks):''].filter(Boolean).join(' · ');
+  return `<div class="entry" data-id="${esc(r.id)}">${r.images?.length?`<img class="thumb" loading="lazy" src="${r.images[0].data}" alt="">`:''}<div class="ebody"><div class="entryname">${hl(r.title,toks)}${r.nth?` <span class="tag red">${esc(r.nth)}</span>`:''}</div><div class="entrymeta">${meta?meta+'<br>':''}${esc(r.status||'')} · 劇情 ${fmt(r.plotScore)} · 製作 ${fmt(r.productionScore)} · 建模 ${fmt(r.modelScore)}${r.images?.length?` · ▧ ${r.images.length}`:''}</div>${snips.slice(0,3).join('')}<div><button class="mini" data-act="edit">編輯</button><button class="mini" data-act="export">輸出</button><button class="mini" data-act="del">刪除</button></div></div><div class="entryscore">${total(r)==null?'—':fmt(total(r))}<span class="tiny"> /15</span></div></div>`}).join(''):`<div class="tiny" style="text-align:center;padding:25px">沒有找到劇評。換個關鍵字看看？</div>`}
+$('search').oninput=library;$('sort').onchange=library;$('fstatus').onchange=library;
+$('entries').onclick=e=>{let c=e.target.closest('.entry');if(!c)return;let id=c.dataset.id,b=e.target.closest('[data-act]');if(!b){openDetail(id);return}e.stopPropagation();({edit:()=>edit(id),export:()=>openExport(id),del:()=>del(id)})[b.dataset.act]()};
+
+/* ---------- 詳情視窗 ---------- */
+function openDetail(id){let r=data.find(x=>x.id===id);if(!r)return;detailId=id;let rel=related(r),t=total(r);
+ let sec=(n,sc,tx)=>(tx&&tx.trim())||sc!=null?`<div class="dsec"><h4>${n}<span>${fmt(sc)}</span></h4>${tx&&tx.trim()?`<p>${esc(tx)}</p>`:''}</div>`:'';
+ $('sheet').innerHTML=`<div class="dtop"><h2>${esc(r.title)}</h2><button class="xbtn" data-d="close" aria-label="關閉">✕</button></div>
+ <div class="dmeta">${r.nth?`<span class="tag red">${esc(r.nth)}</span>`:''}<span class="tag">${esc(r.status||'')}</span>${r.date?`<span>${esc(r.date)}</span>`:''}</div>
+ ${r.pair?`<div class="muted">CP／角色：${esc(r.pair)}</div>`:''}${r.actors?`<div class="muted">演員：${esc(r.actors)}</div>`:''}
+ <div class="chips"><div class="chip"><span>劇情</span><b>${fmt(r.plotScore)}</b></div><div class="chip"><span>製作</span><b>${fmt(r.productionScore)}</b></div><div class="chip"><span>建模</span><b>${fmt(r.modelScore)}</b></div><div class="chip"><span>總分</span><b>${t==null?'—':fmt(t)}</b></div></div>
+ ${sec('劇情',r.plotScore,r.plot)}${sec('製作',r.productionScore,r.production)}${sec('建模',r.modelScore,r.model)}
+ ${r.quotes&&r.quotes.trim()?`<div class="dsec"><h4>台詞</h4><div class="dquote">${esc(r.quotes)}</div></div>`:''}
+ ${r.tags?.length?`<div class="tags">${r.tags.map(x=>`<span class="tag">#${esc(x)}</span>`).join('')}</div>`:''}
+ ${r.images?.length?`<div class="dsec"><h4>圖片</h4><div class="dimgs">${r.images.map((im,i)=>`<figure><img data-zoom="${i}" src="${im.data}" alt=""><figcaption>${esc(im.caption||'')}</figcaption></figure>`).join('')}</div></div>`:''}
+ ${rel.length?`<div class="dsec"><h4>同演員的其他作品</h4>${rel.map(x=>`<div class="relrow" data-rel="${esc(x.id)}"><span>${esc(x.title)}${x.nth?` <span class="tag red">${esc(x.nth)}</span>`:''}</span><b style="color:var(--red)">${total(x)==null?'—':fmt(total(x))}</b></div>`).join('')}</div>`:''}
+ <div class="dacts"><button class="btn primary" data-d="edit">編輯</button><button class="btn" data-d="export">輸出</button><button class="btn danger" data-d="del">刪除</button></div>`;
+ $('detail').classList.add('show');document.body.classList.add('modal-open');$('sheet').scrollTop=0}
+function closeDetail(){$('detail').classList.remove('show');$('lightbox').classList.remove('show');document.body.classList.remove('modal-open');detailId=null}
+$('detail').onclick=e=>{if(e.target===$('detail')){closeDetail();return}let z=e.target.closest('[data-zoom]');if(z){let r=data.find(x=>x.id===detailId);$('lbImg').src=r.images[+z.dataset.zoom].data;$('lightbox').classList.add('show');return}let rl=e.target.closest('[data-rel]');if(rl){openDetail(rl.dataset.rel);return}let d=e.target.closest('[data-d]');if(!d)return;let id=detailId;({close:closeDetail,edit:()=>edit(id),export:()=>{closeDetail();openExport(id)},del:()=>del(id)})[d.dataset.d]()};
+$('lightbox').onclick=()=>$('lightbox').classList.remove('show');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('lightbox').classList.contains('show'))$('lightbox').classList.remove('show');else closeDetail()}});
+
+/* ---------- 口味分析（每次 persist→renderAll 都會重算） ---------- */
+function stats(){let full=data.filter(r=>[r.plotScore,r.productionScore,r.modelScore].every(v=>v!=null&&v!=='')),avg=full.length?full.reduce((s,r)=>s+total(r),0)/full.length:null,top=full.slice().sort((a,b)=>total(b)-total(a))[0];$('count').textContent=data.length;$('avg').textContent=avg==null?'—':avg.toFixed(2);$('top').textContent=top?top.title:'—';
+ $('averages').innerHTML=[['plotScore','劇情'],['productionScore','製作'],['modelScore','建模']].map(([k,n])=>{let a=data.map(r=>r[k]).filter(v=>v!=null&&v!=='').map(Number),v=a.length?a.reduce((x,y)=>x+y,0)/a.length:0;return `<div class="barline"><span style="width:40px">${n}</span><div class="bar"><div class="fill" style="width:${v/5*100}%"></div></div><b>${a.length?v.toFixed(2):'—'}</b></div>`}).join('');
+ let map=new Map();data.forEach(r=>actorsOf(r).forEach(a=>{let k=a.toLowerCase(),o=map.get(k)||{name:a,n:0,s:[]};o.n++;let t=total(r);if(t!=null)o.s.push(t);map.set(k,o)}));
+ let rows=[...map.values()].sort((a,b)=>b.n-a.n||a.name.localeCompare(b.name)).slice(0,12);
+ $('actorStats').innerHTML=rows.length?rows.map(o=>`<div class="arow" data-actor="${esc(o.name)}"><span>${esc(o.name)}　<span class="tiny">${o.n} 部</span></span><b style="color:var(--red)">${o.s.length?'均 '+fmt(o.s.reduce((x,y)=>x+y,0)/o.s.length):'—'}</b></div>`).join(''):'<div class="tiny">還沒有填過演員。在「寫劇評」填上演員，二搭、三搭就會自動整理在這裡。</div>'}
+$('actorStats').onclick=e=>{let a=e.target.closest('[data-actor]');if(!a)return;$('search').value=a.dataset.actor;$('fstatus').value='';page('library')};
+
+/* ---------- 輸出 ---------- */
+function build(r){let a=['#歐美ai劇#',r.title];if(r.pair)a.push(r.pair);if(r.actors)a.push('演員：'+r.actors+(r.nth?'（'+r.nth+'）':''));a.push('劇情：'+fmt(r.plotScore));if(r.plot)a.push(r.plot);a.push('製作：'+fmt(r.productionScore));if(r.production)a.push(r.production);a.push('建模：'+fmt(r.modelScore));if(r.model)a.push(r.model);if(r.quotes)a.push(r.quotes);if(r.tags?.length)a.push('標籤：'+r.tags.join('、'));return a.join('\n')}
+function openExport(id){let r=data.find(x=>x.id===id);if(!r)return;exportId=id;$('preview').textContent=build(r);$('imgOut').hidden=true;outBlob=null;let has=!!r.images?.length;$('incRow').style.display=has?'flex':'none';$('incImg').checked=has;page('export')}
+$('closeExport').onclick=()=>page('library');
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('preview').textContent);toast('已複製，可以貼文了！')}catch(e){let t=document.createElement('textarea');t.value=$('preview').textContent;document.body.append(t);t.select();document.execCommand('copy');t.remove();toast('已複製')}};
+function loadImg(src){return new Promise(res=>{let i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=src})}
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+async function makeCard(r,withImgs){
+ const W=1080,M=40,PAD=58,CW=W-M*2-PAD*2,X=M+PAD,FF="'PingFang TC','Noto Sans TC','Microsoft JhengHei',system-ui,sans-serif",INK='#292720',MUT='#847d72',RED='#9d594b';
+ let imgs=[];if(withImgs&&r.images?.length){for(let im of r.images){let el=await loadImg(im.data);if(el)imgs.push({el,cap:im.caption||''})}}
+ const mc=document.createElement('canvas').getContext('2d');
+ const wrap=(text,font,maxW)=>{mc.font=font;let out=[];for(let para of String(text).split('\n')){if(!para.trim()){out.push('');continue}let cur='';for(let tk of para.match(/[A-Za-z0-9_'’\-]+ ?|[\s\S]/gu)||[]){if(mc.measureText(cur+tk).width<=maxW){cur+=tk;continue}if(cur){out.push(cur.trimEnd());cur=''}if(mc.measureText(tk).width<=maxW)cur=tk;else for(let ch of tk){if(mc.measureText(cur+ch).width>maxW){out.push(cur);cur=ch}else cur+=ch}}out.push(cur.trimEnd())}return out};
+ const paint=(c)=>{
+  let y=M+PAD;
+  c.textBaseline='top';
+  // 頂部
+  c.fillStyle=RED;c.beginPath();c.arc(X+18,y+18,18,0,7);c.fill();c.fillStyle='#fff';c.font=`700 22px ${FF}`;c.textAlign='center';c.fillText('✦',X+18,y+7);c.textAlign='left';
+  c.fillStyle=MUT;c.font=`700 24px ${FF}`;c.fillText('AI 劇評室   #歐美ai劇#',X+50,y+6);y+=70;
+  // 標題
+  c.font=`800 54px ${FF}`;c.fillStyle=INK;for(let l of wrap(r.title,c.font,CW).slice(0,3)){c.fillText(l,X,y);y+=72}y+=2;
+  // 副標
+  let sub=[r.pair,r.actors?'演員：'+r.actors:'',r.nth,r.status,r.date].filter(Boolean).join('  ·  ');
+  if(sub){c.font=`500 26px ${FF}`;c.fillStyle=MUT;for(let l of wrap(sub,c.font,CW)){c.fillText(l,X,y);y+=40}}y+=22;
+  // 分數卡
+  let gap=18,cw=(CW-gap*2)/3,t=total(r);
+  [['劇情',r.plotScore],['製作',r.productionScore],['建模',r.modelScore]].forEach(([n,v],i)=>{let bx=X+i*(cw+gap);c.fillStyle='#f3eae0';rr(c,bx,y,cw,128,22);c.fill();c.textAlign='center';c.fillStyle=MUT;c.font=`600 24px ${FF}`;c.fillText(n,bx+cw/2,y+16);c.fillStyle=RED;c.font=`800 58px ${FF}`;c.fillText(fmt(v),bx+cw/2,y+52);c.textAlign='left'});
+  y+=128+16;
+  if(t!=null){c.fillStyle=MUT;c.font=`600 26px ${FF}`;c.fillText('已評項目總分',X,y+8);c.textAlign='right';c.fillStyle=INK;c.font=`800 38px ${FF}`;c.fillText(fmt(t)+' / 15',X+CW,y);c.textAlign='left';y+=62}
+  c.fillStyle='#e8dfd3';c.fillRect(X,y,CW,2);y+=34;
+  // 心得段落
+  for(let [n,sc,tx] of [['劇情',r.plotScore,r.plot],['製作',r.productionScore,r.production],['建模',r.modelScore,r.model]]){
+   if(!(tx&&tx.trim()))continue;
+   let label=`${n}  ${fmt(sc)}`;c.font=`800 28px ${FF}`;let lw=c.measureText(label).width+36;c.fillStyle=RED;rr(c,X,y,lw,48,24);c.fill();c.fillStyle='#fff';c.fillText(label,X+18,y+9);y+=70;
+   c.font=`400 30px ${FF}`;c.fillStyle=INK;for(let l of wrap(tx,c.font,CW)){c.fillText(l,X,y);y+=l?50:26}y+=34}
+  // 台詞
+  if(r.quotes&&r.quotes.trim()){let font=`500 29px ${FF}`,ls=wrap(r.quotes,font,CW-56),h=ls.length*48+44;c.fillStyle='#f8eee8';rr(c,X,y,CW,h,18);c.fill();c.fillStyle='#c58a72';c.fillRect(X,y+16,7,h-32);c.font=font;c.fillStyle='#75483e';let ly=y+22;for(let l of ls){c.fillText(l,X+34,ly);ly+=48}y+=h+34}
+  // 標籤
+  if(r.tags?.length){c.font=`600 25px ${FF}`;let tx=X,ty=y;for(let tg of r.tags){let w=c.measureText('#'+tg).width+34;if(tx+w>X+CW){tx=X;ty+=60}c.fillStyle='#e9eee6';rr(c,tx,ty,w,46,23);c.fill();c.fillStyle='#52684f';c.fillText('#'+tg,tx+17,ty+9);tx+=w+12}y=ty+46+34}
+  // 圖片
+  if(imgs.length){let g=16,cols=imgs.length===1?1:2,cell=(CW-g*(cols-1))/cols;for(let i=0;i<imgs.length;i+=cols){let row=imgs.slice(i,i+cols),hs=row.map(o=>Math.min(900,Math.min(cell,o.el.naturalWidth)*o.el.naturalHeight/o.el.naturalWidth)),rh=Math.max(...hs);row.forEach((o,j)=>{let bx=X+j*(cell+g),sc=Math.min(1,cell/o.el.naturalWidth,rh/o.el.naturalHeight),dw=o.el.naturalWidth*sc,dh=o.el.naturalHeight*sc;c.save();rr(c,bx,y,cell,rh,16);c.clip();c.fillStyle='#efe6da';c.fillRect(bx,y,cell,rh);c.drawImage(o.el,bx+(cell-dw)/2,y+(rh-dh)/2,dw,dh);c.restore()});y+=rh+g}y+=18}
+  // 頁尾
+  c.font=`500 22px ${FF}`;c.fillStyle='#b5ab9c';c.textAlign='center';c.fillText('AI 劇評室 · 私人劇評',W/2,y+8);c.textAlign='left';y+=48;
+  return y+PAD-PAD+0};
+ // 先試畫取得高度
+ let probe=document.createElement('canvas');probe.width=W;probe.height=100;let H=paint(probe.getContext('2d'))+M;
+ let scale=Math.min(1,15000/H),cv=document.createElement('canvas');cv.width=Math.round(W*scale);cv.height=Math.round(H*scale);let c=cv.getContext('2d');c.scale(scale,scale);
+ c.fillStyle='#f7f2eb';c.fillRect(0,0,W,H);
+ c.fillStyle='#fffdf9';rr(c,M,M,W-M*2,H-M*2,34);c.fill();c.strokeStyle='#e8dfd3';c.lineWidth=2;c.stroke();
+ c.fillStyle=RED;c.save();rr(c,M,M,W-M*2,H-M*2,34);c.clip();c.fillRect(M,M,W-M*2,12);c.restore();
+ paint(c);
+ return new Promise(res=>cv.toBlob(res,'image/png'))}
+$('image').onclick=async()=>{let r=data.find(x=>x.id===exportId);if(!r){toast('找不到這篇劇評');return}let btn=$('image');btn.disabled=true;btn.textContent='產生中…';try{outBlob=await makeCard(r,$('incImg').checked&&!!r.images?.length);if(!outBlob)throw 0;if(outUrl)URL.revokeObjectURL(outUrl);outUrl=URL.createObjectURL(outBlob);$('outImg').src=outUrl;$('imgOut').hidden=false;btn.textContent='重新產生劇評圖片';$('imgOut').scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e){toast('圖片產生失敗，可能是圖片太多或太大，試試取消附圖');btn.textContent='產生劇評圖片'}btn.disabled=false};
+$('saveImg').onclick=async()=>{if(!outBlob)return;let r=data.find(x=>x.id===exportId),name=((r?.title||'劇評').replace(/[\\/:*?"<>|]/g,'_'))+'.png',file=new File([outBlob],name,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:r?.title||'劇評'});return}catch(e){if(e.name==='AbortError')return}}dl(name,outBlob)};
+
+/* ---------- 備份 ---------- */
+function dl(name,blobOrText,type){let a=document.createElement('a'),u=URL.createObjectURL(blobOrText instanceof Blob?blobOrText:new Blob([blobOrText],{type}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)}
+$('backup').onclick=async()=>{try{await kvSet('lastBackup',Date.now());lastBackup=Date.now();dl('ai-drama-reviews-full-backup.json',JSON.stringify({format:'ai-drama-review-backup',version:2,exportedAt:new Date().toISOString(),reviews:data},null,2),'application/json');updateBackupAlert();toast('完整備份已開始下載（含圖片）')}catch(e){toast('備份失敗，請再試一次')}};
+$('csv').onclick=()=>{let keys=['title','pair','actors','nth','status','date','plotScore','plot','productionScore','production','modelScore','model','quotes','tags'];let s=[keys.join(','),...data.map(r=>keys.map(k=>'"'+String(Array.isArray(r[k])?r[k].join('|'):r[k]??'').replace(/"/g,'""')+'"').join(','))].join('\r\n');dl('ai-drama-reviews.csv','\ufeff'+s,'text/csv;charset=utf-8')};
+$('import').onclick=()=>$('file').click();
+$('file').onchange=async e=>{try{let f=e.target.files[0];if(!f)return;let parsed=JSON.parse(await f.text()),incoming=Array.isArray(parsed)?parsed:parsed.reviews;if(Array.isArray(incoming)&&confirm('以備份內容取代目前所有劇評？建議先下載現有備份。')){data=incoming.map((r,i)=>({...r,id:r.id||'import'+Date.now()+i,images:Array.isArray(r.images)?r.images:[]}));await persist();await kvSet('draft',null);toast('備份匯入完成')}else if(!Array.isArray(incoming))toast('備份檔格式不正確')}catch(err){toast('備份檔格式不正確或檔案太大')}e.target.value=''};
+
+/* ---------- 草稿 / 按鈕 ---------- */
+function scheduleDraft(){clearTimeout(draftTimer);setStatus('有未保存變更…','busy');draftTimer=setTimeout(async()=>{try{await kvSet('draft',{form:form(),editId,updatedAt:Date.now()});setStatus('草稿已自動保存','ok')}catch(e){setStatus('草稿保存失敗','err');toast('草稿保存失敗，請確認裝置空間')}},550)}
+for(const id of [...FIELDS,'tags'])$(id).addEventListener('input',scheduleDraft);
+$('nth').addEventListener('change',scheduleDraft);$('status').addEventListener('change',scheduleDraft);
+$('reset').onclick=()=>{if(confirm('清空目前表單？（收藏中的劇評不會被刪除）'))clear()};
+$('save').onclick=save;$('mobileSave').onclick=save;
+
+/* ---------- 輸入體驗：自動長高、收起鍵盤 ---------- */
+function grow(t){if(!t.offsetParent)return;t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px'}
+function growAll(){document.querySelectorAll('#write textarea').forEach(grow)}
+document.querySelectorAll('#write textarea').forEach(t=>t.addEventListener('input',()=>grow(t)));
+const kbBtn=$('kbBtn'),vv=window.visualViewport;
+function placeKb(){let el=document.activeElement,open=!!el&&(el.tagName==='TEXTAREA'||(el.tagName==='INPUT'&&!['checkbox','file','button','date'].includes(el.type)));document.body.classList.toggle('kb',open);kbBtn.style.display=open?'block':'none';if(open){if(vv){kbBtn.style.bottom='auto';kbBtn.style.top=Math.max(8,vv.offsetTop+vv.height-52)+'px'}else{kbBtn.style.top='auto';kbBtn.style.bottom='10px'}}}
+document.addEventListener('focusin',placeKb);document.addEventListener('focusout',()=>setTimeout(placeKb,60));
+if(vv)['resize','scroll'].forEach(ev=>vv.addEventListener(ev,placeKb));
+kbBtn.addEventListener('pointerdown',e=>e.preventDefault());
+kbBtn.onclick=()=>{document.activeElement&&document.activeElement.blur();placeKb()};
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='file'){e.preventDefault();e.target.blur()}});
+
+/* ---------- 圖片 ---------- */
+function renderImages(){$('imageCount').textContent=`${currentImages.length} / 10 張`;$('imageGrid').innerHTML=currentImages.map((im,i)=>`<div class="image-card"><img src="${im.data}" alt="${esc(im.name||'劇評圖片')}"><input aria-label="圖片說明" placeholder="圖片說明（選填）" value="${esc(im.caption||'')}" data-caption="${i}"><button type="button" data-remove-image="${i}">移除圖片</button></div>`).join('');$('imageInput').disabled=currentImages.length>=10;$('imageHint').textContent=currentImages.length>=10?'已達每部劇 10 張上限':'圖片會自動保存到本機'}
+$('imageGrid').addEventListener('input',e=>{let i=e.target.dataset.caption;if(i===undefined)return;currentImages[+i].caption=e.target.value;scheduleDraft()});$('imageGrid').addEventListener('click',e=>{let b=e.target.closest('[data-remove-image]');if(!b)return;currentImages.splice(+b.dataset.removeImage,1);renderImages();scheduleDraft()});
+async function compressImage(file){if(!file.type.startsWith('image/'))throw new Error('請選擇圖片檔');let url=URL.createObjectURL(file);try{let img=await new Promise((resolve,reject)=>{let x=new Image();x.onload=()=>resolve(x);x.onerror=reject;x.src=url});let max=2000,scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight)),w=Math.max(1,Math.round(img.naturalWidth*scale)),h=Math.max(1,Math.round(img.naturalHeight*scale)),c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);let mime='image/webp';let blob=await new Promise(resolve=>c.toBlob(resolve,mime,.9));if(!blob||blob.type!=='image/webp'){mime='image/jpeg';blob=await new Promise(resolve=>c.toBlob(resolve,mime,.92))}if(!blob)throw new Error('圖片壓縮失敗');let dataURL=await new Promise((resolve,reject)=>{let fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob)});return {id:'img'+Date.now()+Math.random().toString(16).slice(2),name:file.name||'image',caption:'',data:dataURL,bytes:blob.size,type:blob.type}}finally{URL.revokeObjectURL(url)}}
+$('imageInput').onchange=async e=>{let files=Array.from(e.target.files||[]).slice(0,Math.max(0,10-currentImages.length));if(!files.length){if(currentImages.length>=10)toast('每部劇最多 10 張圖片');e.target.value='';return}setStatus('正在處理圖片…');for(let f of files){try{currentImages.push(await compressImage(f));renderImages();scheduleDraft()}catch(err){toast('有圖片無法處理：'+f.name)}}e.target.value='';setStatus('圖片已加入草稿','ok')};
+
+/* ---------- 儲存空間 / 備份提醒 / 初始化 ---------- */
+async function updateStorageInfo(){try{let estimate=navigator.storage?.estimate?await navigator.storage.estimate():null,usage=estimate?.usage||0,quota=estimate?.quota||0;let fmtBytes=n=>n<1024*1024?(n/1024).toFixed(0)+' KB':(n/1024/1024).toFixed(1)+' MB';$('storageInfo').textContent=estimate?`本機網站資料約 ${fmtBytes(usage)}；瀏覽器回報的儲存配額上限約 ${fmtBytes(quota)}。這是估算值，實際可用容量可能變動。`:'目前瀏覽器未提供儲存容量估算。'}catch(e){$('storageInfo').textContent='無法取得本機儲存容量估算。'}}
+async function updateBackupAlert(){let ts=lastBackup||0;try{ts=ts||await kvGet('lastBackup')||0}catch(e){}lastBackup=ts;let days=ts?Math.floor((Date.now()-ts)/86400000):null;$('backupAlert').textContent=!ts?'備份提醒：你還沒有在這個版本下載過備份，建議現在先下載一次。':days>=14?`備份提醒：距離上次備份已 ${days} 天，建議下載最新完整備份。`:`上次備份約 ${days} 天前；建議每 14 天下載一次完整備份。`}
+async function init(){try{await openDB();let existing=await kvGet('reviews');if(Array.isArray(existing))data=existing;else{let legacy=null;try{legacy=JSON.parse(localStorage.getItem('dramaRoomData')||'null')}catch(e){}data=Array.isArray(legacy)?legacy:seed.map((a,i)=>({id:'seed'+i,title:a[0],plotScore:a[1],productionScore:a[2],modelScore:a[3],plot:a[4]||'',production:a[5]||'',model:a[6]||'',status:a[7]||'已完結',pair:a[8]||'',quotes:a[9]||'',tags:[],date:'',images:[]}));await kvSet('reviews',data)}
+ try{if(navigator.storage?.persist)await navigator.storage.persist()}catch(e){}
+ let draft=await kvGet('draft');renderAll();setStatus('已載入本機資料','ok');
+ if(draft?.form){if(confirm('找到一份尚未完成的自動保存草稿，要繼續編輯嗎？')){editId=draft.editId||null;fillForm(draft.form);$('mode').textContent=editId?'編輯草稿':'已恢復草稿';setSaveLabel(editId?'完成並保存修改':'完成並收進收藏');page('write')}else await kvSet('draft',null)}else if(!existing){toast('已載入初始劇評資料 ✦')}
+ await updateStorageInfo();await updateBackupAlert()}catch(e){setStatus('資料庫無法開啟','err');toast('本機資料庫無法開啟。請使用 HTTPS 網址或 localhost，不建議直接用 file:// 開啟。');console.error(e)}}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('installApp').style.display='inline-block'});$('installApp').onclick=async()=>{if(!installPrompt){toast('請從瀏覽器選單選擇「安裝應用程式」或「加到主畫面」');return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('installApp').style.display='none'};window.addEventListener('appinstalled',()=>toast('AI 劇評室已安裝 ✦'));
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(r=>r.update()).catch(()=>{}))}
+function renderAll(){library();stats();$('actorList').innerHTML=[...new Set(data.flatMap(actorsOf))].map(a=>`<option value="${esc(a)}">`).join('')}
+updateScore();init();
+</script></body></html>
