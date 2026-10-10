@@ -1,4 +1,4 @@
-# 歐美 AI 劇評室（PWA）
+# AI 劇評室（PWA）
 
 ## 內容
 - `index.html`：劇評室主程式

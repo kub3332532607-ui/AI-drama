@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "歐美 AI 劇評室",
+  "name": "AI 劇評室",
   "short_name": "AI 劇評室",
-  "description": "私人歐美 AI 劇評日記，支援本機自動保存與圖片收藏。",
+  "description": "私人 AI 劇評日記，支援本機自動保存與圖片收藏。",
   "lang": "zh-Hant",
   "start_url": "./",
   "scope": "./",
