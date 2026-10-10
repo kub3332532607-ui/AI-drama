@@ -1,0 +1,32 @@
+{
+  "id": "./",
+  "name": "歐美 AI 劇評室",
+  "short_name": "AI 劇評室",
+  "description": "私人歐美 AI 劇評日記，支援本機自動保存與圖片收藏。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f2eb",
+  "theme_color": "#f7f2eb",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
