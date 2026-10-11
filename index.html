@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f7f2eb" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)"><meta name="description" content="私人 AI 劇評日記，支援本機自動保存與圖片收藏。"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><title>AI 劇評室</title>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f7f2eb" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)"><meta name="description" content="AI 劇評室：可離線使用的私人劇評日記，資料只保存在你的裝置。"><meta property="og:type" content="website"><meta property="og:title" content="AI 劇評室"><meta property="og:description" content="可離線使用的私人劇評日記：分項評分、標籤、收藏庫、統計與圖片輸出，資料只保存在你的裝置。"><meta property="og:locale" content="zh_TW"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><title>AI 劇評室</title>
 <style>
 
 :root{--bg:#f7f2eb;--paper:#fffdf9;--ink:#292720;--muted:#847d72;--line:#e8dfd3;--red:#9d594b;--rose:#ead5c9;--sage:#667b65}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Noto Sans TC",sans-serif}.app{max-width:1050px;margin:auto;padding:18px 15px 90px}.top,.brand,.nav,.row,.actions,.entry,.head{display:flex;align-items:center;gap:10px}.top,.head,.entry{justify-content:space-between}.brand{gap:11px}.logo{background:var(--red);color:white;border-radius:14px;width:42px;height:42px;display:grid;place-items:center;font-size:23px}h1{font-size:20px;margin:0}.muted,.tiny{font-size:12px;color:var(--muted)}.nav{background:#ece4d9;padding:4px;border-radius:13px}.nav button{border:0;background:none;color:var(--muted);padding:9px 12px;border-radius:10px}.nav button.active{background:white;color:var(--ink)}.page{display:none}.page.active{display:block}.hero{background:var(--rose);border-radius:22px;padding:22px;margin:20px 0 16px;position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;right:25px;top:-38px;font-size:130px;color:#fff8}.eyebrow{font-size:11px;letter-spacing:.14em;color:#86594d;font-weight:800}.hero h2{margin:5px 0;font-size:26px}.hero p{margin:0;color:#755e53;font-size:13px;max-width:450px}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:15px;box-shadow:0 7px 25px #50371c0a}.head{margin-bottom:14px}.head h3{font-size:16px;margin:0}.field{margin-bottom:14px}label{display:block;font-size:12px;font-weight:750;color:#635d53;margin-bottom:6px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:11px;background:#fffefa;padding:11px 12px;color:var(--ink);outline:none}textarea{min-height:84px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#c78c79;box-shadow:0 0 0 3px #d9a18e30}.rating{display:grid;grid-template-columns:54px 1fr 31px;align-items:center;gap:7px;margin:14px 0}.rname{font-size:13px;font-weight:800}.scores{display:flex;gap:4px;flex-wrap:wrap}.score{border:1px solid var(--line);border-radius:8px;background:white;color:#777064;width:29px;height:31px;padding:0;font-size:11px}.score.sel{background:var(--red);border-color:var(--red);color:white;font-weight:800}.rval{text-align:right;color:var(--red);font-weight:850}.total{background:#f3eae0;border-radius:13px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.total strong{font-size:23px}.btn{border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font-weight:750;font-size:13px;padding:10px 13px}.btn.primary{background:var(--red);border-color:var(--red);color:white}.btn.soft{background:#f3e7df;color:#75483e}.actions{flex-wrap:wrap;margin-top:13px}.actions .btn{flex:1}.tip{padding:12px;background:#f5eee6;border-radius:12px;font-size:13px;margin:9px 0}.tag{display:inline-block;background:#e9eee6;color:#52684f;padding:4px 8px;border-radius:20px;font-size:11px}.entry{border:1px solid var(--line);border-radius:13px;padding:12px;margin:9px 0;gap:8px}.entryname{font-size:14px;font-weight:800;overflow-wrap:anywhere}.entrymeta{font-size:11px;color:var(--muted);margin-top:3px}.entryscore{font-size:18px;color:var(--red);font-weight:850;white-space:nowrap}.mini{border:0;border-radius:7px;padding:5px 8px;background:#f0e9df;font-size:11px;margin:5px 4px 0 0}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:14px}.stat span{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:23px;margin-top:5px}.bar{height:9px;background:#eee6dc;border-radius:20px;overflow:hidden;flex:1}.fill{height:100%;background:#d4a18e;border-radius:20px}.barline{display:flex;align-items:center;gap:10px;margin:13px 0;font-size:12px}.preview{background:#f4ece3;padding:17px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;margin:13px 0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#292720;color:white;padding:10px 15px;border-radius:11px;opacity:0;pointer-events:none}.toast.show{opacity:1}.bottom{display:none}.save-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);padding:6px 9px;border-radius:9px;background:#f5eee6}.save-dot{width:7px;height:7px;border-radius:50%;background:#b9a98f;display:inline-block}.save-dot.ok{background:#668b64}.save-dot.err{background:#b84b3f}.image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}.image-card{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f5eee6}.image-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}.image-card button{width:100%;border:0;background:#fffaf4;padding:7px 4px;font-size:11px;color:#7e453b}.image-card input{border:0;border-top:1px solid var(--line);border-radius:0;padding:7px;font-size:11px}.image-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.storage-box{background:#f5eee6;border-radius:12px;padding:12px;margin-top:10px;font-size:12px;color:var(--muted)}.install-btn{display:none}.backup-alert{border-left:3px solid #c58a72;padding:9px 11px;background:#f8eee8;border-radius:0 9px 9px 0;font-size:12px;margin-top:10px}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:20px}
@@ -20,34 +20,6 @@
 .tchip.cat{font-weight:700}
 .no{color:#a39a8b;font-variant-numeric:tabular-nums}
 .statsel{margin-bottom:10px}
-@media(prefers-color-scheme:dark){
-:root{--bg:#17140f;--paper:#221e18;--ink:#ece6dc;--muted:#a69c8d;--line:#3a342b;--red:#d08a79;--rose:#3a2d27}
-input,textarea,select{background:#1b1813}
-.nav{background:#2a251e}.nav button.active{background:#3a342b;color:var(--ink)}
-label{color:#c9c0b2}
-.btn{background:#2a251e;color:var(--ink)}.btn.primary{background:#a8604f;border-color:#a8604f;color:#fff}.btn.soft{background:#3a2d27;color:#e8bfb1}
-.btn.danger,.mini.danger{color:#e8938a}
-.total,.chip,.draftbar,.mhead,.fpanel,.preview,.save-status,.storage-box,.tip{background:#2a251e}
-.draftbar,.save-status{color:#cfc6b8}.draftbar.edit{background:#3a2d27;border-color:#5a4036;color:#e8bfb1}
-.tag{background:#2e3a2c;color:#b9d1b5}.tag.red{background:#4a2f28;color:#f0c3b5}
-.tchip{background:#2a251e;color:#d8d0c3}.tchip.sel{background:#2e3a2c;border-color:#4a5e47;color:#c4dcc0}.tchip.on{background:#a8604f;border-color:#a8604f;color:#fff}.tchip.more,.tchip.new{color:#e8bfb1}
-.entry:active{background:#2a251e}
-.mini{background:#2e2921;color:var(--ink)}
-.stat{background:var(--paper)}.bar{background:#352f27}.fill{background:#b67a68}
-.big{background:#2a251e;color:#cfc6b8}.big.sel{background:#a8604f;border-color:#a8604f;color:#fff}
-.fine .step,.nthrow .step{background:#2e2921;color:#e8bfb1}
-.hint,.backup-alert{background:#33261f;color:#e8bfb1}
-details.extra{background:#1e1a15;border-color:#4a4034}details.extra summary{color:#e8bfb1}
-.sugitem,.relrow{background:#2a251e}.relrow.cur{background:#3a2d27;border-color:#5a4036}
-.dquote{background:#33261f;border-left-color:#a8604f}
-.dimgs figure,.image-card,.thumb{background:#2a251e}.image-card button{background:#2a251e;color:#e8bfb1}
-.xbtn{background:#2e2921;color:var(--muted)}
-mark{background:#6b5326;color:#fff}
-.bottom{background:#221e18f2}
-.toast{background:#ece6dc;color:#17140f}.toast button{background:#0002;color:#17140f}
-.snip{color:#b8afa0}.snip b{color:#d08a79}.dlgbox #dlgMsg{color:#cfc6b8}
-.no{color:#7d7466}
-}
 
 input,textarea,select{font-size:16px}
 input[type=checkbox]{width:auto}
@@ -153,94 +125,245 @@ body.modal-open{overflow:hidden}
 .bl b{text-align:right}
 .ver{font-size:11px;color:var(--muted);margin-top:10px}
 @media(max-width:720px){.save-inline{display:none}}
-</style></head><body class="on-write"><main class="app">
-<header class="top"><div class="brand"><div class="logo">✦</div><div><h1>AI 劇評室</h1></div></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="saveStatus" class="save-status"><i id="saveDot" class="save-dot"></i><span id="saveStatusText">正在載入資料…</span></span><button class="btn install-btn" id="installApp">安裝 App</button></div><nav class="nav"><button class="active" data-page="write">✎ 寫劇評</button><button data-page="library">▤ 收藏</button><button data-page="stats">◒ 我的口味</button></nav></header>
+/* ===== v5 ===== */
+.top{gap:12px}
+.logo{border:0;cursor:pointer;position:relative;font-size:22px;flex:none;padding:0}
+.logo .dot{position:absolute;top:-3px;right:-3px;width:12px;height:12px;border-radius:50%;background:#e0624f;border:2px solid var(--bg)}
+.bt{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.tr{display:flex;gap:8px;align-items:center}
+.pickp{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:3px 11px;font:inherit;font-size:12px;color:var(--muted);font-weight:700;width:auto}
+.pickp i,.pick i{font-style:normal;font-size:11px;color:var(--muted)}
+.ce{display:block;width:100%;min-height:46px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fffefa;color:var(--ink);font:inherit;font-size:16px;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;outline:none;-webkit-user-select:text;user-select:text;-webkit-tap-highlight-color:transparent}
+.ce:focus{border-color:#c78c79;box-shadow:0 0 0 3px #d9a18e30}
+.ce:empty:before{content:attr(data-ph);color:#a8a095;pointer-events:none}
+input,textarea{border-radius:14px}
+textarea{padding:12px 14px}
+.pick{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:46px;border:1px solid var(--line);border-radius:14px;background:#fffefa;padding:11px 14px;font:inherit;font-size:16px;color:var(--ink);text-align:left}
+.pick span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pick[hidden]{display:none}
+.row2 .pick{flex:1;min-width:0}
+.fpanel .pick{width:100%}
+#pickM{z-index:60}
+.pick-sheet{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.popt{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;margin-top:8px;font-size:15px;color:var(--ink)}
+.popt small{display:block;font-size:11px;color:var(--muted)}
+.popt.sel{background:#f8eee8;border-color:#d9a18e;color:var(--red);font-weight:800}
+.popt i{font-style:normal;font-weight:900}
+.popt.foot{border-style:dashed;color:var(--red);justify-content:center;font-weight:700}
+#settingsM,#libM,#mgr,#trashM,#tagM{z-index:40}
+#libM{z-index:41}
+.hero{padding:16px 18px;margin:12px 0 12px}
+.hero h2{font-size:22px;margin:3px 0}
+.layout3{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start;margin-top:12px}
+.cols2{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start}
+.col,.cols2>div{min-width:0}
+.panel,.pairrow>*{min-width:0}
+.pairrow{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto}
+.resline{display:flex;justify-content:space-between;align-items:center;margin:8px 0 4px;min-height:26px;gap:8px}
+.resline .mini{margin:0 0 0 6px}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.srow:last-child{border-bottom:0}
+.sw{width:48px;height:28px;border-radius:20px;border:0;background:#d8cfc2;position:relative;flex:none;padding:0}
+.sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s}
+.sw[aria-pressed=true]{background:var(--sage)}
+.sw[aria-pressed=true]:after{left:23px}
+.sgroup{margin:18px 0 4px;font-size:12px;font-weight:800;color:#75483e;letter-spacing:.04em}
+.tabs{display:flex;gap:6px;margin:0 0 12px}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 6px;font-size:13px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--red);border-color:var(--red);color:#fff}
+.lock{border:1px dashed #d9cbbb;border-radius:14px;padding:14px;margin:0;background:#fdf9f3}
+.lock b{display:block;font-size:13px}
+.lock .tiny{margin-top:3px}
+.lock .bar{margin-top:9px;height:7px}
+.stat small{display:block;font-size:11px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat strong small{display:inline;font-size:12px}
+.arow.sel{background:#f8eee8;border-radius:10px;padding-left:8px;padding-right:8px}
+.bl small{font-weight:700}
+details.tier{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--paper)}
+details.tier summary{display:flex;justify-content:space-between;cursor:pointer;font-size:14px;list-style:none}
+details.tier summary::-webkit-details-marker{display:none}
+details.tier summary span{color:var(--muted);font-size:12px}
+details.tier[open] summary{margin-bottom:8px}
+.dsvg{width:100%;height:auto;display:block}
+.dsvg .b{fill:var(--red);opacity:.72}
+.dsvg .c{fill:none;stroke:var(--ink);stroke-width:2;opacity:.8;stroke-linecap:round}
+.dsvg .m{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3;opacity:.55}
+.dsvg text{fill:var(--muted);font-size:10px}
+.dsvg text.mt{fill:var(--ink);font-weight:700}
+.dsvg .hit{fill:transparent;cursor:pointer}
+.prow{display:grid;grid-template-columns:52px 1fr auto;gap:8px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:9px 11px;margin-top:6px;font-size:13px;color:var(--ink)}
+.prow b{color:var(--red);font-size:12px}
+.prow small{color:var(--muted);font-size:11px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.image-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.image-card img{aspect-ratio:auto;height:auto;max-height:260px;object-fit:contain;background:#efe6da}
+.image-card .ce{min-height:34px;padding:8px;font-size:13px;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent}
+.image-card button.cov{color:var(--sage);font-weight:800}
+.dimgs{display:block;columns:2;column-gap:8px}
+.dimgs figure{break-inside:avoid;margin:0 0 8px}
+.entry{align-items:flex-start;cursor:pointer}
+@media(min-width:721px){.layout3{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.layout3>.col:nth-child(3){grid-column:1/-1}}
+@media(min-width:900px){
+.app{max-width:1240px;padding:22px 26px 60px}
+.top{display:grid;grid-template-columns:1fr minmax(380px,540px) 1fr;align-items:center;margin-bottom:6px}
+.nav{order:0;width:100%}.nav button{flex:1;padding:11px 14px;font-size:14px}
+.tr{justify-self:end}
+.layout3{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,.85fr)}.layout3>.col:nth-child(3){grid-column:auto}
+.cols2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+#entries{display:grid;grid-template-columns:1fr 1fr;gap:10px}#entries .entry{margin:0}
+.hero{padding:20px 26px}
+}
+.tchip small{display:inline;margin-left:3px;font-size:10px;color:var(--muted)}
+.tchip.on small{color:#ffffffc0}
+.tagstrip .tchip{white-space:nowrap}
+.resline{min-height:0}
+.chiprow:empty{display:none;margin:0}
+.bl{grid-template-columns:62px 1fr minmax(74px,auto)}
+.bl b{white-space:nowrap}
+.prow small{display:block}
+@media(prefers-color-scheme:dark){
+:root{--bg:#17140f;--paper:#221e18;--ink:#ece6dc;--muted:#a69c8d;--line:#3a342b;--red:#d08a79;--rose:#3a2d27}
+input,textarea,select{background:#1b1813}
+.nav{background:#2a251e}.nav button.active{background:#3a342b;color:var(--ink)}
+label{color:#c9c0b2}
+.btn{background:#2a251e;color:var(--ink)}.btn.primary{background:#a8604f;border-color:#a8604f;color:#fff}.btn.soft{background:#3a2d27;color:#e8bfb1}
+.btn.danger,.mini.danger{color:#e8938a}
+.total,.chip,.draftbar,.mhead,.fpanel,.preview,.save-status,.storage-box,.tip{background:#2a251e}
+.draftbar,.save-status{color:#cfc6b8}.draftbar.edit{background:#3a2d27;border-color:#5a4036;color:#e8bfb1}
+.tag{background:#2e3a2c;color:#b9d1b5}.tag.red{background:#4a2f28;color:#f0c3b5}
+.tchip{background:#2a251e;color:#d8d0c3}.tchip.sel{background:#2e3a2c;border-color:#4a5e47;color:#c4dcc0}.tchip.on{background:#a8604f;border-color:#a8604f;color:#fff}.tchip.more,.tchip.new{color:#e8bfb1}
+.entry:active{background:#2a251e}
+.mini{background:#2e2921;color:var(--ink)}
+.stat{background:var(--paper)}.bar{background:#352f27}.fill{background:#b67a68}
+.big{background:#2a251e;color:#cfc6b8}.big.sel{background:#a8604f;border-color:#a8604f;color:#fff}
+.fine .step,.nthrow .step{background:#2e2921;color:#e8bfb1}
+.hint,.backup-alert{background:#33261f;color:#e8bfb1}
+details.extra{background:#1e1a15;border-color:#4a4034}details.extra summary{color:#e8bfb1}
+.sugitem,.relrow{background:#2a251e}.relrow.cur{background:#3a2d27;border-color:#5a4036}
+.dquote{background:#33261f;border-left-color:#a8604f}
+.dimgs figure,.image-card,.thumb{background:#2a251e}.image-card button{background:#2a251e;color:#e8bfb1}
+.xbtn{background:#2e2921;color:var(--muted)}
+mark{background:#6b5326;color:#fff}
+.bottom{background:#221e18f2}
+.toast{background:#ece6dc;color:#17140f}.toast button{background:#0002;color:#17140f}
+.snip{color:#b8afa0}.snip b{color:#d08a79}.dlgbox #dlgMsg{color:#cfc6b8}
+.no{color:#7d7466}
+}
+@media(prefers-color-scheme:dark){
+.ce,.pick{background:#1b1813}
+.ce:empty:before{color:#6f675b}
+.pickp{background:#2a251e}
+.popt{background:#2a251e}.popt.sel{background:#3a2d27;border-color:#5a4036}
+.lock{background:#1e1a15;border-color:#4a4034}
+.tabs button{background:#2a251e}
+.prow{background:#2a251e}
+.sw{background:#4a4237}
+.hero{background:#3a2d27}.eyebrow{color:#d8a898}.hero p{color:#c9b3a8}.hero:after{color:#ffffff14}
+.arow.sel{background:#3a2d27}
+details.tier{background:#2a251e}
+.image-card img,.dimgs figure{background:#2a251e}
+}
+@media(prefers-color-scheme:dark){.xbtn{background:#2e2921;color:var(--muted)}.dlgbox{background:var(--paper)}.nav{background:#2a251e}.draftbar{background:#2a251e}.tchip small{color:#a69c8d}.tchip.on small{color:#ffffffc0}}
+</style></head>
+<body class="on-write"><main class="app">
+<header class="top"><div class="brand"><button type="button" class="logo" id="openSettings" aria-label="設定" title="設定">⚙<i class="dot" id="setDot" hidden></i></button><div class="bt"><h1>AI 劇評室</h1><button type="button" id="libBtn" hidden></button></div></div><nav class="nav"><button class="active" data-page="write">✎ 寫劇評</button><button data-page="library">▤ 收藏</button><button data-page="stats">◒ 我的口味</button></nav><div class="tr"><span id="saveStatus" class="save-status"><i id="saveDot" class="save-dot"></i><span id="saveStatusText">正在載入…</span></span><button class="btn install-btn" id="installApp">安裝 App</button></div></header>
 
-<section id="write" class="page active"><div id="draftBar" class="draftbar" hidden><span id="draftText"></span><button type="button" class="mini" id="draftBtn"></button></div>
-<div class="layout" style="margin-top:12px"><div>
-
+<section id="write" class="page active"><div class="hero"><div class="eyebrow">NOW PLAYING</div><h2>今天又嗑到什麼了？</h2><p>先評分，再寫心得；沒時間的話，只打分數也可以。</p></div>
+<div id="draftBar" class="draftbar" hidden><span id="draftText"></span><button type="button" class="mini" id="draftBtn"></button></div>
+<div class="layout3">
+<div class="col">
 <div class="panel"><div class="head"><h3>基本資料</h3></div>
-<div class="field"><label>劇名 *</label><input id="title" placeholder="輸入劇名"></div>
-<div class="field"><label>觀看狀態</label><select id="status"><option>已完結</option><option>未完結</option><option>沒看完</option></select></div>
+<div class="field" id="formLibRow" hidden><label>收藏庫</label><button id="formLib"></button></div>
+<div class="field"><label>劇名 *</label><div class="ce" id="title" data-ph="輸入劇名" enterkeyhint="done"></div></div>
+<div class="field"><label>觀看狀態</label><button id="status"></button></div>
 <div class="field"><label>日期（選填）</label><input id="date" type="date"></div>
-<details class="extra" id="extra"><summary>＋ 角色與系列（選填，有感而發再填）</summary>
-<div class="field"><label>角色　左位 × 右位</label><div class="pairrow"><input id="left" placeholder="左位角色"><span class="x">×</span><input id="right" placeholder="右位角色"><button type="button" class="btn" id="swap" aria-label="左右對調">⇅</button></div><div class="tiny" style="margin-top:6px">順序自己記得就好，不需要寫攻受或 01。</div><div id="nameSug"></div></div>
-<div class="subh" style="margin-top:6px">演員組合</div>
-<div class="field"><select id="group"></select><div class="tiny" style="margin-top:6px">同一組演員的所有劇放在同一個組合，之後改名只要改一次。 <a href="#" id="openGroups" style="color:var(--red)">管理組合</a></div></div>
-<div class="field"><label>這是這組的第幾搭</label><div class="nthrow"><button type="button" class="step" id="nthMinus">－</button><input id="nth" type="number" inputmode="numeric" min="1" max="99" placeholder="—"><button type="button" class="step" id="nthPlus">＋</button></div><div id="nthHint" class="hint"></div><div id="prevPairs"></div></div>
-<div class="subh">劇本系列</div>
-<div class="field"><select id="series"></select><div class="tiny" style="margin-top:6px">同一套劇本拍成不同版本（不同演員或題材）時，放在同一個系列。 <a href="#" id="openSeries" style="color:var(--red)">管理系列</a></div></div>
-<div class="field" style="margin-bottom:0"><label>這部是哪個版本</label><input id="version" placeholder="例如：現代版、獸人版"><div id="verChips"></div></div>
+<details class="extra" id="extra"><summary>＋ 角色與系列（選填）</summary>
+<div id="blkPair" class="field"><label>角色（選填）</label><div class="pairrow"><div class="ce" id="left" data-ph="角色 A" enterkeyhint="done"></div><span class="x">×</span><div class="ce" id="right" data-ph="角色 B" enterkeyhint="done"></div><button type="button" class="btn" id="swap" aria-label="左右對調">⇅</button></div><div class="tiny" style="margin-top:6px">可只填一位，或填兩位並以「A × B」顯示，順序由你決定。</div><div id="nameSug"></div></div>
+<div id="blkGroup"><div class="subh" style="margin-top:6px">演員組合</div>
+<div class="field"><button id="group"></button><div class="tiny" style="margin-top:6px">同一組演員的所有劇放在同一個組合，之後改名只要改一次。 <a href="#" id="openGroups" style="color:var(--red)">管理組合</a></div></div>
+<div class="field"><label>這是這組的第幾搭</label><div class="nthrow"><button type="button" class="step" id="nthMinus">－</button><input id="nth" type="number" inputmode="numeric" min="1" max="99" placeholder="—"><button type="button" class="step" id="nthPlus">＋</button></div><div id="nthHint" class="hint"></div><div id="prevPairs"></div></div></div>
+<div id="blkSeries"><div class="subh">劇本系列</div>
+<div class="field"><button id="series"></button><div class="tiny" style="margin-top:6px">同一套劇本拍成不同版本（不同演員或題材）時，放在同一個系列。 <a href="#" id="openSeries" style="color:var(--red)">管理系列</a></div></div>
+<div class="field" style="margin-bottom:0"><label>這部是哪個版本</label><div class="ce" id="version" data-ph="例如：現代版、古裝版" enterkeyhint="done"></div><div id="verChips"></div></div></div>
 </details></div>
-
 <div class="panel"><div class="head"><h3>先打分</h3><span class="tiny">點大數字，再用 −／＋ 或下拉選單微調 0.1</span></div><div id="ratings"></div>
 <div class="total"><div><div class="tiny">已評項目總分</div><strong id="total">0</strong><span class="tiny"> / 15</span></div><div id="scoreSummary" class="tiny">— · — · —</div></div>
 <div class="tiny" style="margin-top:9px">沒看完的劇可以先評部分項目；空白不會被算成 0 分。</div></div>
-
+</div>
+<div class="col">
 <div class="panel"><div class="head"><h3>寫下你的心得</h3></div>
 <div class="field"><label>劇情心得</label><textarea id="plot" placeholder="人設、劇情走向、角色互動……"></textarea></div>
 <div class="field"><label>製作心得</label><textarea id="production" placeholder="畫面、音樂、服裝、後製……"></textarea></div>
 <div class="field"><label>建模心得</label><textarea id="model" placeholder="外型、造型、與角色的契合度……"></textarea></div>
 <div class="field"><label>想留下的台詞（選填）</label><textarea id="quotes" style="min-height:90px" placeholder="想保存的台詞"></textarea></div>
-<div class="field"><label>標籤</label><div id="tagChips" class="chiprow" style="margin-top:0"></div><div class="tagin" style="margin-top:8px"><input id="tagInput" data-enter placeholder="輸入標籤，按 Enter 加入"><button type="button" class="btn soft" id="tagAdd">加入</button></div><div id="tagSug" class="chiprow"></div><div id="tagWarn" class="hint"></div><div id="tagCatAsk" class="chiprow" hidden></div></div></div></div>
-
-</div><div>
-
-<div class="panel"><div class="head"><h3>收藏圖片</h3><span class="tiny" id="imageCount">0 / 10 張</span></div><p class="tiny">每部劇最多 10 張。上傳時會縮小過大的圖片（長邊最多約 2000 px），盡量保留畫質並節省手機空間。</p><div class="image-toolbar"><label class="btn soft" for="imageInput" style="margin:0;cursor:pointer">＋ 上傳圖片</label><input id="imageInput" type="file" accept="image/*" multiple hidden><span class="tiny" id="imageHint">支援 JPG、PNG、WebP 等常見圖片</span></div><div id="imageGrid" class="image-grid"></div></div>
-
+<div class="field"><label>標籤</label><div id="fStrip" class="tagstrip"></div><div id="fCatRow" class="chiprow" style="margin:0 0 6px"></div><div id="tagNew" class="tagin" hidden><div class="ce" id="tagInput" data-enter data-ph="輸入新標籤，按 Enter 加入" enterkeyhint="done"></div><button type="button" class="btn soft" id="tagAdd">加入</button></div><div id="tagWarn" class="chiprow"></div><div id="tagCatAsk" class="chiprow" hidden></div></div></div>
+</div>
+<div class="col">
+<div class="panel"><div class="head"><h3>收藏圖片</h3><span class="tiny" id="imageCount">0 / 10 張</span></div><p class="tiny">每部劇最多 10 張。上傳時會縮小過大的圖片（長邊最多約 2000 px），並保留原本比例。</p><div class="image-toolbar"><label class="btn soft" for="imageInput" style="margin:0;cursor:pointer">＋ 上傳圖片</label><input id="imageInput" type="file" accept="image/*" multiple hidden><span class="tiny" id="imageHint">支援 JPG、PNG、WebP 等常見圖片</span></div><div id="imageGrid" class="image-grid"></div></div>
 <div class="panel"><div class="head"><h3>完成</h3></div><div class="actions" style="margin-top:0"><button class="btn primary save-inline" id="save">完成並收進收藏</button><button class="btn" id="reset">清空表單</button></div><p class="tiny" style="margin:10px 0 0">草稿會自動保存在這台裝置；按「完成並收進收藏」後才會出現在收藏頁。</p></div>
-
 </div></div></section>
 
-<section id="library" class="page"><div class="panel">
-<div class="filters" style="margin-bottom:8px"><input id="search" type="search" placeholder="搜尋劇名、角色、心得、編號…"></div>
-<div class="row2"><select id="sort"><option value="new">日期：新 → 舊</option><option value="old">日期：舊 → 新</option><option value="high">總分：高 → 低</option><option value="low">總分：低 → 高</option></select><button type="button" class="btn" id="filterBtn">篩選 ▾</button></div>
-<div id="filterPanel" class="fpanel" hidden><select id="fstatus"><option value="">全部狀態</option><option>已完結</option><option>未完結</option><option>沒看完</option></select><select id="fgroup"></select><select id="fseries"></select></div>
-<div id="tagStrip" class="tagstrip"></div><div id="catRow" class="chiprow" style="margin:0 0 6px"></div>
-<div id="activeFilters" class="chiprow" style="margin-top:0"></div>
-<div class="tiny" id="resultInfo" style="margin:8px 0 4px"></div><div id="entries"></div><button class="btn" id="moreBtn" style="width:100%;margin-top:6px" hidden>顯示更多</button>
-<div class="libtools"><button class="btn" id="openTags">管理標籤</button><button class="btn" id="openGroups2">管理組合</button><button class="btn" id="openSeries2">管理系列</button><button class="btn" id="openTrash">最近刪除</button></div></div></section>
+<section id="library" class="page"><div class="hero"><div class="eyebrow">THE ARCHIVE</div><h2>我的劇評收藏</h2><p>搜尋、篩選與閱讀已儲存的劇評，點一篇就能查看。</p></div><div class="panel">
+<div class="ce" id="search" data-ph="搜尋劇名、角色、心得、No.…" inputmode="search" enterkeyhint="search" style="margin-bottom:8px"></div>
+<div class="row2"><button id="sort"></button><button type="button" class="btn" id="lFBtn">篩選 ▾</button></div>
+<div id="lPanel" class="fpanel" hidden><button id="lSt"></button><button id="lGr"></button><button id="lSe"></button></div>
+<div id="lStrip" class="tagstrip"></div><div id="lCatRow" class="chiprow" style="margin:0 0 6px"></div>
+<div class="resline"><span class="tiny" id="resultInfo"></span><button type="button" class="mini" id="lClear" hidden>✕ 清除全部篩選</button></div>
+<div id="lActive" class="chiprow" style="margin-top:0"></div>
+<div id="entries"></div><button class="btn" id="moreBtn" style="width:100%;margin-top:6px" hidden>顯示更多</button></div></section>
 
-<section id="stats" class="page">
-<div class="statgrid"><div class="stat"><span>已儲存劇評</span><strong id="count">0</strong></div><div class="stat"><span>完整評分平均總分</span><strong id="avg">—</strong></div><div class="stat"><span>最高分作品</span><strong id="top" style="font-size:14px;line-height:1.4">—</strong></div></div>
-<div class="layout" style="margin-top:14px"><div>
-<div class="panel"><div class="head"><h3>三項平均分</h3></div><div id="averages"></div></div>
-<div class="panel"><div class="head"><h3>總分分布</h3><span class="tiny">只算三項都有評分的劇</span></div><div id="dist"></div></div>
-<div class="panel"><div class="head"><h3>每月追劇</h3><span class="tiny">部數與平均總分</span></div><div id="monthly"></div></div>
-<div class="panel"><div class="head"><h3>追劇進度</h3><span class="tiny">同一組合每一搭的總分</span></div><select id="progSel" class="statsel"></select><div id="progBody"></div></div>
-</div><div>
-<div class="panel"><div class="head"><h3>演員組合</h3><span class="tiny">點一下查看作品</span></div><div id="groupStats"></div></div>
-<div class="panel"><div class="head"><h3>劇本系列</h3><span class="tiny">點一下查看作品</span></div><div id="seriesStats"></div></div>
-<div class="panel"><div class="head"><h3>常用標籤</h3><button type="button" class="mini" id="statsTagsBtn" style="margin:0" hidden>查看全部</button></div><div id="tagStats"></div></div>
-<div class="panel"><div class="head"><h3>標籤對比</h3><span class="tiny">和整體平均比較</span></div><select id="cmpSel" class="statsel"></select><div id="cmpBody"></div></div>
-</div></div>
-<div class="panel"><div class="head"><h3>輸出設定</h3></div><div class="field"><label>主題標籤（顯示在文字版開頭與圖片頂端，可留空）</label><input id="hashtag" placeholder="例如：#劇評#"></div><div class="field" style="margin-bottom:0"><label>署名（顯示在圖片底部，可留空）</label><input id="signature" placeholder="例如：你的暱稱"></div></div>
-<div class="panel"><div class="head"><h3>資料備份</h3></div><p class="tiny">劇評與圖片會自動保存在這台裝置的瀏覽器資料庫，不必逐篇按保存。清除網站資料、換手機或裝置損壞仍可能造成資料遺失，請定期備份。</p><div id="backupAlert" class="backup-alert">備份提醒：建議每兩週下載一次完整備份。</div><div class="actions"><button class="btn primary" id="backup">下載完整備份（含圖片）</button><button class="btn" id="csv">匯出 CSV（不含圖片）</button><button class="btn" id="import">還原 JSON 備份</button><button class="btn" id="undoImport" hidden>復原上次還原</button><input type="file" id="file" accept=".json,application/json" hidden></div><div class="storage-box" id="storageInfo">正在檢查本機儲存空間…</div><div class="ver">AI 劇評室 v<span id="verText"></span>　<a href="#" id="checkUpdate" style="color:var(--red)">檢查更新</a></div></div></section>
+<section id="stats" class="page"><div class="hero"><div class="eyebrow">TASTE PROFILE</div><h2>我的口味分析</h2><p>依你的評分與標籤整理，會隨劇評即時更新。</p></div>
+<div class="tabs" id="sTabs"></div>
+<div class="panel" style="padding:14px"><div class="row2" style="margin-bottom:6px"><button type="button" class="btn" id="sFBtn" style="flex:1">篩選 ▾</button></div>
+<div id="sPanel" class="fpanel" hidden><button id="sSt"></button><button id="sGr"></button><button id="sSe"></button></div>
+<div id="sStrip" class="tagstrip"></div><div id="sCatRow" class="chiprow" style="margin:0 0 6px"></div>
+<div class="resline"><span class="tiny" id="sInfo"></span><span><button type="button" class="mini" id="sView" hidden>在收藏中查看</button><button type="button" class="mini" id="sClear" hidden>✕ 清除篩選</button></span></div><div id="sActive" class="chiprow" style="margin-top:0"></div></div>
+<div id="statsBody"></div></section>
 
 <section id="export" class="page"><div class="panel"><div class="head"><h3>輸出劇評</h3><button class="btn" id="closeExport">返回</button></div>
-<div class="tiny" style="margin-bottom:6px">① 文字版（直接貼到社群）</div><div id="preview" class="preview"></div><div class="actions"><button class="btn primary" id="copy">複製文字</button></div>
+<div class="tiny" style="margin-bottom:6px">① 文字版（貼到社群）</div><div id="preview" class="preview"></div><div class="actions"><button class="btn primary" id="copy">複製文字</button><button class="btn" id="shareText">分享文字</button></div>
 <hr class="sep">
 <div class="tiny" style="margin-bottom:6px">② 圖片版（文字＋分數＋收藏圖片合成一張）</div>
 <label class="checkrow" id="incRow"><input type="checkbox" id="incImg" checked> 附上收藏的圖片</label>
 <div class="actions"><button class="btn primary" id="image">產生劇評圖片</button></div>
 <div id="imgOut" class="outbox" hidden><img id="outImg" alt="劇評圖片"><div class="tiny" style="margin:8px 0">可長按圖片儲存，或按下方按鈕</div><div class="actions"><button class="btn primary" id="saveImg">儲存／分享圖片</button></div></div></div></section>
-
 </main>
 
 <div class="bottom"><button class="btn primary" id="mobileSave">完成並收進收藏</button></div>
 <div id="detail" class="modal"><div class="sheet" id="sheet"></div></div>
-<div id="tagM" class="modal"><div class="sheet"><div class="dtop"><h2 id="tagMTitle"></h2><button class="xbtn" data-close aria-label="關閉">✕</button></div><input id="tagMSearch" type="search" placeholder="搜尋標籤" style="margin:12px 0 0"><div id="tagMBody"></div></div></div>
+<div id="settingsM" class="modal"><div class="sheet"><div class="dtop"><h2>設定</h2><button class="xbtn" data-close aria-label="關閉">✕</button></div>
+<div class="sgroup">收藏庫</div><div id="setLibs"></div><button class="btn soft" id="addLib" style="width:100%;margin-top:8px">＋ 新增收藏庫</button>
+<div class="sgroup">偏好</div>
+<div class="srow" id="sharedRow"><span>所有收藏庫共用標籤<br><span class="tiny">關閉後，每個收藏庫各自擁有獨立的標籤與大標籤</span></span><button type="button" class="sw" id="swShared" aria-label="共用標籤"></button></div>
+<div class="srow" id="allRow"><span>顯示「全部收藏庫」瀏覽模式<br><span class="tiny">可一次搜尋、瀏覽與統計所有收藏庫</span></span><button type="button" class="sw" id="swAll" aria-label="全部收藏庫"></button></div>
+<div class="field" style="margin:12px 0 0"><label>輸出圖片的署名（顯示在圖片底部，可留空）</label><div class="ce" id="signature" data-ph="例如：你的暱稱" enterkeyhint="done"></div></div>
+<div class="sgroup">管理</div>
+<div class="actions"><button class="btn" data-go="tags">管理標籤</button><button class="btn" data-go="groups">管理演員組合</button><button class="btn" data-go="series">管理劇本系列</button><button class="btn" data-go="trash">最近刪除<span id="trashCount"></span></button></div>
+<div class="sgroup">備份與資料</div>
+<p class="tiny" style="margin:0">劇評與圖片只保存在這台裝置的瀏覽器資料庫，不會上傳。換手機或清除瀏覽器資料前，請先備份。</p><div id="backupAlert" class="backup-alert">備份提醒：建議每兩週備份一次。</div>
+<div class="actions"><button class="btn primary" id="backup">下載完整備份</button><button class="btn" id="shareBackup">分享備份</button></div><div class="actions" style="margin-top:8px"><button class="btn" id="csv">匯出 CSV</button><button class="btn" id="import">還原備份</button><button class="btn" id="undoImport" hidden>復原上次還原</button></div><input type="file" id="file" accept=".json,application/json" hidden>
+<div class="storage-box" id="storageInfo">正在檢查本機儲存空間…</div>
+<div class="sgroup">關於</div><div class="ver" style="margin:0 0 10px">AI 劇評室 v<span id="verText">5.0.0</span>　<a href="#" id="checkUpdate" style="color:var(--red)">檢查更新</a></div><button class="btn danger" id="clearAll" style="width:100%">清除全部資料…</button></div></div>
+<div id="libM" class="modal"><div class="sheet"><div class="dtop"><h2>編輯收藏庫</h2><button class="xbtn" data-close aria-label="關閉">✕</button></div>
+<div class="field" style="margin-top:12px"><label>名稱</label><div class="ce" id="libName" data-ph="收藏庫名稱" enterkeyhint="done"></div></div>
+<div class="field"><label>輸出主題標籤（顯示在文字版開頭與圖片頂端，可留空）</label><div class="ce" id="libTag" data-ph="例如：#劇評#" enterkeyhint="done"></div></div>
+<div class="sgroup" style="margin-top:4px">這個收藏庫要使用的欄位</div>
+<div class="srow"><span>角色（A × B）</span><button type="button" class="sw" id="swPair" aria-label="角色"></button></div><div class="srow"><span>演員組合與第幾搭</span><button type="button" class="sw" id="swGroup" aria-label="演員組合"></button></div><div class="srow"><span>劇本系列與版本</span><button type="button" class="sw" id="swSeries" aria-label="劇本系列"></button></div>
+<div class="tiny" id="libInfo" style="margin:10px 0"></div><div class="actions"><button class="btn primary" id="libSave">儲存</button><button class="btn danger" id="libDel">刪除此收藏庫</button></div></div></div>
 <div id="mgr" class="modal"><div class="sheet"><div class="dtop"><h2 id="mgrTitle"></h2><button class="xbtn" data-close aria-label="關閉">✕</button></div><div id="mgrBody" style="margin-top:10px"></div></div></div>
 <div id="trashM" class="modal"><div class="sheet"><div class="dtop"><h2>最近刪除</h2><button class="xbtn" data-close aria-label="關閉">✕</button></div><p class="tiny">刪除的劇評會保留 30 天，可在這裡救回。</p><div id="trashBody"></div></div></div>
+<div id="tagM" class="modal"><div class="sheet"><div class="dtop"><h2 id="tagMTitle"></h2><button class="xbtn" data-close aria-label="關閉">✕</button></div><div class="ce" id="tagMSearch" data-ph="搜尋標籤" style="margin:12px 0 0"></div><div id="tagMBody"></div></div></div>
+<div id="pickM" class="modal"><div class="sheet pick-sheet"><div class="dtop"><h3 id="pickTitle" style="margin:0"></h3><button class="xbtn" data-close aria-label="關閉">✕</button></div><div class="ce" id="pickSearch" data-ph="搜尋" hidden style="margin:10px 0 0"></div><div id="pickBody"></div></div></div>
 <div id="lightbox" class="modal"><img id="lbImg" alt=""></div>
-<div id="dlg" class="modal"><div class="sheet dlgbox"><h3 id="dlgTitle"></h3><div id="dlgMsg"></div><input id="dlgInput" data-enter hidden style="margin-bottom:12px"><div id="dlgBtns" class="actions" style="margin-top:0"></div></div></div>
+<div id="dlg" class="modal"><div class="sheet dlgbox"><h3 id="dlgTitle"></h3><div id="dlgMsg"></div><div class="ce" id="dlgInput" data-enter data-ph="輸入名稱" hidden style="margin-bottom:12px"></div><div id="dlgBtns" class="actions" style="margin-top:0"></div></div></div>
 <div id="toast" class="toast"></div>
 <script>
-const APP_VERSION='4.0.0';
-const $=id=>document.getElementById(id), esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const APP_VERSION='5.0.0';
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const NTH={'一搭':1,'二搭':2,'三搭':3,'四搭以上':4};
-let data=[],groups=[],series=[],trash=[],settings={hashtag:'',signature:'',tagCats:[],tagMap:{},nextNo:1},scores={plot:null,production:null,model:null},editId=null,exportId=null,detailId=null,currentImages=[],currentTags=[],draftTimer=null,db=null,installPrompt=null,lastBackup=0,outBlob=null,outUrl=null,activeTags=[],libCat=null,shown=30,nthTouched=false,prevGroup='',prevSeries='',curPage='write',swReg=null,sugField=null,mgrType='tags',pendingCat=null,tagMode='form',statsTagsAll=false;
-document.getElementById('verText').textContent=APP_VERSION;
+const newF=()=>({tags:[],cat:null,status:'',group:'',series:'',range:null,month:''});
+const LF=newF(),SF=newF(),resetF=F=>Object.assign(F,newF());
+const DEFAULT_SETTINGS=()=>({signature:'',tagCats:[],tagMap:{},sharedTags:true,allMode:true,sort:'upd',cur:'',lastLib:''});
+let data=[],groups=[],series=[],libs=[],trash=[],settings=DEFAULT_SETTINGS(),curLib='',scores={plot:null,production:null,model:null},editId=null,exportId=null,detailId=null,currentImages=[],currentTags=[],currentCover='',draftTimer=null,db=null,installPrompt=null,lastBackup=0,outBlob=null,outUrl=null,shown=30,nthTouched=false,prevGroup='',prevSeries='',curPage='write',swReg=null,sugField=null,mgrType='tags',pendingCat=null,tagMode='form',statsTab='over',statsMetric='total',ladderMetric='total',ladderAll=false,statsTagsAll=false,formCat=null,editLibId=null;
 function setStatus(text,state='busy'){$('saveStatusText').textContent=text;$('saveDot').className='save-dot'+(state==='ok'?' ok':state==='err'?' err':'')}
 
 /* ---------- IndexedDB ---------- */
@@ -251,6 +374,7 @@ function kvSetMany(obj){return new Promise((resolve,reject)=>{const tx=db.transa
 const kvSet=(k,v)=>kvSetMany({[k]:v});
 function kvDel(key){return new Promise((resolve,reject)=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').delete(key);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}
 function kvKeys(){return new Promise((resolve,reject)=>{const r=db.transaction('kv','readonly').objectStore('kv').getAllKeys();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function kvClear(){return new Promise((resolve,reject)=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').clear();tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}
 const getImg=id=>kvGet('img:'+id);
 
 /* ---------- 工具 ---------- */
@@ -259,16 +383,25 @@ function fmt(v){if(v==null||v==="")return"—";let n=r1(v);return Number.isInteg
 function total(r){let a=[r.plotScore,r.productionScore,r.modelScore].filter(x=>x!==null&&x!==undefined&&x!=="").map(Number);return a.length?r1(a.reduce((x,y)=>x+y,0)):null}
 function isFull(r){return [r.plotScore,r.productionScore,r.modelScore].every(v=>v!=null&&v!=='')}
 function createdKey(r){if(r.createdAt)return +r.createdAt;let id=r.id||'',m=/^(?:r|import)(\d{10,})/.exec(id);if(m)return +m[1].slice(0,13);m=/^seed(\d+)/.exec(id);if(m)return +m[1];return Date.parse(r.updatedAt)||0}
+const updKey=r=>Math.max(Date.parse(r.updatedAt)||0,createdKey(r));
 function todayStr(){let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dayKey(r){if(r.date){let v=Date.parse(r.date+'T00:00:00');if(!isNaN(v))return v}let c=createdKey(r);if(c<1e11)return c;let d=new Date(c);d.setHours(0,0,0,0);return +d}
+function monthOf(r){if(r.date)return r.date.slice(0,7);let d=dayKey(r);return d>1e12?new Date(d).toISOString().slice(0,7):''}
 const norm=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/^#+/,'').replace(/\s+/g,'').trim();
-const groupOf=r=>r.groupId?groups.find(g=>g.id===r.groupId):null;
-function pairText(r){let l=(r.left||'').trim(),x=(r.right||'').trim();return l&&x?`${l} × ${x}`:l?`${l} ×`:x?`× ${x}`:''}
 const uid=p=>p+Date.now()+Math.random().toString(16).slice(2,6);
+const sortName=l=>l.slice().sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
+function pairText(r){let l=(r.left||'').trim(),x=(r.right||'').trim();return l&&x?`${l} × ${x}`:(l||x)}
 const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 function hl(text,toks){text=String(text??'');if(!toks.length)return esc(text);let re=new RegExp('('+toks.map(rx).join('|')+')','gi');return text.split(re).map((s,i)=>i%2?`<mark>${esc(s)}</mark>`:esc(s)).join('')}
 let toastT;function toast(t,act){let el=$('toast');el.textContent=t;el.classList.toggle('act',!!act);if(act){let b=document.createElement('button');b.textContent=act.label;b.onclick=()=>{el.classList.remove('show');act.fn()};el.append(b)}el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),act?7000:2200)}
-function noAuto(root=document){root.querySelectorAll('input:not([type=checkbox]):not([type=file]):not([type=date]):not([type=number]),textarea').forEach(el=>{el.setAttribute('autocomplete','off');el.setAttribute('autocorrect','off');el.setAttribute('spellcheck','false');el.setAttribute('data-lpignore','true');el.setAttribute('data-1p-ignore','true');el.setAttribute('data-form-type','other');if(!el.name)el.name='f_'+(el.id||Math.random().toString(36).slice(2,7))+'_x'});root.querySelectorAll('input[type=number]').forEach(el=>{el.setAttribute('autocomplete','off');el.name='n_'+(el.id||'x')})}
+
+/* ---------- 自製單行輸入框（避免手機 Chrome 的自動填入選單） ---------- */
+function initCE(root=document){root.querySelectorAll('.ce').forEach(el=>{if(el._ce)return;el._ce=1;el.contentEditable='plaintext-only';if(el.contentEditable!=='plaintext-only')el.contentEditable='true';el.setAttribute('role','textbox');el.setAttribute('aria-label',el.dataset.ph||'輸入');el.setAttribute('autocapitalize','off');el.setAttribute('spellcheck','false');
+ Object.defineProperty(el,'value',{get(){return el.textContent.replace(/\s*\n\s*/g,' ')},set(v){el.textContent=v??''}});
+ el.addEventListener('input',()=>{if(!el.textContent)el.innerHTML=''});
+ el.addEventListener('paste',e=>{e.preventDefault();let t=(e.clipboardData||window.clipboardData).getData('text').replace(/\s*\n\s*/g,' ');document.execCommand('insertText',false,t)});
+ el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(!el.hasAttribute('data-enter'))el.blur()}})})}
+function noAuto(root=document){root.querySelectorAll('textarea,input[type=number]').forEach(el=>{el.setAttribute('autocomplete','off');el.setAttribute('autocorrect','off');el.setAttribute('data-lpignore','true');el.setAttribute('data-1p-ignore','true');el.setAttribute('data-form-type','other');el.name='f_'+(el.id||Math.random().toString(36).slice(2,7))+'_x'})}
 
 /* ---------- 返回鍵 / 視窗堆疊 ---------- */
 const ovs=[];
@@ -281,11 +414,12 @@ history.replaceState({p:'write'},'');
 function showPage(p){closeAllNow();curPage=p;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===p));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===p));document.body.classList.toggle('on-write',p==='write');if(p==='stats')stats();if(p==='library')library();if(p==='write')requestAnimationFrame(growAll);scrollTo(0,0)}
 function page(p){if(p!==curPage)history.pushState({p},'');showPage(p)}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
+function showModal(id){let m=$(id);if(m.classList.contains('show'))return;m.classList.add('show');openOv(id,()=>m.classList.remove('show'))}
 
 /* ---------- 對話框 ---------- */
 function dialog({title='',msg='',input=null,buttons=[{key:'ok',label:'確定',primary:true}]}){return new Promise(res=>{
  $('dlgTitle').textContent=title;$('dlgMsg').textContent=msg;$('dlgMsg').style.display=msg?'block':'none';let inp=$('dlgInput');inp.hidden=input===null;if(input!==null)inp.value=input;
- $('dlgBtns').innerHTML=buttons.map(b=>`<button class="btn ${b.primary?'primary':''} ${b.danger?'danger':''}" data-k="${b.key}">${esc(b.label)}</button>`).join('');
+ $('dlgBtns').innerHTML=buttons.map(b=>`<button class="btn ${b.primary?'primary':''} ${b.danger?'danger':''}" data-k="${esc(b.key)}">${esc(b.label)}</button>`).join('');
  let result={key:'cancel',text:''},prim=buttons.find(b=>b.primary);
  $('dlg').classList.add('show');
  openOv('dlg',()=>{$('dlg').classList.remove('show');res(result)});
@@ -294,6 +428,35 @@ function dialog({title='',msg='',input=null,buttons=[{key:'ok',label:'確定',pr
  $('dlg').onclick=e=>{if(e.target===$('dlg'))closeTop()};
  if(input!==null)setTimeout(()=>inp.focus(),80)})}
 async function ask(msg,title='請確認',okLabel='確定',danger=false){let r=await dialog({title,msg,buttons:[{key:'ok',label:okLabel,primary:!danger,danger},{key:'cancel',label:'取消'}]});return r.key==='ok'}
+
+/* ---------- 底部彈出選單（取代系統下拉） ---------- */
+const pickers={};
+function showPickSheet({title,opts,value,search,footer}){return new Promise(res=>{let result;$('pickTitle').textContent=title||'請選擇';let ps=$('pickSearch');ps.hidden=!search;ps.value='';
+ const render=()=>{let q=norm(ps.value),list=opts.filter(o=>!q||norm(o.label).includes(q));$('pickBody').innerHTML=list.map(o=>{let s=String(o.value)===String(value);return `<button type="button" class="popt ${s?'sel':''}" data-v="${esc(o.value)}"><span>${esc(o.label)}${o.sub?`<small>${esc(o.sub)}</small>`:''}</span><i>${s?'✓':''}</i></button>`}).join('')+(footer?`<button type="button" class="popt foot" data-v="${esc(footer.value)}"><span>${esc(footer.label)}</span></button>`:'')};
+ render();ps.oninput=render;$('pickBody').onclick=e=>{let b=e.target.closest('[data-v]');if(!b)return;result=b.dataset.v;closeTop()};$('pickM').onclick=e=>{if(e.target===$('pickM')||e.target.closest('[data-close]'))closeTop()};
+ $('pickM').classList.add('show');openOv('pickM',()=>{$('pickM').classList.remove('show');res(result)})})}
+function pickLabel(id){let c=pickers[id],v=$(id).value,o=c.opts().find(o=>String(o.value)===String(v));return o?o.label:(c.empty||'')}
+function refreshPick(id){if(!pickers[id])return;$(id).innerHTML=`<span>${esc(pickLabel(id))}</span><i>▾</i>`}
+function setPick(id,v){$(id).value=v??'';refreshPick(id)}
+function makePicker(id,cfg){pickers[id]=cfg;let b=$(id);b.type='button';b.classList.add(cfg.plain?'pickp':'pick');b.value=cfg.value??'';b.onclick=async()=>{let v=await showPickSheet({title:cfg.title,opts:cfg.opts(),value:b.value,search:cfg.search,footer:cfg.footer});if(v===undefined)return;if(cfg.onPick){cfg.onPick(v)}else{setPick(id,v);cfg.onChange&&cfg.onChange(v)}};refreshPick(id)}
+function refreshPicks(){Object.keys(pickers).forEach(refreshPick)}
+
+/* ---------- 收藏庫 ---------- */
+const libById=id=>libs.find(l=>l.id===id);
+const libOf=r=>libById(r.libId)||libs[0];
+const libIdx=r=>Math.max(0,libs.findIndex(l=>l.id===r.libId));
+const inScope=r=>curLib==='all'||r.libId===curLib;
+const scopeData=()=>data.filter(inScope);
+const scopeLibs=()=>(curLib==='all'?libs:[libById(curLib)||libs[0]]).filter(Boolean);
+const scopeLibId=()=>curLib==='all'?null:curLib;
+const scopeGroups=()=>groups.filter(g=>curLib==='all'||g.libId===curLib);
+const scopeSeries=()=>series.filter(g=>curLib==='all'||g.libId===curLib);
+const hasField=f=>scopeLibs().some(l=>l.fields[f]);
+const multiLib=()=>libs.length>1;
+function labelWithLib(item){return curLib==='all'&&multiLib()?`${item.name}（${libById(item.libId)?.name||''}）`:item.name}
+function normalizeCur(){if(libs.length===1){curLib=libs[0].id;return}if(curLib==='all'&&!settings.allMode)curLib=libs[0].id;if(curLib!=='all'&&!libById(curLib))curLib=settings.allMode?'all':libs[0].id}
+function renderLibBtn(){normalizeCur();let b=$('libBtn');b.value=curLib;b.hidden=!multiLib();$('formLibRow').hidden=!multiLib();refreshPick('libBtn');refreshPick('formLib')}
+function setCurLib(v){curLib=v;settings.cur=v;normalizeCur();kvSetMany({settings}).catch(()=>{});resetF(LF);resetF(SF);$('search').value='';shown=30;if(!editId&&curLib!=='all')setPick('formLib',curLib);onFormLibChange(true);renderAll()}
 
 /* ---------- 評分 ---------- */
 const RK=[['plot','劇情'],['production','製作'],['model','建模']];
@@ -305,75 +468,90 @@ $('ratings').onchange=e=>{let k=e.target.dataset.fine;if(!k)return;setScore(k,e.
 function updateScore(){document.querySelectorAll('.big').forEach(b=>b.classList.toggle('sel',scores[b.dataset.k]===+b.dataset.v));document.querySelectorAll('[data-fine]').forEach(s=>{let v=scores[s.dataset.fine];s.value=v==null?'':v.toFixed(1)});RK.forEach(([k])=>$('v-'+k).textContent=fmt(scores[k]));let a=Object.values(scores).filter(x=>x!==null);$('total').textContent=a.length?fmt(a.reduce((x,y)=>x+y,0)):'0';$('scoreSummary').textContent=RK.map(([k])=>fmt(scores[k])).join(' · ')}
 
 /* ---------- 標籤（大標籤／小標籤） ---------- */
+const shared=()=>settings.sharedTags!==false;
 const catById=id=>settings.tagCats.find(c=>c.id===id);
-const tagCatId=n=>{let id=settings.tagMap[n];return catById(id)?id:''};
-const catsSorted=()=>settings.tagCats.slice().sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
-function tagIndex(){let m=new Map();for(let r of data)for(let t of r.tags||[]){let n=norm(t);if(!n)continue;let o=m.get(n);if(o)o.count++;else m.set(n,{name:String(t).replace(/^#+/,''),count:1,n,cat:tagCatId(n)})}return m}
-function catReviewCount(id){return data.filter(r=>(r.tags||[]).some(t=>tagCatId(norm(t))===id)).length}
-function addTag(raw){let idx=tagIndex(),added=false;for(let t of String(raw).split(/[,，、]/)){let n=norm(t);if(!n)continue;let ex=idx.get(n),name=ex?.name||t.trim().replace(/^#+/,'');if(!currentTags.some(x=>norm(x)===n)){currentTags.push(name);added=true}if(!ex&&!tagCatId(n))pendingCat={n,name}}$('tagInput').value='';renderTagUI();if(added)scheduleDraft()}
-function renderTagUI(){
- $('tagChips').innerHTML=currentTags.map((t,i)=>`<button type="button" class="tchip sel" data-rm="${i}">#${esc(t)} ✕</button>`).join('');
- let raw=$('tagInput').value.trim(),q=norm(raw),idx=tagIndex(),sel=new Set(currentTags.map(norm)),html='',warn='';
- const chip=o=>`<button type="button" class="tchip" data-addtag="${esc(o.name)}">#${esc(o.name)} <small>${o.count}</small></button>`;
- if(!q){let pop=[...idx.values()].filter(o=>!sel.has(o.n)).sort((a,b)=>b.count-a.count).slice(0,6);html=(pop.length?`<div class="tiny" style="width:100%">常用標籤</div>`+pop.map(chip).join(''):'')+(idx.size?`<button type="button" class="tchip more" data-more>更多標籤 ▾</button>`:'')}
- else{let m=[...idx.values()].filter(o=>!sel.has(o.n)&&(o.n.includes(q)||(o.n.length>=2&&q.includes(o.n)))).sort((a,b)=>b.count-a.count).slice(0,8);html=m.map(chip).join('');
-  let exact=idx.has(q)||sel.has(q);if(!exact)html+=`<button type="button" class="tchip new" data-addtag="${esc(raw)}">＋ 新增「${esc(raw)}」</button>`;
-  if(!exact&&m.length)warn=`已有相近標籤：${m.slice(0,3).map(o=>'「'+esc(o.name)+'」').join('、')}。點上面的標籤直接使用，避免同義標籤分散。`}
- $('tagSug').innerHTML=html;$('tagWarn').innerHTML=warn;
- let ask=$('tagCatAsk');if(pendingCat&&currentTags.some(x=>norm(x)===pendingCat.n)){ask.hidden=false;ask.innerHTML=`<div class="tiny" style="width:100%;margin-top:2px">新標籤「${esc(pendingCat.name)}」要歸到哪個大標籤？（可略過）</div>`+catsSorted().map(c=>`<button type="button" class="tchip" data-setcat="${esc(c.id)}">${esc(c.name)}</button>`).join('')+`<button type="button" class="tchip new" data-newcat>＋ 新大標籤</button><button type="button" class="tchip" data-skipcat>略過</button>`}else{ask.hidden=true;ask.innerHTML=''}}
-$('tagCatAsk').onclick=async e=>{let b=e.target.closest('button');if(!b||!pendingCat)return;let n=pendingCat.n;if(b.dataset.skipcat!==undefined){pendingCat=null;renderTagUI();return}
- if(b.dataset.setcat){settings.tagMap[n]=b.dataset.setcat;pendingCat=null;await persist();return}
- if(b.dataset.newcat!==undefined){let id=await newCat();if(id){settings.tagMap[n]=id;pendingCat=null;await persist()}}};
-async function newCat(){let res=await dialog({title:'新增大標籤',msg:'大標籤用來分類，例如「運動」「角色設定」。',input:'',buttons:[{key:'ok',label:'新增',primary:true},{key:'cancel',label:'取消'}]});let name=res.text.trim();if(res.key!=='ok'||!name)return null;let ex=settings.tagCats.find(c=>norm(c.name)===norm(name));if(ex)return ex.id;let c={id:uid('c'),name};settings.tagCats.push(c);await persist();return c.id}
-$('tagChips').onclick=e=>{let b=e.target.closest('[data-rm]');if(!b)return;currentTags.splice(+b.dataset.rm,1);renderTagUI();scheduleDraft()};
-$('tagSug').onclick=e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.more!==undefined){openTagPicker('form');return}if(b.dataset.addtag)addTag(b.dataset.addtag)};
+const tkey=(n,libId)=>shared()?n:(libId?libId+'|'+n:null);
+function tagCatId(n,libId){let k=tkey(n,libId);if(!k)return'';let c=catById(settings.tagMap[k]);if(!c)return'';return shared()?(c.libId?'':c.id):(c.libId===libId?c.id:'')}
+function catsFor(libId){return sortName(settings.tagCats.filter(c=>shared()?!c.libId:(!!libId&&c.libId===libId)))}
+function tagIndex(list,libId){let m=new Map();for(let r of list)for(let t of r.tags||[]){let n=norm(t);if(!n)continue;let o=m.get(n);if(o)o.count++;else m.set(n,{name:String(t).replace(/^#+/,''),count:1,n,cat:tagCatId(n,libId===undefined?r.libId:libId)})}return m}
+const catReviewCount=(id,list)=>list.filter(r=>(r.tags||[]).some(t=>tagCatId(norm(t),r.libId)===id)).length;
+const tchip=(o,on)=>`<button type="button" class="tchip ${on?'on':''}" data-st="${esc(o.n)}">#${esc(o.name)}${o.count?` <small>${o.count}</small>`:''}</button>`;
+function stripHTML({idx,list,sel,names={},openCat,controls='',libId,limit=8}){
+ let all=[...idx.values()],cats=catsFor(libId).map(c=>({c,n:catReviewCount(c.id,list)})).filter(x=>x.n||x.c.id===openCat||[...sel].some(n=>tagCatId(n,libId)===x.c.id)).sort((a,b)=>b.n-a.n).slice(0,4),cids=new Set(cats.map(x=>x.c.id));
+ let selTags=[...sel].map(n=>idx.get(n)||{n,name:names[n]||n,count:0,cat:''});
+ let rest=all.filter(o=>!sel.has(o.n)&&!cids.has(o.cat)).sort((a,b)=>b.count-a.count).slice(0,Math.max(0,limit-cats.length));
+ let strip=controls+selTags.map(o=>tchip(o,true)).join('')+cats.map(x=>`<button type="button" class="tchip cat ${openCat===x.c.id?'on':''}" data-sc="${esc(x.c.id)}">${esc(x.c.name)} <small>${x.n}</small> ▾</button>`).join('')+rest.map(o=>tchip(o,false)).join('');
+ let catRow=openCat&&catById(openCat)?`<span class="tiny" style="align-self:center">${esc(catById(openCat).name)}：</span>`+all.filter(o=>o.cat===openCat&&!sel.has(o.n)).sort((a,b)=>b.count-a.count).map(o=>tchip(o,false)).join(''):'';
+ return {strip:strip||'<span class="tiny">還沒有標籤。</span>',catRow}}
+/* 寫劇評的標籤 */
+const formLibId=()=>$('formLib').value||(libs[0]&&libs[0].id)||'';
+const formTagList=()=>shared()?data:data.filter(r=>r.libId===formLibId());
+function renderTagUI(){let lib=formLibId(),list=formTagList(),idx=tagIndex(list,lib),sel=new Set(currentTags.map(norm)),names={};currentTags.forEach(t=>names[norm(t)]=t);
+ let ctl=`<button type="button" class="tchip new" data-new>＋ 新增</button>`+(idx.size?`<button type="button" class="tchip more" data-all>全部標籤</button>`:'');
+ let h=stripHTML({idx,list,sel,names,openCat:formCat,controls:ctl,libId:lib,limit:5});$('fStrip').innerHTML=h.strip;$('fCatRow').innerHTML=h.catRow;
+ let raw=$('tagInput').value.trim(),q=norm(raw),warn='';if(!$('tagNew').hidden&&q){let m=[...idx.values()].filter(o=>!sel.has(o.n)&&o.n!==q&&(o.n.includes(q)||(o.n.length>=2&&q.includes(o.n)))).slice(0,4);if(m.length)warn=`<div class="tiny" style="width:100%">已有相近標籤，點一下直接使用：</div>`+m.map(o=>`<button type="button" class="tchip" data-addtag="${esc(o.name)}">#${esc(o.name)}</button>`).join('')}
+ $('tagWarn').innerHTML=warn;
+ let ask=$('tagCatAsk');if(pendingCat&&currentTags.some(x=>norm(x)===pendingCat.n)){ask.hidden=false;ask.innerHTML=`<div class="tiny" style="width:100%">新標籤「${esc(pendingCat.name)}」要歸到哪個大標籤？（可略過）</div>`+catsFor(lib).map(c=>`<button type="button" class="tchip" data-setcat="${esc(c.id)}">${esc(c.name)}</button>`).join('')+`<button type="button" class="tchip new" data-newcat>＋ 新大標籤</button><button type="button" class="tchip" data-skipcat>略過</button>`}else{ask.hidden=true;ask.innerHTML=''}}
+function addTag(raw){let lib=formLibId(),idx=tagIndex(formTagList(),lib),added=false;for(let t of String(raw).split(/[,，、]/)){let n=norm(t);if(!n)continue;let ex=idx.get(n),name=ex?.name||t.trim().replace(/^#+/,'');if(!currentTags.some(x=>norm(x)===n)){currentTags.push(name);added=true}if(!ex&&!tagCatId(n,lib)&&catsFor(lib).length+1)pendingCat={n,name}}$('tagInput').value='';$('tagNew').hidden=true;renderTagUI();if(added)scheduleDraft()}
+function toggleFormTag(n){let i=currentTags.findIndex(x=>norm(x)===n);if(i>=0)currentTags.splice(i,1);else{let o=tagIndex(formTagList(),formLibId()).get(n);currentTags.push(o?o.name:n)}renderTagUI();scheduleDraft()}
+async function newCat(libId){let res=await dialog({title:'新增大標籤',msg:'大標籤用來分類，例如「類型」「題材」。',input:'',buttons:[{key:'ok',label:'新增',primary:true},{key:'cancel',label:'取消'}]});let name=res.text.trim();if(res.key!=='ok'||!name)return null;let L=shared()?'':(libId||''),ex=settings.tagCats.find(c=>norm(c.name)===norm(name)&&(c.libId||'')===L);if(ex)return ex.id;let c={id:uid('c'),name};if(L)c.libId=L;settings.tagCats.push(c);await persist();return c.id}
+$('tagCatAsk').onclick=async e=>{let b=e.target.closest('button');if(!b||!pendingCat)return;let n=pendingCat.n,lib=formLibId();if(b.dataset.skipcat!==undefined){pendingCat=null;renderTagUI();return}
+ if(b.dataset.setcat){settings.tagMap[tkey(n,lib)]=b.dataset.setcat;pendingCat=null;await persist();return}
+ if(b.dataset.newcat!==undefined){let id=await newCat(lib);if(id){settings.tagMap[tkey(n,lib)]=id;pendingCat=null;await persist()}}};
+const formStrip=e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.new!==undefined){$('tagNew').hidden=!$('tagNew').hidden;if(!$('tagNew').hidden)$('tagInput').focus();renderTagUI();return}if(b.dataset.all!==undefined){openTagPicker('form');return}if(b.dataset.sc){formCat=formCat===b.dataset.sc?null:b.dataset.sc;renderTagUI();return}if(b.dataset.st)toggleFormTag(b.dataset.st)};
+$('fStrip').onclick=formStrip;$('fCatRow').onclick=formStrip;
+$('tagWarn').onclick=e=>{let b=e.target.closest('[data-addtag]');if(b)addTag(b.dataset.addtag)};
 $('tagInput').addEventListener('input',()=>{let v=$('tagInput').value;if(/[,，、]/.test(v)){addTag(v);return}renderTagUI()});
-$('tagInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if($('tagInput').value.trim())addTag($('tagInput').value)}});
+$('tagInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&$('tagInput').value.trim())addTag($('tagInput').value)});
 $('tagAdd').onclick=()=>{if($('tagInput').value.trim())addTag($('tagInput').value)};
-/* 標籤選擇視窗（寫劇評：選標籤；收藏：篩選標籤） */
-function openTagPicker(mode){tagMode=mode;$('tagMTitle').textContent=mode==='form'?'選擇標籤':'篩選標籤';$('tagMSearch').value='';renderTagPicker();if(!$('tagM').classList.contains('show')){$('tagM').classList.add('show');openOv('tagM',()=>$('tagM').classList.remove('show'))}}
-function renderTagPicker(){let q=norm($('tagMSearch').value),idx=[...tagIndex().values()].filter(o=>!q||o.n.includes(q)).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'zh-Hant'));
- const on=o=>tagMode==='form'?currentTags.some(t=>norm(t)===o.n):activeTags.includes(o.n);
+/* 標籤選擇視窗 */
+const curFilter=()=>tagMode==='stats'?SF:LF;
+function openTagPicker(mode){tagMode=mode;$('tagMTitle').textContent=mode==='form'?'選擇標籤':'篩選標籤';$('tagMSearch').value='';renderTagPicker();showModal('tagM')}
+function renderTagPicker(){let form=tagMode==='form',list=form?formTagList():scopeData(),lib=form?formLibId():scopeLibId(),F=curFilter(),q=norm($('tagMSearch').value),idx=[...tagIndex(list,lib).values()].filter(o=>!q||o.n.includes(q)).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'zh-Hant'));
+ const on=o=>form?currentTags.some(t=>norm(t)===o.n):F.tags.includes(o.n);
  const chip=o=>`<button type="button" class="tchip ${on(o)?'on':''}" data-pt="${esc(o.n)}">#${esc(o.name)} <small>${o.count}</small></button>`;let html='';
- for(let c of catsSorted()){let items=idx.filter(o=>o.cat===c.id);if(!items.length)continue;html+=`<div class="sech"><b>${esc(c.name)}</b>${tagMode==='filter'?`<button type="button" class="tchip ${libCat===c.id?'on':''}" data-pc="${esc(c.id)}">整類 ${catReviewCount(c.id)}</button>`:''}</div><div class="chiprow" style="margin-top:4px">${items.map(chip).join('')}</div>`}
- let un=idx.filter(o=>!o.cat);if(un.length)html+=`<div class="sech"><b>未分類</b></div><div class="chiprow" style="margin-top:4px">${un.map(chip).join('')}</div>`;
+ for(let c of catsFor(lib)){let items=idx.filter(o=>o.cat===c.id);if(!items.length)continue;html+=`<div class="sech"><b>${esc(c.name)}</b>${form?'':`<button type="button" class="tchip ${F.cat===c.id?'on':''}" data-pc="${esc(c.id)}">整類 <small>${catReviewCount(c.id,list)}</small></button>`}</div><div class="chiprow" style="margin-top:4px">${items.map(chip).join('')}</div>`}
+ let un=idx.filter(o=>!o.cat);if(un.length)html+=`<div class="sech"><b>${catsFor(lib).length?'未分類':'全部標籤'}</b></div><div class="chiprow" style="margin-top:4px">${un.map(chip).join('')}</div>`;
  $('tagMBody').innerHTML=html||'<div class="tiny" style="padding:20px 0;text-align:center">沒有符合的標籤。</div>'}
 $('tagMSearch').oninput=renderTagPicker;
-$('tagMBody').onclick=e=>{let t=e.target.closest('[data-pt]');if(t){let n=t.dataset.pt;if(tagMode==='form'){let i=currentTags.findIndex(x=>norm(x)===n);if(i>=0)currentTags.splice(i,1);else currentTags.push(tagIndex().get(n).name);renderTagUI();scheduleDraft()}else toggleTag(n);renderTagPicker();return}let c=e.target.closest('[data-pc]');if(c){toggleCat(c.dataset.pc);renderTagPicker()}};
+$('tagMBody').onclick=e=>{let t=e.target.closest('[data-pt]');if(t){let n=t.dataset.pt;if(tagMode==='form')toggleFormTag(n);else{toggleTagF(curFilter(),n);tagMode==='stats'?stats():library()}renderTagPicker();return}let c=e.target.closest('[data-pc]');if(c){let F=curFilter();toggleCatF(F,c.dataset.pc);tagMode==='stats'?stats():library();renderTagPicker()}};
 $('tagM').onclick=e=>{if(e.target===$('tagM')||e.target.closest('[data-close]'))closeTop()};
+
 /* ---------- 演員組合 / 劇本系列 / 角色 ---------- */
-function refreshSelects(){const opt=l=>l.slice().sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
- for(let [id,list,k] of [['group',groups,'groupId'],['series',series,'seriesId']]){let sel=$(id),cur=sel.value;sel.innerHTML='<option value="">不指定</option>'+opt(list).map(g=>`<option value="${esc(g.id)}">${esc(g.name)}</option>`).join('')+'<option value="__new">＋ 新增…</option>';sel.value=list.some(g=>g.id===cur)?cur:''}
- for(let [id,list,k,all] of [['fgroup',groups,'groupId','全部組合'],['fseries',series,'seriesId','全部系列']]){let sel=$(id),cur=sel.value;sel.innerHTML=`<option value="">${all}</option>`+opt(list).map(g=>`<option value="${esc(g.id)}">${esc(g.name)}（${data.filter(r=>r[k]===g.id).length}）</option>`).join('');sel.value=list.some(g=>g.id===cur)?cur:''}}
+const libGroups=id=>groups.filter(g=>g.libId===id),libSeries=id=>series.filter(g=>g.libId===id);
 function nextNth(gid){let o=data.filter(x=>x.groupId===gid&&x.id!==editId),m=Math.max(0,...o.map(x=>x.nth||0));return Math.max(m,o.length>0&&m===0?o.length:0)+1}
 function renderGroupAssist(){let gid=$('group').value,box=$('prevPairs'),hint=$('nthHint');if(!gid){box.innerHTML='';hint.textContent='';return}
  let rel=data.filter(x=>x.groupId===gid&&x.id!==editId).sort((a,b)=>(a.nth??999)-(b.nth??999)||createdKey(a)-createdKey(b));
  hint.textContent=rel.length?`這組已收藏 ${rel.length} 部，建議填第 ${nextNth(gid)} 搭。`:'這組目前沒有其他作品，這是第 1 搭。';
  let wp=rel.filter(x=>pairText(x));
- box.innerHTML=wp.length?`<div class="tiny" style="margin-top:10px">這組以前的角色（點一下套用；是各部劇當時的名字，可再修改）</div><div class="chiprow">${wp.map(x=>`<button type="button" class="tchip" data-fill="${esc(x.id)}">${x.nth?`第${x.nth}搭　`:''}${esc(pairText(x))}<small>《${esc(x.title)}》</small></button>`).join('')}</div>`:''}
+ box.innerHTML=wp.length?`<div class="tiny" style="margin-top:10px">這組以前的角色（點一下套用，可再修改）</div>`+wp.map(x=>`<button type="button" class="prow" data-fill="${esc(x.id)}"><b>${x.nth?`第${x.nth}搭`:'—'}</b><span>${esc(pairText(x))}</span><small>《${esc(x.title)}》</small></button>`).join(''):''}
 function renderSeriesAssist(){let sid=$('series').value,box=$('verChips');if(!sid){box.innerHTML='';return}let vs=[...new Set(data.filter(x=>x.seriesId===sid&&x.id!==editId&&x.version).map(x=>x.version))];box.innerHTML=vs.length?`<div class="tiny" style="margin-top:8px">這個系列用過的版本（點一下填入）</div><div class="chiprow">${vs.map(v=>`<button type="button" class="tchip" data-ver="${esc(v)}">${esc(v)}</button>`).join('')}</div>`:''}
 $('prevPairs').onclick=e=>{let b=e.target.closest('[data-fill]');if(!b)return;let r=data.find(x=>x.id===b.dataset.fill);if(!r)return;$('left').value=r.left||'';$('right').value=r.right||'';scheduleDraft()};
 $('verChips').onclick=e=>{let b=e.target.closest('[data-ver]');if(!b)return;$('version').value=b.dataset.ver;scheduleDraft()};
-async function newEntity(kind){let isG=kind==='group',res=await dialog({title:isG?'新增演員組合':'新增劇本系列',msg:isG?'幫這組演員取個名字，例如「Cain&Cecil 組」。之後想改叫法只要改一次，所有劇都會跟著變。':'同一套劇本拍成不同版本（不同演員或題材）時，放在同一個系列，例如「先婚後愛」。',input:'',buttons:[{key:'ok',label:'新增',primary:true},{key:'cancel',label:'取消'}]});let name=res.text.trim();if(res.key!=='ok'||!name)return null;let list=isG?groups:series,ex=list.find(x=>norm(x.name)===norm(name));if(ex)return ex.id;let g={id:uid(isG?'g':'s'),name};list.push(g);await persist();return g.id}
-$('group').onchange=async()=>{if($('group').value==='__new'){$('group').value=prevGroup;let id=await newEntity('group');if(!id)return;$('group').value=id}
- prevGroup=$('group').value;if(prevGroup&&!$('nth').value&&!nthTouched)$('nth').value=nextNth(prevGroup);renderGroupAssist();scheduleDraft()};
-$('series').onchange=async()=>{if($('series').value==='__new'){$('series').value=prevSeries;let id=await newEntity('series');if(!id)return;$('series').value=id}
- prevSeries=$('series').value;renderSeriesAssist();scheduleDraft()};
+async function newEntity(kind,libId){let isG=kind==='group',res=await dialog({title:isG?'新增演員組合':'新增劇本系列',msg:isG?'幫這組演員取個名字，例如「A＆B 組」。之後想改叫法只要改一次，所有劇都會跟著變。':'同一套劇本拍成不同版本（不同演員或題材）時，放在同一個系列。',input:'',buttons:[{key:'ok',label:'新增',primary:true},{key:'cancel',label:'取消'}]});let name=res.text.trim();if(res.key!=='ok'||!name)return null;let list=isG?groups:series,ex=list.find(x=>x.libId===libId&&norm(x.name)===norm(name));if(ex)return ex.id;let g={id:uid(isG?'g':'s'),name,libId};list.push(g);await persist();return g.id}
 $('nth').addEventListener('input',()=>{nthTouched=true});
 $('nthMinus').onclick=()=>{nthTouched=true;let v=+$('nth').value||1;$('nth').value=Math.max(1,v-1);scheduleDraft()};
 $('nthPlus').onclick=()=>{nthTouched=true;let v=+$('nth').value||0;$('nth').value=Math.min(99,v+1);scheduleDraft()};
 $('swap').onclick=()=>{let a=$('left').value;$('left').value=$('right').value;$('right').value=a;scheduleDraft()};
-function showSug(field){sugField=field;let q=norm($(field).value),box=$('nameSug');if(q.length<2){box.innerHTML='';return}let gid=$('group').value,seen=new Set(),out=[];
- for(let r of data){if(r.id===editId)continue;for(let nm of [r.left,r.right]){if(!nm)continue;let n=norm(nm);if(n===q||!n.includes(q))continue;let key=n+'|'+r.id;if(seen.has(key))continue;seen.add(key);out.push({name:nm,title:r.title,nth:r.nth,same:!!gid&&r.groupId===gid,t:createdKey(r)})}}
+function showSug(field){sugField=field;let q=norm($(field).value),box=$('nameSug');if(q.length<2){box.innerHTML='';return}let gid=$('group').value,lib=formLibId(),seen=new Set(),out=[];
+ for(let r of data){if(r.id===editId||r.libId!==lib)continue;for(let nm of [r.left,r.right]){if(!nm)continue;let n=norm(nm);if(n===q||!n.includes(q))continue;let key=n+'|'+r.id;if(seen.has(key))continue;seen.add(key);out.push({name:nm,title:r.title,nth:r.nth,same:!!gid&&r.groupId===gid,t:createdKey(r)})}}
  out.sort((a,b)=>(b.same-a.same)||b.t-a.t);out=out.slice(0,6);
  box.innerHTML=out.length?out.map(o=>`<button type="button" class="sugitem" data-name="${esc(o.name)}"><b>${esc(o.name)}</b><span>《${esc(o.title)}》${o.nth?` 第${o.nth}搭`:''}</span></button>`).join('')+'<div class="tiny" style="margin-top:5px">只會填入文字；不同劇的同名角色不會被當成同一人。</div>':''}
 function hideSug(){$('nameSug').innerHTML=''}
 for(const id of ['left','right']){$(id).addEventListener('input',()=>showSug(id));$(id).addEventListener('focus',()=>showSug(id));$(id).addEventListener('blur',()=>setTimeout(hideSug,300))}
 $('nameSug').onclick=e=>{let b=e.target.closest('[data-name]');if(!b||!sugField)return;$(sugField).value=b.dataset.name;hideSug();scheduleDraft()};
+
 /* ---------- 表單 ---------- */
-const FORMKEYS=['title','left','right','version','nth','status','date','plot','production','model','quotes'];
-function form(){return {title:$('title').value.trim(),left:$('left').value.trim(),right:$('right').value.trim(),groupId:$('group').value==='__new'?'':$('group').value,nth:$('nth').value?Math.min(99,Math.max(1,Math.floor(+$('nth').value))):null,seriesId:$('series').value==='__new'?'':$('series').value,version:$('version').value.trim(),status:$('status').value,date:$('date').value,plotScore:scores.plot,productionScore:scores.production,modelScore:scores.model,plot:$('plot').value,production:$('production').value,model:$('model').value,quotes:$('quotes').value,tags:currentTags.slice(),images:currentImages,updatedAt:new Date().toISOString()}}
-function fillForm(r){for(let k of ['title','left','right','version','status','date','plot','production','model','quotes'])$(k).value=r[k]??(k==='status'?'已完結':'');refreshSelects();$('group').value=groups.some(g=>g.id===r.groupId)?r.groupId:'';prevGroup=$('group').value;$('series').value=series.some(g=>g.id===r.seriesId)?r.seriesId:'';prevSeries=$('series').value;$('nth').value=r.nth??'';nthTouched=!!r.nth;currentTags=[...(r.tags||[])];pendingCat=null;scores={plot:r.plotScore??null,production:r.productionScore??null,model:r.modelScore??null};currentImages=structuredClone(r.images||[]);$('tagInput').value='';updateScore();renderImages();renderTagUI();renderGroupAssist();renderSeriesAssist();$('extra').open=!!(r.left||r.right||r.groupId||r.nth||r.seriesId||r.version);hideSug();growAll();updateBar()}
+const FORMKEYS=['title','left','right','version','nth','date','plot','production','model','quotes'];
+const STATUSES=['已完結','未完結','沒看完'];
+function defaultFormLib(){return curLib!=='all'?curLib:(libById(settings.lastLib)?settings.lastLib:libs[0].id)}
+function form(){return {libId:formLibId(),title:$('title').value.trim(),left:$('left').value.trim(),right:$('right').value.trim(),groupId:$('group').value,nth:$('nth').value?Math.min(99,Math.max(1,Math.floor(+$('nth').value))):null,seriesId:$('series').value,version:$('version').value.trim(),status:$('status').value||'已完結',date:$('date').value,plotScore:scores.plot,productionScore:scores.production,modelScore:scores.model,plot:$('plot').value,production:$('production').value,model:$('model').value,quotes:$('quotes').value,tags:currentTags.slice(),images:currentImages,cover:currentCover,updatedAt:new Date().toISOString()}}
+function applyFieldVis(){let f=libById(formLibId())?.fields||{pair:true,group:true,series:true};$('blkPair').hidden=!f.pair;$('blkGroup').hidden=!f.group;$('blkSeries').hidden=!f.series;$('extra').hidden=!(f.pair||f.group||f.series)}
+function onFormLibChange(keepValues){let lib=formLibId();if(!libGroups(lib).some(g=>g.id===$('group').value)){setPick('group','');prevGroup=''}if(!libSeries(lib).some(g=>g.id===$('series').value)){setPick('series','');prevSeries=''}applyFieldVis();renderTagUI();renderGroupAssist();renderSeriesAssist();if(!keepValues)scheduleDraft()}
+function fillForm(r){for(let k of ['title','left','right','version','date','plot','production','model','quotes'])$(k).value=r[k]??'';setPick('formLib',libById(r.libId)?r.libId:defaultFormLib());setPick('status',STATUSES.includes(r.status)?r.status:'已完結');
+ let lib=formLibId();setPick('group',libGroups(lib).some(g=>g.id===r.groupId)?r.groupId:'');prevGroup=$('group').value;setPick('series',libSeries(lib).some(g=>g.id===r.seriesId)?r.seriesId:'');prevSeries=$('series').value;
+ $('nth').value=r.nth??'';nthTouched=!!r.nth;currentTags=[...(r.tags||[])];currentCover=r.cover||'';pendingCat=null;formCat=null;$('tagNew').hidden=true;scores={plot:r.plotScore??null,production:r.productionScore??null,model:r.modelScore??null};currentImages=structuredClone(r.images||[]);$('tagInput').value='';
+ updateScore();renderImages();renderTagUI();renderGroupAssist();renderSeriesAssist();applyFieldVis();$('extra').open=!!(r.left||r.right||r.groupId||r.nth||r.seriesId||r.version);hideSug();growAll();updateBar()}
 function setSaveLabel(t){$('save').textContent=t;$('mobileSave').textContent=t}
 function formEmpty(){return !['title','left','right','version','plot','production','model','quotes'].some(k=>$(k).value.trim())&&!currentImages.length&&!currentTags.length&&Object.values(scores).every(v=>v===null)&&!$('group').value&&!$('series').value}
 function updateBar(){let b=$('draftBar');if(editId){let r=data.find(x=>x.id===editId);b.hidden=false;b.className='draftbar edit';$('draftText').textContent='編輯中：《'+(r?.title||'')+'》';$('draftBtn').textContent='取消編輯';$('reset').textContent='取消編輯'}else{$('reset').textContent='清空表單';if(formEmpty())b.hidden=true;else{b.hidden=false;b.className='draftbar';$('draftText').textContent='草稿已自動保存在這台裝置。按「完成並收進收藏」才會加入收藏。';$('draftBtn').textContent='清空草稿'}}}
@@ -382,71 +560,87 @@ function scheduleDraft(){clearTimeout(draftTimer);updateBar();draftTimer=setTime
 async function loadNewDraft(){let d=await kvGet('draft');if(d?.form){await migrateReview(d.form);fillForm(d.form)}else fillForm({date:todayStr()});setSaveLabel('完成並收進收藏')}
 async function clear(){clearTimeout(draftTimer);editId=null;await kvSet('draft',null).catch(()=>{});await kvSet('draftEdit',null).catch(()=>{});fillForm({date:todayStr()});setSaveLabel('完成並收進收藏')}
 async function save(){if($('tagInput').value.trim())addTag($('tagInput').value);let r=form();if(!r.title){toast('先填劇名啦！');page('write');$('title').focus();return}
- clearTimeout(draftTimer);let wasEdit=!!editId;
- if(editId){let i=data.findIndex(x=>x.id===editId);if(i>=0)data[i]={...data[i],...r};else data.unshift({...r,id:editId,createdAt:Date.now(),no:settings.nextNo++})}else data.unshift({...r,id:uid('r'),createdAt:Date.now(),no:settings.nextNo++});
+ let dupe=data.find(x=>x.libId===r.libId&&x.id!==editId&&norm(x.title)===norm(r.title));
+ if(dupe){let d=await dialog({title:'已有同名劇評',msg:`《${dupe.title}》已經收藏過了（No.${dupe.no}${dupe.date?'・'+dupe.date:''}）。`,buttons:[{key:'add',label:'仍要新增這一筆',primary:true},{key:'view',label:'查看原本那篇'},{key:'cancel',label:'取消'}]});if(d.key==='view'){openDetail(dupe.id);return}if(d.key!=='add')return}
+ clearTimeout(draftTimer);let wasEdit=!!editId,lib=libById(r.libId)||libs[0];r.libId=lib.id;settings.lastLib=lib.id;
+ if(editId){let i=data.findIndex(x=>x.id===editId);if(i>=0){let old=data[i];if(old.libId!==r.libId)r.no=lib.nextNo++;data[i]={...old,...r}}else data.unshift({...r,id:editId,createdAt:Date.now(),no:lib.nextNo++})}else data.unshift({...r,id:uid('r'),createdAt:Date.now(),no:lib.nextNo++});
+ if(curLib!=='all'&&curLib!==lib.id)setCurLibQuiet(lib.id);
  await persist();editId=null;await kvSet('draftEdit',null).catch(()=>{});if(wasEdit)await loadNewDraft();else await clear();toast('劇評已收進收藏 ✦');page('library')}
+function setCurLibQuiet(v){curLib=v;settings.cur=v;resetF(LF);resetF(SF);$('search').value=''}
 async function edit(id){let r=data.find(x=>x.id===id);if(!r)return;closeAllNow();if(!editId)await saveDraftNow();editId=id;await kvSet('draftEdit',null).catch(()=>{});fillForm(r);setSaveLabel('完成並保存修改');page('write')}
 async function cancelEdit(){clearTimeout(draftTimer);editId=null;await kvSet('draftEdit',null).catch(()=>{});await loadNewDraft();toast('已取消編輯')}
 async function resetAction(){if(editId){await cancelEdit();return}if(formEmpty()){await clear();return}if(await ask('清空目前表單與草稿？（收藏中的劇評不會被刪除）','清空表單','清空',true))await clear()}
 $('reset').onclick=resetAction;$('draftBtn').onclick=resetAction;
-async function del(id){let r=data.find(x=>x.id===id);if(!r)return;if(!await ask(`確定刪除「${r.title}」？刪除後會保留 30 天，可從「最近刪除」救回。`,'刪除劇評','刪除',true))return;closeAllNow();data=data.filter(x=>x.id!==id);trash.unshift({r,at:Date.now()});await persist();toast('已刪除',{label:'復原',fn:()=>restoreTrash(id)})}
-async function restoreTrash(id){let i=trash.findIndex(t=>t.r.id===id);if(i<0)return;data.unshift(trash[i].r);trash.splice(i,1);await persist();renderTrash();toast('已復原')}
-
-/* ---------- 保存 ---------- */
-async function persist(){try{setStatus('儲存中…');await kvSetMany({reviews:data,groups,series,trash,settings});renderAll();setStatus('已儲存','ok');updateStorageInfo()}catch(e){setStatus('儲存失敗，請立即備份','err');toast('保存失敗！請檢查裝置空間並匯出備份。')}}
+async function del(id){let r=data.find(x=>x.id===id);if(!r)return;if(!await ask(`確定刪除「${r.title}」？刪除後會保留 30 天，可從「設定 → 最近刪除」救回。`,'刪除劇評','刪除',true))return;closeAllNow();data=data.filter(x=>x.id!==id);trash.unshift({r,at:Date.now()});await persist();toast('已刪除',{label:'復原',fn:()=>restoreTrash(id)})}
+async function restoreTrash(id){let i=trash.findIndex(t=>t.r.id===id);if(i<0)return;let r=trash[i].r;if(!libById(r.libId))r.libId=libs[0].id;if(data.some(x=>x.libId===r.libId&&x.no===r.no))r.no=libById(r.libId).nextNo++;data.unshift(r);trash.splice(i,1);await persist();renderTrash();toast('已復原')}
+async function persist(){try{setStatus('儲存中…');await kvSetMany({reviews:data,groups,series,libs,trash,settings});renderAll();setStatus('已儲存','ok');updateStorageInfo();updateDot()}catch(e){setStatus('儲存失敗，請立即備份','err');toast('保存失敗！請檢查裝置空間並匯出備份。')}}
 for(const id of FORMKEYS)$(id).addEventListener('input',scheduleDraft);
-$('status').addEventListener('change',scheduleDraft);
 $('save').onclick=save;$('mobileSave').onclick=save;
 $('openGroups').onclick=e=>{e.preventDefault();openMgr('groups')};$('openSeries').onclick=e=>{e.preventDefault();openMgr('series')};
+
+/* ---------- 篩選（收藏頁與口味頁共用） ---------- */
+function mval(r,m){return m==='total'?(isFull(r)?total(r):null):r[m+'Score']}
+function matchF(r,F){if(F.status&&r.status!==F.status)return false;if(F.group&&r.groupId!==F.group)return false;if(F.series&&r.seriesId!==F.series)return false;if(F.month&&monthOf(r)!==F.month)return false;
+ if(F.range){let v=mval(r,F.range.m);if(v==null||v<F.range.min||(F.range.last?v>F.range.max:v>=F.range.max))return false}
+ if(F.cat||F.tags.length){let tn=(r.tags||[]).map(norm);if(F.cat&&!tn.some(n=>tagCatId(n,r.libId)===F.cat))return false;if(F.tags.length&&!F.tags.every(t=>tn.includes(t)))return false}return true}
+const anyF=F=>F.tags.length||F.cat||F.status||F.group||F.series||F.range||F.month;
+function toggleTagF(F,n){F.tags=F.tags.includes(n)?F.tags.filter(x=>x!==n):[...F.tags,n]}
+function toggleCatF(F,id){F.cat=F.cat===id?null:id;F.tags=F.tags.filter(t=>!F.cat||tagCatId(t,scopeLibId())===F.cat)}
+const METRIC_NAME={total:'總分',plot:'劇情',production:'製作',model:'建模'};
+/* 渲染：標籤列＋篩選面板＋其他篩選條件 */
+function renderFilter(p,F){let list=scopeData(),idx=tagIndex(list,scopeLibId()),sel=new Set(F.tags);
+ let h=stripHTML({idx,list,sel,openCat:F.cat,controls:idx.size?`<button type="button" class="tchip more" data-all>全部標籤</button>`:'',libId:scopeLibId(),limit:8});$(p+'Strip').innerHTML=h.strip;$(p+'CatRow').innerHTML=h.catRow;
+ $(p+'Gr').hidden=!hasField('group');$(p+'Se').hidden=!hasField('series');
+ setPick(p+'St',F.status);setPick(p+'Gr',F.group);setPick(p+'Se',F.series);
+ let nf=(F.status?1:0)+(F.group?1:0)+(F.series?1:0);$(p+'FBtn').textContent=`篩選${nf?`（${nf}）`:''} ${$(p+'Panel').hidden?'▾':'▴'}`;
+ let chips=[];if(F.status)chips.push(['status','狀態：'+F.status]);if(F.group)chips.push(['group','組合：'+(groups.find(g=>g.id===F.group)?.name||'')]);if(F.series)chips.push(['series','系列：'+(series.find(g=>g.id===F.series)?.name||'')]);if(F.range)chips.push(['range',`${METRIC_NAME[F.range.m]} ${F.range.label}`]);if(F.month)chips.push(['month','月份：'+F.month]);
+ $(p+'Active').innerHTML=chips.map(([k,l])=>`<button type="button" class="tchip on" data-clr="${k}">${esc(l)} ✕</button>`).join('');$(p+'Clear').hidden=!anyF(F)&&!(p==='l'&&$('search').value.trim())}
+function wireFilter(p,F,refresh){
+ const optG=()=>[{value:'',label:'全部組合'},...sortName(scopeGroups()).map(g=>({value:g.id,label:labelWithLib(g)}))],optS=()=>[{value:'',label:'全部系列'},...sortName(scopeSeries()).map(g=>({value:g.id,label:labelWithLib(g)}))];
+ makePicker(p+'St',{title:'觀看狀態',opts:()=>[{value:'',label:'全部狀態'},...STATUSES.map(s=>({value:s,label:s}))],onChange:v=>{F.status=v;refresh()}});
+ makePicker(p+'Gr',{title:'演員組合',opts:optG,search:true,onChange:v=>{F.group=v;refresh()}});
+ makePicker(p+'Se',{title:'劇本系列',opts:optS,search:true,onChange:v=>{F.series=v;refresh()}});
+ $(p+'FBtn').onclick=()=>{$(p+'Panel').hidden=!$(p+'Panel').hidden;refresh()};
+ const strip=e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.all!==undefined){openTagPicker(p==='s'?'stats':'lib');return}if(b.dataset.sc){toggleCatF(F,b.dataset.sc);refresh();return}if(b.dataset.st){toggleTagF(F,b.dataset.st);refresh()}};
+ $(p+'Strip').onclick=strip;$(p+'CatRow').onclick=strip;
+ $(p+'Active').onclick=e=>{let b=e.target.closest('[data-clr]');if(!b)return;let k=b.dataset.clr;if(k==='status')F.status='';else if(k==='group')F.group='';else if(k==='series')F.series='';else if(k==='range')F.range=null;else if(k==='month')F.month='';refresh()};
+ $(p+'Clear').onclick=()=>{Object.assign(F,newF());if(p==='l')$('search').value='';shown=30;refresh()}}
+
 /* ---------- 收藏列表 ---------- */
 function snippetOf(text,toks){let t=String(text||''),low=t.toLowerCase(),best=-1,len=0;for(let k of toks){let i=low.indexOf(k);if(i>=0&&(best<0||i<best)){best=i;len=k.length}}if(best<0)return null;let s=Math.max(0,best-22),e=Math.min(t.length,best+len+44);return(s>0?'…':'')+t.slice(s,e).replace(/\s+/g,' ')+(e<t.length?'…':'')}
-const seriesOf=r=>r.seriesId?series.find(s=>s.id===r.seriesId):null;
+const seriesOf=r=>r.seriesId?series.find(s=>s.id===r.seriesId):null,groupOf=r=>r.groupId?groups.find(g=>g.id===r.groupId):null;
 const seriesLabel=r=>{let s=seriesOf(r);return s?s.name+(r.version?'・'+r.version:''):(r.version||'')};
-function hayOf(r){let g=groupOf(r),s=seriesOf(r);return [r.title,r.left,r.right,g?.name,s?.name,r.version,r.nth?r.nth+'搭 第'+r.nth+'搭':'',r.status,r.plot,r.production,r.model,r.quotes,(r.tags||[]).join(' '),'#'+r.no,'no.'+r.no].join(' ').toLowerCase()}
-function resetFilters(){activeTags=[];libCat=null;$('search').value='';$('fstatus').value='';$('fgroup').value='';$('fseries').value='';shown=30}
+function hayOf(r){let g=groupOf(r),s=seriesOf(r);return [r.title,r.left,r.right,g?.name,s?.name,r.version,r.nth?r.nth+'搭 第'+r.nth+'搭':'',r.status,r.plot,r.production,r.model,r.quotes,(r.tags||[]).join(' '),'no.'+r.no,libOf(r).name].join(' ').toLowerCase()}
+const byNew=(x,y)=>(dayKey(y)-dayKey(x))||(createdKey(y)-createdKey(x));
+const SORTS=[['upd','最近更新'],['new','觀看日期：新 → 舊'],['old','觀看日期：舊 → 新'],['no_desc','編號：大 → 小'],['no_asc','編號：小 → 大'],['high','總分：高 → 低'],['low','總分：低 → 高']];
+function sorter(s){switch(s){case 'new':return byNew;case 'old':return(x,y)=>-byNew(x,y);case 'no_desc':return(x,y)=>(libIdx(x)-libIdx(y))||(y.no-x.no);case 'no_asc':return(x,y)=>(libIdx(x)-libIdx(y))||(x.no-y.no);case 'high':return(x,y)=>((total(y)??-1)-(total(x)??-1))||byNew(x,y);case 'low':return(x,y)=>((total(x)??99)-(total(y)??99))||byNew(x,y);default:return(x,y)=>(updKey(y)-updKey(x))||byNew(x,y)}}
 function library(){
- let q=$('search').value.trim(),toks=q.toLowerCase().split(/\s+/).filter(Boolean),s=$('sort').value,st=$('fstatus').value,fg=$('fgroup').value,fs=$('fseries').value;
- let a=data.filter(r=>{if(st&&r.status!==st)return false;if(fg&&r.groupId!==fg)return false;if(fs&&r.seriesId!==fs)return false;let tn=(r.tags||[]).map(norm);if(libCat&&!tn.some(n=>tagCatId(n)===libCat))return false;if(activeTags.length&&!activeTags.every(t=>tn.includes(t)))return false;if(!toks.length)return true;let h=hayOf(r);return toks.every(t=>h.includes(t))});
- let byNew=(x,y)=>(dayKey(y)-dayKey(x))||(createdKey(y)-createdKey(x));
- a.sort((x,y)=>s==='old'?-byNew(x,y):s==='high'?((total(y)??-1)-(total(x)??-1))||byNew(x,y):s==='low'?((total(x)??99)-(total(y)??99))||byNew(x,y):byNew(x,y));
- let nf=(st?1:0)+(fg?1:0)+(fs?1:0),filtered=toks.length||nf||activeTags.length||libCat;
- $('filterBtn').textContent=`篩選${nf?`（${nf}）`:''} ${$('filterPanel').hidden?'▾':'▴'}`;
- $('resultInfo').textContent=filtered?`找到 ${a.length} 筆（共 ${data.length} 筆）`:`共 ${data.length} 筆`;
- let idx=tagIndex(),all=[...idx.values()];
- let cats=settings.tagCats.map(c=>({c,n:catReviewCount(c.id)})).filter(x=>x.n).sort((x,y)=>y.n-x.n).slice(0,4),cids=new Set(cats.map(x=>x.c.id));
- let tops=all.filter(o=>!cids.has(o.cat)).sort((x,y)=>y.count-x.count).slice(0,Math.max(0,8-cats.length));
- $('tagStrip').innerHTML=all.length?(`<button type="button" class="tchip more" data-all>全部標籤</button>`+cats.map(x=>`<button type="button" class="tchip cat ${libCat===x.c.id?'on':''}" data-sc="${esc(x.c.id)}">${esc(x.c.name)} ${x.n} ▾</button>`).join('')+tops.map(o=>`<button type="button" class="tchip ${activeTags.includes(o.n)?'on':''}" data-st="${esc(o.n)}">#${esc(o.name)} ${o.count}</button>`).join('')):'<span class="tiny">還沒有標籤。寫劇評時加上標籤，這裡就能一鍵篩選。</span>';
- $('catRow').innerHTML=libCat?`<span class="tiny" style="align-self:center">${esc(catById(libCat)?.name||'')}：</span>`+all.filter(o=>o.cat===libCat).sort((x,y)=>y.count-x.count).map(o=>`<button type="button" class="tchip ${activeTags.includes(o.n)?'on':''}" data-st="${esc(o.n)}">#${esc(o.name)} ${o.count}</button>`).join(''):'';
- let af=[];if(libCat)af.push(['cat','大標籤：'+(catById(libCat)?.name||'')]);activeTags.forEach(t=>af.push(['tag:'+t,'標籤：'+(idx.get(t)?.name||t)]));if(st)af.push(['status','狀態：'+st]);if(fg)af.push(['group','組合：'+(groups.find(g=>g.id===fg)?.name||'')]);if(fs)af.push(['series','系列：'+(series.find(g=>g.id===fs)?.name||'')]);
- $('activeFilters').innerHTML=af.map(([k,l])=>`<button type="button" class="tchip on" data-clr="${esc(k)}">${esc(l)} ✕</button>`).join('')+(af.length?`<button type="button" class="tchip" id="clearF">清除全部</button>`:'');
+ let q=$('search').value.trim(),toks=q.toLowerCase().split(/\s+/).filter(Boolean),all=scopeData();
+ let a=all.filter(r=>matchF(r,LF)&&(!toks.length||toks.every(t=>hayOf(r).includes(t)))).sort(sorter($('sort').value||'upd'));
+ renderFilter('l',LF);let filtered=toks.length||anyF(LF);
+ $('resultInfo').textContent=filtered?`找到 ${a.length} 筆（共 ${all.length} 筆）`:`共 ${all.length} 筆`;
+ const showLib=curLib==='all'&&multiLib();
  $('entries').innerHTML=a.length?a.slice(0,shown).map(r=>{
-  let snips=[];if(toks.length){for(let [n,t] of [['劇情',r.plot],['製作',r.production],['建模',r.model],['台詞',r.quotes]]){let sn=snippetOf(t,toks);if(sn)snips.push(`<div class="snip"><b>${n}</b>　${hl(sn,toks)}</div>`)}}
-  let g=groupOf(r),meta=[pairText(r)?hl(pairText(r),toks):'',g?hl(g.name,toks):'',seriesLabel(r)?hl(seriesLabel(r),toks):''].filter(Boolean).join(' · ');
-  let tg=r.tags||[];
-  return `<div class="entry" data-id="${esc(r.id)}">${r.images?.[0]?.thumb?`<img class="thumb" loading="lazy" src="${r.images[0].thumb}" alt="">`:''}<div class="ebody"><div class="entryname">${hl(r.title,toks)}${r.nth?` <span class="tag red">第${r.nth}搭</span>`:''}</div><div class="entrymeta"><span class="no">#${r.no}</span>${[r.date,r.status].filter(Boolean).map(x=>' · '+esc(x)).join('')}</div>${meta?`<div class="entrymeta">${meta}</div>`:''}<div class="entrymeta">劇情 ${fmt(r.plotScore)} · 製作 ${fmt(r.productionScore)} · 建模 ${fmt(r.modelScore)}${r.images?.length?` · ▧ ${r.images.length}`:''}</div>${tg.length?`<div class="tags">${tg.slice(0,3).map(t=>`<span class="tag" data-tag="${esc(norm(t))}">#${esc(t)}</span>`).join('')}${tg.length>3?`<span class="tiny">+${tg.length-3}</span>`:''}</div>`:''}${snips.slice(0,3).join('')}</div><div class="entryscore">${total(r)==null?'—':fmt(total(r))}<span class="tiny"> /15</span></div></div>`}).join(''):`<div class="tiny" style="text-align:center;padding:25px">${data.length?'沒有符合的劇評。換個關鍵字或清除篩選看看？':'還沒有劇評，到「寫劇評」新增第一篇吧。'}</div>`;
- $('moreBtn').hidden=a.length<=shown;$('moreBtn').textContent=`顯示更多（還有 ${a.length-shown} 筆）`;renderTrashCount()}
-let searchT;$('search').oninput=()=>{clearTimeout(searchT);searchT=setTimeout(()=>{shown=30;library()},200)};
-for(const id of ['sort','fstatus','fgroup','fseries'])$(id).onchange=()=>{shown=30;library()};
-$('filterBtn').onclick=()=>{$('filterPanel').hidden=!$('filterPanel').hidden;library()};
+  let L=libOf(r),f=L.fields,snips=[];if(toks.length){for(let [n,t] of [['劇情',r.plot],['製作',r.production],['建模',r.model],['台詞',r.quotes]]){let sn=snippetOf(t,toks);if(sn)snips.push(`<div class="snip"><b>${n}</b>　${hl(sn,toks)}</div>`)}}
+  let g=f.group?groupOf(r):null,meta=[f.pair&&pairText(r)?hl(pairText(r),toks):'',g?hl(g.name,toks):'',f.series&&seriesLabel(r)?hl(seriesLabel(r),toks):''].filter(Boolean).join(' · ');
+  let tg=r.tags||[],cv=r.images?.find(i=>i.id===r.cover)||r.images?.[0];
+  return `<div class="entry" data-id="${esc(r.id)}">${cv?.thumb?`<img class="thumb" loading="lazy" src="${cv.thumb}" alt="">`:''}<div class="ebody"><div class="entryname">${hl(r.title,toks)}${f.group&&r.nth?` <span class="tag red">第${r.nth}搭</span>`:''}</div><div class="entrymeta"><span class="no">No.${r.no}</span>${[showLib?L.name:'',r.date,r.status].filter(Boolean).map(x=>' · '+esc(x)).join('')}</div>${meta?`<div class="entrymeta">${meta}</div>`:''}<div class="entrymeta">劇情 ${fmt(r.plotScore)} · 製作 ${fmt(r.productionScore)} · 建模 ${fmt(r.modelScore)}${r.images?.length?` · ▧ ${r.images.length}`:''}</div>${tg.length?`<div class="tags">${tg.slice(0,3).map(t=>`<span class="tag" data-tag="${esc(norm(t))}">#${esc(t)}</span>`).join('')}${tg.length>3?`<span class="tiny">+${tg.length-3}</span>`:''}</div>`:''}${snips.slice(0,3).join('')}</div><div class="entryscore">${total(r)==null?'—':fmt(total(r))}<span class="tiny"> /15</span></div></div>`}).join(''):`<div class="tiny" style="text-align:center;padding:25px;grid-column:1/-1">${all.length?'沒有符合的劇評。換個關鍵字或清除篩選看看？':'還沒有劇評，到「寫劇評」新增第一篇吧。'}</div>`;
+ $('moreBtn').hidden=a.length<=shown;$('moreBtn').textContent=`顯示更多（還有 ${a.length-shown} 筆）`}
+let searchT;$('search').addEventListener('input',()=>{clearTimeout(searchT);searchT=setTimeout(()=>{shown=30;library()},200)});
 $('moreBtn').onclick=()=>{shown+=30;library()};
-function toggleTag(n){activeTags=activeTags.includes(n)?activeTags.filter(x=>x!==n):[...activeTags,n];shown=30;library()}
-function toggleCat(id){libCat=libCat===id?null:id;activeTags=activeTags.filter(t=>!libCat||tagCatId(t)===libCat);shown=30;library()}
-const tagArea=e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.all!==undefined){openTagPicker('filter');return}if(b.dataset.sc){toggleCat(b.dataset.sc);return}if(b.dataset.st)toggleTag(b.dataset.st)};
-$('tagStrip').onclick=tagArea;$('catRow').onclick=tagArea;
-$('activeFilters').onclick=e=>{let b=e.target.closest('button');if(!b)return;if(b.id==='clearF'){resetFilters();library();return}let k=b.dataset.clr;if(k==='cat'){libCat=null;activeTags=[]}else if(k.startsWith('tag:'))activeTags=activeTags.filter(t=>t!==k.slice(4));else if(k==='status')$('fstatus').value='';else if(k==='group')$('fgroup').value='';else if(k==='series')$('fseries').value='';shown=30;library()};
-$('entries').onclick=e=>{let c=e.target.closest('.entry');if(!c)return;let t=e.target.closest('[data-tag]');if(t){toggleTag(t.dataset.tag);return}openDetail(c.dataset.id)};
-function filterByTag(n){closeAllNow();resetFilters();activeTags=[n];page('library')}
-function filterByGroup(id){closeAllNow();resetFilters();$('fgroup').value=id;page('library')}
-function filterBySeries(id){closeAllNow();resetFilters();$('fseries').value=id;page('library')}
+$('entries').onclick=e=>{let c=e.target.closest('.entry');if(!c)return;let t=e.target.closest('[data-tag]');if(t){toggleTagF(LF,t.dataset.tag);shown=30;library();return}openDetail(c.dataset.id)};
+function goLibrary(fn){closeAllNow();resetF(LF);$('search').value='';shown=30;fn(LF);page('library');library()}
+const filterByTag=n=>goLibrary(F=>{F.tags=[n]}),filterByGroup=id=>goLibrary(F=>{F.group=id}),filterBySeries=id=>goLibrary(F=>{F.series=id}),filterByMonth=m=>goLibrary(F=>{F.month=m});
+const filterByRange=(m,min,max,last,label)=>goLibrary(F=>{F.range={m,min,max,last,label}});
 
 /* ---------- 詳情視窗 ---------- */
 function timeline(title,list,cur,showVer){return list.length>1?`<div class="dsec"><h4>${title}</h4>${list.map(x=>`<div class="relrow ${x.id===cur.id?'cur':''}" ${x.id===cur.id?'':`data-rel="${esc(x.id)}"`}><span>${showVer?`${x.version?esc(x.version):'—'}　`:(x.nth?`第${x.nth}搭　`:'')}${esc(x.title)}${pairText(x)?`<small>${esc(pairText(x))}</small>`:''}</span><b style="color:var(--red)">${total(x)==null?'—':fmt(total(x))}</b></div>`).join('')}</div>`:''}
-function openDetail(id){let r=data.find(x=>x.id===id);if(!r)return;detailId=id;let g=groupOf(r),sr=seriesOf(r),t=total(r);
+function openDetail(id){let r=data.find(x=>x.id===id);if(!r)return;detailId=id;let L=libOf(r),f=L.fields,g=f.group?groupOf(r):null,sr=f.series?seriesOf(r):null,t=total(r);
  let gl=g?data.filter(x=>x.groupId===g.id).sort((a,b)=>(a.nth??999)-(b.nth??999)||createdKey(a)-createdKey(b)):[],sl=sr?data.filter(x=>x.seriesId===sr.id).sort((a,b)=>createdKey(a)-createdKey(b)):[];
  let sec=(n,sc,tx)=>(tx&&tx.trim())||sc!=null?`<div class="dsec"><h4>${n}<span>${fmt(sc)}</span></h4>${tx&&tx.trim()?`<p>${esc(tx)}</p>`:''}</div>`:'';
  $('sheet').innerHTML=`<div class="dtop"><h2>${esc(r.title)}</h2><button class="xbtn" data-d="close" aria-label="關閉">✕</button></div>
- <div class="dmeta"><span class="no">No.${r.no}</span>${r.date?`<span>${esc(r.date)}</span>`:''}<span class="tag">${esc(r.status||'')}</span>${r.nth?`<span class="tag red">第${r.nth}搭</span>`:''}${g?`<span class="tag">${esc(g.name)}</span>`:''}${seriesLabel(r)?`<span class="tag">${esc(seriesLabel(r))}</span>`:''}</div>
- ${pairText(r)?`<div class="dpair">${esc(pairText(r))}</div>`:''}
+ <div class="dmeta"><span class="no">No.${r.no}</span>${multiLib()?`<span class="tag">${esc(L.name)}</span>`:''}${r.date?`<span>${esc(r.date)}</span>`:''}<span class="tag">${esc(r.status||'')}</span>${f.group&&r.nth?`<span class="tag red">第${r.nth}搭</span>`:''}${g?`<span class="tag">${esc(g.name)}</span>`:''}${f.series&&seriesLabel(r)?`<span class="tag">${esc(seriesLabel(r))}</span>`:''}</div>
+ ${f.pair&&pairText(r)?`<div class="dpair">${esc(pairText(r))}</div>`:''}
  <div class="chips"><div class="chip"><span>劇情</span><b>${fmt(r.plotScore)}</b></div><div class="chip"><span>製作</span><b>${fmt(r.productionScore)}</b></div><div class="chip"><span>建模</span><b>${fmt(r.modelScore)}</b></div><div class="chip"><span>總分</span><b>${t==null?'—':fmt(t)}</b></div></div>
  ${sec('劇情',r.plotScore,r.plot)}${sec('製作',r.productionScore,r.production)}${sec('建模',r.modelScore,r.model)}
  ${r.quotes&&r.quotes.trim()?`<div class="dsec"><h4>台詞</h4><div class="dquote">${esc(r.quotes)}</div></div>`:''}
@@ -460,90 +654,148 @@ $('detail').onclick=e=>{if(e.target===$('detail')){closeTop();return}let z=e.tar
 async function openLightbox(img){$('lbImg').src=img.src;$('lightbox').classList.add('show');openOv('lightbox',()=>$('lightbox').classList.remove('show'));let d=await getImg(img.dataset.img);if(d&&$('lightbox').classList.contains('show'))$('lbImg').src=d}
 $('lightbox').onclick=()=>closeTop();
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTop()});
+
 /* ---------- 管理標籤 / 組合 / 系列 ---------- */
-function openMgr(type){mgrType=type;renderMgr();if(!$('mgr').classList.contains('show')){$('mgr').classList.add('show');openOv('mgr',()=>$('mgr').classList.remove('show'))}}
+function mgrTagCtx(){if(!shared()&&curLib==='all')return null;return {list:shared()?data:data.filter(r=>r.libId===curLib),lib:shared()?null:curLib}}
+function openMgr(type){mgrType=type;if(type==='tags'&&!mgrTagCtx()){toast('標籤已設為各收藏庫獨立，請先在上方切換到單一收藏庫再管理');return}renderMgr();showModal('mgr')}
 function renderMgr(){$('mgrTitle').textContent={tags:'管理標籤',groups:'管理演員組合',series:'管理劇本系列'}[mgrType];
- if(mgrType==='tags'){let idx=[...tagIndex().values()].sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'zh-Hant'));
+ if(mgrType==='tags'){let cx=mgrTagCtx();if(!cx){closeTop();return}let idx=[...tagIndex(cx.list,cx.lib===null?undefined:cx.lib).values()].sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'zh-Hant'));
   const row=o=>`<div class="mrow"><span>#${esc(o.name)} <span class="tiny">${o.count} 部</span></span><span><button class="mini" data-m="rename" data-key="${esc(o.n)}">改名／合併</button><button class="mini" data-m="move" data-key="${esc(o.n)}">歸類</button><button class="mini danger" data-m="del" data-key="${esc(o.n)}">刪除</button></span></div>`;
-  let html=`<div class="tiny">大標籤用來把小標籤分類（例如「運動」底下有冰球、籃球）。劇評只需要記小標籤，篩選大標籤時會包含底下所有小標籤。改名成已存在的標籤會自動合併。</div><button class="btn soft" style="width:100%;margin:10px 0 0" data-m="newcat">＋ 新增大標籤</button>`;
-  for(let c of catsSorted()){let items=idx.filter(o=>o.cat===c.id);html+=`<div class="mhead"><b>${esc(c.name)}</b><span><button class="mini" data-m="catrename" data-key="${esc(c.id)}">改名</button><button class="mini danger" data-m="catdel" data-key="${esc(c.id)}">刪除</button></span></div>`+(items.length?items.map(row).join(''):'<div class="tiny" style="padding:6px 0">還沒有小標籤，用「歸類」把標籤放進來。</div>')}
+  let cats=catsFor(cx.lib),html=`<div class="tiny">大標籤用來把小標籤分類（例如「類型」底下有懸疑、喜劇）。劇評只需要記小標籤，篩選大標籤時會包含底下所有小標籤。改名成已存在的標籤會自動合併。</div><button class="btn soft" style="width:100%;margin:10px 0 0" data-m="newcat">＋ 新增大標籤</button>`;
+  for(let c of cats){let items=idx.filter(o=>o.cat===c.id);html+=`<div class="mhead"><b>${esc(c.name)}</b><span><button class="mini" data-m="catrename" data-key="${esc(c.id)}">改名</button><button class="mini danger" data-m="catdel" data-key="${esc(c.id)}">刪除</button></span></div>`+(items.length?items.map(row).join(''):'<div class="tiny" style="padding:6px 0">還沒有小標籤，用「歸類」把標籤放進來。</div>')}
   let un=idx.filter(o=>!o.cat);html+=`<div class="mhead"><b>未分類</b></div>`+(un.length?un.map(row).join(''):'<div class="tiny">沒有。</div>');$('mgrBody').innerHTML=html;return}
- let L=mgrType==='groups'?groups:series,fld=mgrType==='groups'?'groupId':'seriesId';
- $('mgrBody').innerHTML=L.length?`<div class="tiny">改名只需改一次，所有劇都會跟著變；改成已存在的名稱會自動合併。刪除不會刪除劇評。</div>`+L.slice().sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant')).map(o=>`<div class="mrow"><span>${esc(o.name)} <span class="tiny">${data.filter(r=>r[fld]===o.id).length} 部</span></span><span><button class="mini" data-m="rename" data-key="${esc(o.id)}">改名／合併</button><button class="mini danger" data-m="del" data-key="${esc(o.id)}">刪除</button></span></div>`).join(''):'<div class="tiny" style="padding:20px 0;text-align:center">目前沒有項目。</div>'}
+ let L=sortName(mgrType==='groups'?scopeGroups():scopeSeries()),fld=mgrType==='groups'?'groupId':'seriesId';
+ $('mgrBody').innerHTML=L.length?`<div class="tiny">改名只需改一次，所有劇都會跟著變；改成已存在的名稱會自動合併。刪除不會刪除劇評。</div>`+L.map(o=>`<div class="mrow"><span>${esc(labelWithLib(o))} <span class="tiny">${data.filter(r=>r[fld]===o.id).length} 部</span></span><span><button class="mini" data-m="rename" data-key="${esc(o.id)}">改名／合併</button><button class="mini danger" data-m="del" data-key="${esc(o.id)}">刪除</button></span></div>`).join(''):'<div class="tiny" style="padding:20px 0;text-align:center">目前沒有項目。</div>'}
 $('mgrBody').onclick=async e=>{let b=e.target.closest('[data-m]');if(!b)return;let key=b.dataset.key,m=b.dataset.m;
- if(mgrType==='tags'){
-  if(m==='newcat'){await newCat();renderMgr();return}
-  if(m==='catrename'){let c=catById(key);if(!c)return;let res=await dialog({title:'大標籤改名',input:c.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim();if(res.key!=='ok'||!nn)return;if(settings.tagCats.some(x=>x.id!==c.id&&norm(x.name)===norm(nn))){toast('已有同名的大標籤');return}c.name=nn;await persist();renderMgr();return}
-  if(m==='catdel'){let c=catById(key);if(!c)return;if(!await ask(`刪除大標籤「${c.name}」？底下的小標籤會變成未分類，標籤本身不會刪除。`,'刪除大標籤','刪除',true))return;settings.tagCats=settings.tagCats.filter(x=>x.id!==key);for(let k of Object.keys(settings.tagMap))if(settings.tagMap[k]===key)delete settings.tagMap[k];if(libCat===key)libCat=null;await persist();renderMgr();return}
-  let cur=tagIndex().get(key);if(!cur)return;
-  if(m==='move'){if(!settings.tagCats.length){toast('請先新增大標籤');return}let res=await dialog({title:`「${cur.name}」要歸到哪個大標籤？`,buttons:[...catsSorted().map(c=>({key:'c:'+c.id,label:c.name,primary:cur.cat===c.id})),{key:'none',label:'未分類'},{key:'cancel',label:'取消'}]});if(res.key==='cancel')return;if(res.key==='none')delete settings.tagMap[key];else settings.tagMap[key]=res.key.slice(2);await persist();renderMgr();return}
-  if(m==='rename'){let res=await dialog({title:'標籤改名／合併',msg:`把「${cur.name}」改成：`,input:cur.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim().replace(/^#+/,'');if(res.key!=='ok'||!nn)return;let nk=norm(nn),ex=tagIndex().get(nk);if(ex&&nk!==key)nn=ex.name;
-   data.forEach(r=>{if(!(r.tags||[]).some(t=>norm(t)===key))return;let out=[],seen=new Set();for(let t of r.tags){let v=norm(t)===key?nn:t,n=norm(v);if(!seen.has(n)){seen.add(n);out.push(v)}}r.tags=out;r.updatedAt=new Date().toISOString()});
-   if(nk!==key){if(settings.tagMap[key]&&!settings.tagMap[nk])settings.tagMap[nk]=settings.tagMap[key];delete settings.tagMap[key]}
-   currentTags=currentTags.map(t=>norm(t)===key?nn:t);activeTags=activeTags.map(t=>t===key?nk:t);await persist();renderMgr();renderTagUI();toast(ex&&nk!==key?'已合併':'已改名');return}
-  if(m==='del'&&await ask(`從所有劇評移除標籤「${cur.name}」？（劇評本身不會被刪除）`,'刪除標籤','刪除',true)){data.forEach(r=>{r.tags=(r.tags||[]).filter(t=>norm(t)!==key)});delete settings.tagMap[key];activeTags=activeTags.filter(t=>t!==key);currentTags=currentTags.filter(t=>norm(t)!==key);await persist();renderMgr();renderTagUI()}
+ if(mgrType==='tags'){let cx=mgrTagCtx();if(!cx)return;const tk=n=>tkey(n,cx.lib);
+  if(m==='newcat'){await newCat(cx.lib);renderMgr();return}
+  if(m==='catrename'){let c=catById(key);if(!c)return;let res=await dialog({title:'大標籤改名',input:c.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim();if(res.key!=='ok'||!nn)return;if(catsFor(cx.lib).some(x=>x.id!==c.id&&norm(x.name)===norm(nn))){toast('已有同名的大標籤');return}c.name=nn;await persist();renderMgr();return}
+  if(m==='catdel'){let c=catById(key);if(!c)return;if(!await ask(`刪除大標籤「${c.name}」？底下的小標籤會變成未分類，標籤本身不會刪除。`,'刪除大標籤','刪除',true))return;settings.tagCats=settings.tagCats.filter(x=>x.id!==key);for(let k of Object.keys(settings.tagMap))if(settings.tagMap[k]===key)delete settings.tagMap[k];if(LF.cat===key)LF.cat=null;if(SF.cat===key)SF.cat=null;await persist();renderMgr();return}
+  let cur=tagIndex(cx.list,cx.lib===null?undefined:cx.lib).get(key);if(!cur)return;
+  if(m==='move'){let cats=catsFor(cx.lib);if(!cats.length){toast('請先新增大標籤');return}let res=await dialog({title:`「${cur.name}」要歸到哪個大標籤？`,buttons:[...cats.map(c=>({key:'c:'+c.id,label:c.name,primary:cur.cat===c.id})),{key:'none',label:'未分類'},{key:'cancel',label:'取消'}]});if(res.key==='cancel')return;if(res.key==='none')delete settings.tagMap[tk(key)];else settings.tagMap[tk(key)]=res.key.slice(2);await persist();renderMgr();return}
+  if(m==='rename'){let res=await dialog({title:'標籤改名／合併',msg:`把「${cur.name}」改成：`,input:cur.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim().replace(/^#+/,'');if(res.key!=='ok'||!nn)return;let nk=norm(nn),ex=tagIndex(cx.list,cx.lib===null?undefined:cx.lib).get(nk);if(ex&&nk!==key)nn=ex.name;
+   cx.list.forEach(r=>{if(!(r.tags||[]).some(t=>norm(t)===key))return;let out=[],seen=new Set();for(let t of r.tags){let v=norm(t)===key?nn:t,n=norm(v);if(!seen.has(n)){seen.add(n);out.push(v)}}r.tags=out});
+   if(nk!==key){let ok=tk(key),nk2=tk(nk);if(settings.tagMap[ok]&&!settings.tagMap[nk2])settings.tagMap[nk2]=settings.tagMap[ok];delete settings.tagMap[ok]}
+   currentTags=currentTags.map(t=>norm(t)===key?nn:t);for(let F of [LF,SF])F.tags=F.tags.map(t=>t===key?nk:t);await persist();renderMgr();renderTagUI();toast(ex&&nk!==key?'已合併':'已改名');return}
+  if(m==='del'&&await ask(`從劇評移除標籤「${cur.name}」？（劇評本身不會被刪除）`,'刪除標籤','刪除',true)){cx.list.forEach(r=>{r.tags=(r.tags||[]).filter(t=>norm(t)!==key)});delete settings.tagMap[tk(key)];for(let F of [LF,SF])F.tags=F.tags.filter(t=>t!==key);currentTags=currentTags.filter(t=>norm(t)!==key);await persist();renderMgr();renderTagUI()}
   return}
  let isG=mgrType==='groups',L=isG?groups:series,fld=isG?'groupId':'seriesId',selId=isG?'group':'series',g=L.find(x=>x.id===key);if(!g)return;
- if(m==='rename'){let res=await dialog({title:isG?'組合改名／合併':'系列改名／合併',msg:`把「${g.name}」改成：`,input:g.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim();if(res.key!=='ok'||!nn)return;let ex=L.find(x=>x.id!==g.id&&norm(x.name)===norm(nn));
-  if(ex){data.forEach(r=>{if(r[fld]===g.id)r[fld]=ex.id});L.splice(L.indexOf(g),1);if($(selId).value===g.id)$(selId).value=ex.id;toast('已合併到「'+ex.name+'」')}else{g.name=nn;toast('已改名')}await persist();renderMgr();renderGroupAssist();renderSeriesAssist()}
- else if(m==='del'&&await ask(`刪除「${g.name}」？底下的劇評會保留，只是不再屬於它。`,'刪除','刪除',true)){data.forEach(r=>{if(r[fld]===g.id)r[fld]=''});L.splice(L.indexOf(g),1);if($(selId).value===g.id)$(selId).value='';await persist();renderMgr();renderGroupAssist();renderSeriesAssist()}};
+ if(m==='rename'){let res=await dialog({title:isG?'組合改名／合併':'系列改名／合併',msg:`把「${g.name}」改成：`,input:g.name,buttons:[{key:'ok',label:'確定',primary:true},{key:'cancel',label:'取消'}]});let nn=res.text.trim();if(res.key!=='ok'||!nn)return;let ex=L.find(x=>x.id!==g.id&&x.libId===g.libId&&norm(x.name)===norm(nn));
+  if(ex){data.forEach(r=>{if(r[fld]===g.id)r[fld]=ex.id});L.splice(L.indexOf(g),1);if($(selId).value===g.id)setPick(selId,ex.id);toast('已合併到「'+ex.name+'」')}else{g.name=nn;toast('已改名')}await persist();renderMgr();renderGroupAssist();renderSeriesAssist()}
+ else if(m==='del'&&await ask(`刪除「${g.name}」？底下的劇評會保留，只是不再屬於它。`,'刪除','刪除',true)){data.forEach(r=>{if(r[fld]===g.id)r[fld]=''});L.splice(L.indexOf(g),1);if($(selId).value===g.id)setPick(selId,'');for(let F of [LF,SF])if(F[isG?'group':'series']===g.id)F[isG?'group':'series']='';await persist();renderMgr();renderGroupAssist();renderSeriesAssist()}};
 $('mgr').onclick=e=>{if(e.target===$('mgr')||e.target.closest('[data-close]'))closeTop()};
-$('openTags').onclick=()=>openMgr('tags');$('openGroups2').onclick=()=>openMgr('groups');$('openSeries2').onclick=()=>openMgr('series');
 
 /* ---------- 最近刪除 ---------- */
 function renderTrash(){$('trashBody').innerHTML=trash.length?trash.map(t=>`<div class="mrow"><span>${esc(t.r.title)}<br><span class="tiny">${new Date(t.at).toLocaleDateString()} 刪除</span></span><span><button class="mini" data-t="restore" data-id="${esc(t.r.id)}">還原</button><button class="mini danger" data-t="purge" data-id="${esc(t.r.id)}">永久刪除</button></span></div>`).join(''):'<div class="tiny" style="padding:20px 0;text-align:center">沒有最近刪除的劇評。</div>'}
-$('openTrash').onclick=()=>{renderTrash();$('trashM').classList.add('show');openOv('trashM',()=>$('trashM').classList.remove('show'))};
 $('trashM').onclick=async e=>{if(e.target===$('trashM')||e.target.closest('[data-close]')){closeTop();return}let b=e.target.closest('[data-t]');if(!b)return;let id=b.dataset.id;if(b.dataset.t==='restore')await restoreTrash(id);else if(await ask('永久刪除後無法復原，確定？','永久刪除','永久刪除',true)){trash=trash.filter(t=>t.r.id!==id);await persist();renderTrash()}};
-/* ---------- 我的口味（每次 persist→renderAll 都會重算） ---------- */
-const avgOf=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
-function bars(rows,max){return rows.map(([l,v,label])=>`<div class="bl"><span>${esc(l)}</span><div class="bar"><div class="fill" style="width:${max?v/max*100:0}%"></div></div><b>${esc(label)}</b></div>`).join('')}
-function keepSel(sel,html){let cur=sel.value;sel.innerHTML=html;if([...sel.options].some(o=>o.value===cur))sel.value=cur}
-function stats(){let full=data.filter(isFull),avg=full.length?avgOf(full.map(total)):null,top=full.slice().sort((a,b)=>total(b)-total(a))[0];$('count').textContent=data.length;$('avg').textContent=avg==null?'—':avg.toFixed(2);$('top').textContent=top?top.title:'—';
- $('averages').innerHTML=[['plotScore','劇情'],['productionScore','製作'],['modelScore','建模']].map(([k,n])=>{let a=data.map(r=>r[k]).filter(v=>v!=null&&v!=='').map(Number),v=avgOf(a)||0;return `<div class="barline"><span style="width:40px">${n}</span><div class="bar"><div class="fill" style="width:${v/5*100}%"></div></div><b>${a.length?v.toFixed(2):'—'}</b></div>`}).join('');
- let bk=[0,0,0,0,0];full.forEach(r=>{bk[Math.min(4,Math.floor(total(r)/3))]++});let mx=Math.max(1,...bk);$('dist').innerHTML=full.length?bars(['0–3','3–6','6–9','9–12','12–15'].map((l,i)=>[l,bk[i],bk[i]+' 部']),mx):'<div class="tiny">還沒有三項都評分的劇。</div>';
- let mm=new Map();data.forEach(r=>{let d=dayKey(r),k=d>1e12?new Date(d).toISOString().slice(0,7):null;if(r.date)k=r.date.slice(0,7);if(!k)return;let o=mm.get(k)||{n:0,s:[]};o.n++;let t=total(r);if(t!=null)o.s.push(t);mm.set(k,o)});
- let ml=[...mm.entries()].sort((a,b)=>b[0].localeCompare(a[0])).slice(0,12);$('monthly').innerHTML=ml.length?bars(ml.map(([k,o])=>[k,o.n,`${o.n} 部${o.s.length?' · '+fmt(avgOf(o.s)):''}`]),Math.max(...ml.map(x=>x[1].n))):'<div class="tiny">新增劇評後就會出現。</div>';
- const listStats=(L,fld,box,fn,emptyMsg)=>{let gl=L.map(g=>{let rs=data.filter(r=>r[fld]===g.id);return {g,n:rs.length,avg:avgOf(rs.map(total).filter(x=>x!=null)),maxN:Math.max(0,...rs.map(r=>r.nth||0))}}).filter(o=>o.n).sort((a,b)=>b.n-a.n);box.innerHTML=gl.length?gl.map(o=>`<div class="arow" data-id="${esc(o.g.id)}"><span>${esc(o.g.name)}　<span class="tiny">${o.n} 部${fld==='groupId'&&o.maxN?` · 到第${o.maxN}搭`:''}</span></span><b style="color:var(--red)">${o.avg==null?'—':'均 '+fmt(o.avg)}</b></div>`).join(''):`<div class="tiny">${emptyMsg}</div>`};
- listStats(groups,'groupId',$('groupStats'),filterByGroup,'還沒有組合。在「寫劇評」展開「角色與系列」建立，追到幾搭就會整理在這裡。');
- listStats(series,'seriesId',$('seriesStats'),filterBySeries,'還沒有劇本系列。同一套劇本的不同版本可以放在同一個系列。');
- let tl=[...tagIndex().values()].map(o=>({o,avg:avgOf(data.filter(r=>(r.tags||[]).some(t=>norm(t)===o.n)&&isFull(r)).map(total))})).sort((a,b)=>b.o.count-a.o.count),vis=statsTagsAll?tl:tl.slice(0,5);
- $('tagStats').innerHTML=vis.length?vis.map(x=>`<div class="arow" data-t="${esc(x.o.n)}"><span>#${esc(x.o.name)}${x.o.cat?` <span class="tiny">${esc(catById(x.o.cat)?.name||'')}</span>`:''}　<span class="tiny">${x.o.count} 部</span></span><b style="color:var(--red)">${x.avg==null?'—':'均 '+fmt(x.avg)}</b></div>`).join(''):'<div class="tiny">還沒有標籤。</div>';
- $('statsTagsBtn').hidden=tl.length<=5;$('statsTagsBtn').textContent=statsTagsAll?'收合':'查看全部';
- /* 追劇進度 */
- let pg=groups.filter(g=>data.filter(r=>r.groupId===g.id&&total(r)!=null).length>=2);keepSel($('progSel'),pg.length?pg.map(g=>`<option value="${esc(g.id)}">${esc(g.name)}</option>`).join(''):'<option value="">（需要同組合至少兩部）</option>');
- let gid=$('progSel').value,rel=gid?data.filter(r=>r.groupId===gid&&total(r)!=null).sort((a,b)=>(a.nth??999)-(b.nth??999)||createdKey(a)-createdKey(b)):[];
- $('progBody').innerHTML=rel.length?rel.map(r=>`<div class="bl"><span>${r.nth?`第${r.nth}搭`:'—'}</span><div class="bar"><div class="fill" style="width:${total(r)/15*100}%"></div></div><b>${fmt(total(r))}</b></div><div class="tiny" style="margin:-4px 0 4px 78px">《${esc(r.title)}》</div>`).join(''):'<div class="tiny">同一組合有兩部以上作品時，會顯示每一搭的分數變化。</div>';
- /* 標籤對比 */
- let opts=[];settings.tagCats.forEach(c=>{if(data.filter(r=>isFull(r)&&(r.tags||[]).some(t=>tagCatId(norm(t))===c.id)).length>=2)opts.push(`<option value="cat:${esc(c.id)}">大標籤：${esc(c.name)}</option>`)});
- tl.filter(x=>data.filter(r=>isFull(r)&&(r.tags||[]).some(t=>norm(t)===x.o.n)).length>=2).forEach(x=>opts.push(`<option value="tag:${esc(x.o.n)}">#${esc(x.o.name)}</option>`));
- keepSel($('cmpSel'),opts.length?opts.join(''):'<option value="">（需要至少兩部同標籤的完整評分）</option>');
- let cv=$('cmpSel').value,sel=[];if(cv){let [ty,k]=[cv.slice(0,3),cv.slice(4)];sel=full.filter(r=>(r.tags||[]).some(t=>ty==='cat'?tagCatId(norm(t))===k:norm(t)===k))}
- $('cmpBody').innerHTML=sel.length?`<div class="tiny" style="margin-bottom:6px">共 ${sel.length} 部，與全部 ${full.length} 部的平均比較</div>`+[['plotScore','劇情'],['productionScore','製作'],['modelScore','建模']].map(([k,n])=>{let a=avgOf(sel.map(r=>+r[k])),b=avgOf(full.map(r=>+r[k])),d=a-b;return `<div class="bl"><span>${n}</span><div class="bar"><div class="fill" style="width:${a/5*100}%"></div></div><b>${a.toFixed(1)} <small style="color:${d>=0.05?'#668b64':d<=-0.05?'#b84b3f':'var(--muted)'}">${d>=0?'+':''}${d.toFixed(1)}</small></b></div>`}).join(''):'<div class="tiny">選一個標籤，看看這類劇和你的整體平均差多少。</div>'}
-$('groupStats').onclick=e=>{let a=e.target.closest('[data-id]');if(a)filterByGroup(a.dataset.id)};
-$('seriesStats').onclick=e=>{let a=e.target.closest('[data-id]');if(a)filterBySeries(a.dataset.id)};
-$('tagStats').onclick=e=>{let a=e.target.closest('[data-t]');if(a)filterByTag(a.dataset.t)};
-$('statsTagsBtn').onclick=()=>{statsTagsAll=!statsTagsAll;stats()};
-$('progSel').onchange=stats;$('cmpSel').onchange=stats;
-$('hashtag').addEventListener('change',async()=>{settings.hashtag=$('hashtag').value.trim();await persist();toast('已更新')});
+
+/* ---------- 設定 ---------- */
+const sw=(id,on)=>{$(id).setAttribute('aria-pressed',on?'true':'false')};
+function renderSettings(){
+ $('setLibs').innerHTML=libs.map(l=>`<div class="srow" data-lib="${esc(l.id)}" style="cursor:pointer"><span><b>${esc(l.name)}</b><br><span class="tiny">${data.filter(r=>r.libId===l.id).length} 部${l.hashtag?' · '+esc(l.hashtag):''}</span></span><span class="tiny">編輯 ›</span></div>`).join('');
+ sw('swShared',shared());sw('swAll',settings.allMode!==false);$('signature').value=settings.signature||'';
+ $('trashCount').textContent=trash.length?`（${trash.length}）`:'';$('allRow').hidden=!multiLib();$('sharedRow').hidden=!multiLib()}
+$('openSettings').onclick=()=>{renderSettings();updateBackupAlert();updateStorageInfo();refreshSnapBtn();showModal('settingsM')};
+$('settingsM').onclick=async e=>{if(e.target===$('settingsM')||e.target.closest('[data-close]')){closeTop();return}
+ let lb=e.target.closest('[data-lib]');if(lb){openLibEditor(lb.dataset.lib);return}
+ let b=e.target.closest('button');if(!b)return;
+ if(b.id==='addLib'){let res=await dialog({title:'新增收藏庫',msg:'收藏庫像是獨立的分頁：各自有劇評、編號、演員組合、系列與輸出標籤。',input:'',buttons:[{key:'ok',label:'新增',primary:true},{key:'cancel',label:'取消'}]});let name=res.text.trim();if(res.key!=='ok'||!name)return;if(libs.some(l=>norm(l.name)===norm(name))){toast('已有同名的收藏庫');return}let l={id:uid('L'),name,hashtag:'',fields:{pair:true,group:true,series:true},nextNo:1};libs.push(l);await persist();renderLibBtn();renderSettings();openLibEditor(l.id);return}
+ if(b.id==='swShared'){let on=!shared();if(!await ask(on?'改為各收藏庫共用同一套標籤與大標籤？不同收藏庫中名稱相同的標籤會視為同一個。':'改為每個收藏庫各自獨立的標籤？目前的大標籤分類會複製到每個收藏庫。','標籤設定',on?'改為共通':'改為獨立'))return;setShared(on);await persist();renderSettings();return}
+ if(b.id==='swAll'){settings.allMode=settings.allMode===false;normalizeCur();await persist();renderLibBtn();renderSettings();return}
+ if(b.dataset.go){let g=b.dataset.go;if(g==='trash'){renderTrash();showModal('trashM')}else openMgr(g);return}
+ if(b.id==='clearAll'){if(!await ask('這會永久刪除這台裝置上「所有」劇評、圖片與設定，無法復原。建議先下載備份。','清除全部資料','繼續',true))return;if(!await ask('最後確認：真的要清除全部資料嗎？','清除全部資料','全部清除',true))return;try{await kvClear();location.reload()}catch(err){toast('清除失敗')}}};
 $('signature').addEventListener('change',async()=>{settings.signature=$('signature').value.trim();await persist();toast('已更新')});
+function setShared(on){if(on===shared())return;if(!on){let map={};for(let l of libs){let idm={};for(let c of settings.tagCats.filter(c=>!c.libId)){let nc={id:uid('c'),name:c.name,libId:l.id};settings.tagCats.push(nc);idm[c.id]=nc.id}for(let [k,v] of Object.entries(settings.tagMap)){if(k.includes('|')||!idm[v])continue;map[l.id+'|'+k]=idm[v]}}
+  settings.tagCats=settings.tagCats.filter(c=>c.libId);settings.tagMap=map;settings.sharedTags=false}
+ else{let cats=[],map={};const getCat=name=>{let c=cats.find(x=>norm(x.name)===norm(name));if(!c){c={id:uid('c'),name};cats.push(c)}return c.id};for(let [k,v] of Object.entries(settings.tagMap)){let c=catById(v);if(!c)continue;let n=k.includes('|')?k.split('|').slice(1).join('|'):k;if(!map[n])map[n]=getCat(c.name)}settings.tagCats=cats;settings.tagMap=map;settings.sharedTags=true}
+ resetF(LF);resetF(SF);formCat=null}
+/* 收藏庫編輯 */
+function openLibEditor(id){let l=libById(id);if(!l)return;editLibId=id;$('libName').value=l.name;$('libTag').value=l.hashtag||'';sw('swPair',l.fields.pair);sw('swGroup',l.fields.group);sw('swSeries',l.fields.series);$('libInfo').textContent=`共 ${data.filter(r=>r.libId===id).length} 部；下一個編號 No.${l.nextNo}`;showModal('libM')}
+$('libM').onclick=async e=>{if(e.target===$('libM')||e.target.closest('[data-close]')){closeTop();return}let b=e.target.closest('button');if(!b)return;let l=libById(editLibId);if(!l)return;
+ if(b.classList.contains('sw')){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');return}
+ if(b.id==='libSave'){let name=$('libName').value.trim();if(!name){toast('請輸入收藏庫名稱');return}if(libs.some(x=>x.id!==l.id&&norm(x.name)===norm(name))){toast('已有同名的收藏庫');return}l.name=name;l.hashtag=$('libTag').value.trim();l.fields={pair:$('swPair').getAttribute('aria-pressed')==='true',group:$('swGroup').getAttribute('aria-pressed')==='true',series:$('swSeries').getAttribute('aria-pressed')==='true'};await persist();renderLibBtn();onFormLibChange(true);renderSettings();closeTop();toast('已儲存');return}
+ if(b.id==='libDel'){if(libs.length<2){toast('至少需要保留一個收藏庫');return}if(data.some(r=>r.libId===l.id)){toast('這個收藏庫還有劇評，請先把劇評編輯移到其他收藏庫，或刪除它們');return}if(!await ask(`刪除收藏庫「${l.name}」？`,'刪除收藏庫','刪除',true))return;libs=libs.filter(x=>x.id!==l.id);groups=groups.filter(g=>g.libId!==l.id);series=series.filter(g=>g.libId!==l.id);settings.tagCats=settings.tagCats.filter(c=>c.libId!==l.id);normalizeCur();await persist();renderLibBtn();onFormLibChange(true);renderSettings();closeTop()}};
+
+/* ---------- 我的口味 ---------- */
+const avgOf=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
+const lock=(title,msg,have,need)=>`<div class="lock"><b>${esc(title)}</b><div class="tiny">${esc(msg)}</div>${need?`<div class="bar"><div class="fill" style="width:${Math.min(100,have/need*100)}%"></div></div><div class="tiny" style="margin-top:4px">${have} / ${need}</div>`:''}</div>`;
+const panel=(t,sub,body)=>`<div class="panel"><div class="head"><h3>${t}</h3>${sub?`<span class="tiny">${sub}</span>`:''}</div>${body}</div>`;
+const chipsRow=(attr,cur)=>`<div class="chiprow" style="margin:0 0 10px">${Object.entries(METRIC_NAME).map(([k,n])=>`<button type="button" class="tchip ${cur===k?'on':''}" ${attr}="${k}">${n}</button>`).join('')}</div>`;
+const barRow=(l,v,max,label,extra='')=>`<div class="bl" ${extra}><span>${esc(l)}</span><div class="bar"><div class="fill" style="width:${max?Math.max(2,v/max*100):0}%"></div></div><b>${label}</b></div>`;
+function deltaTag(v,b,show){if(!show||v==null||b==null)return'';let d=v-b;return `<small style="color:${d>=.05?'#668b64':d<=-.05?'#b84b3f':'var(--muted)'}">${d>=0?'+':''}${d.toFixed(1)}</small>`}
+function avgPanel(sd,fullBase,filt,title){let rows=[['plotScore','劇情'],['productionScore','製作'],['modelScore','建模']].map(([k,n])=>{let a=sd.map(r=>r[k]).filter(v=>v!=null&&v!=='').map(Number);if(!a.length)return null;let v=avgOf(a),b=avgOf(fullBase.map(r=>+r[k]));return barRow(n,v,5,`${v.toFixed(1)} ${deltaTag(v,b,filt)}`)}).filter(Boolean);
+ return panel(title||'三項平均分',filt?'與整體平均相比':'',rows.length?rows.join(''):lock('還沒有評分資料','新增劇評並打分後，這裡會顯示三項平均分。',0,0))}
+/* 總分分布：長條＋平滑曲線 */
+function distChart(vals,metric){const max=metric==='total'?15:5,bw=metric==='total'?1:.5,nb=Math.round(max/bw),W=320,H=165,L=6,R=6,T=22,B=24,pw=W-L-R,ph=H-T-B,cw=pw/nb;
+ let counts=Array(nb).fill(0);vals.forEach(v=>{counts[Math.min(nb-1,Math.floor(v/bw+1e-9))]++});
+ let sm=counts.map((_,i)=>counts.reduce((s,c,j)=>s+c*Math.exp(-((i-j)**2)/2),0)/Math.sqrt(2*Math.PI));let ymax=Math.max(1,...counts,...(vals.length>=5?sm:[]));
+ const X=i=>L+(i+.5)*cw,Y=v=>T+ph-v/ymax*ph;let s=`<svg class="dsvg" viewBox="0 0 ${W} ${H}" role="img" aria-label="分數分布圖">`;
+ counts.forEach((c,i)=>{let x=L+i*cw+1.5,w=cw-3,h=c/ymax*ph;s+=`<rect class="b" x="${x}" y="${T+ph-h}" width="${w}" height="${Math.max(h,0)}" rx="3"/>`;if(c)s+=`<text x="${X(i)}" y="${T+ph-h-4}" text-anchor="middle">${c}</text>`});
+ if(vals.length>=5){let p=sm.map((v,i)=>[X(i),Y(v)]),d=`M${p[0][0]},${p[0][1]}`;for(let i=1;i<p.length;i++){let mx=(p[i-1][0]+p[i][0])/2;d+=` C${mx},${p[i-1][1]} ${mx},${p[i][1]} ${p[i][0]},${p[i][1]}`}s+=`<path class="c" d="${d}"/>`}
+ let mean=avgOf(vals),mx=L+mean/max*pw;s+=`<line class="m" x1="${mx}" x2="${mx}" y1="${T-6}" y2="${T+ph}"/><text class="mt" x="${Math.min(W-30,Math.max(30,mx))}" y="${T-9}" text-anchor="middle">均 ${fmt(r1(mean))}</text>`;
+ let step=metric==='total'?3:1;for(let t=0;t<=max;t+=step)s+=`<text x="${L+t/max*pw}" y="${H-7}" text-anchor="${t===0?'start':t===max?'end':'middle'}">${t}</text>`;
+ counts.forEach((c,i)=>{if(c)s+=`<rect class="hit" data-bin="${i}" x="${L+i*cw}" y="${T}" width="${cw}" height="${ph}"/>`});
+ return s+'</svg>'}
+function distPanel(sd){let m=statsMetric,vals=sd.map(r=>mval(r,m)).filter(v=>v!=null);
+ return panel('分數分布',vals.length>=5?'長條＋趨勢曲線，點長條可查看':'點長條可查看',chipsRow('data-metric',m)+(vals.length>=3?distChart(vals,m):lock('資料還不夠','再多幾部有評分的劇，就能看到分布圖。',vals.length,3)))}
+/* 分數階梯榜 */
+function ladderPanel(sd){let m=ladderMetric,rs=sd.filter(r=>mval(r,m)!=null);let tiers=new Map();rs.forEach(r=>{let v=r1(mval(r,m));(tiers.get(v)||tiers.set(v,[]).get(v)).push(r)});
+ let list=[...tiers.entries()].sort((a,b)=>b[0]-a[0]),max=m==='total'?15:5,vis=ladderAll?list:list.slice(0,3);
+ let body=chipsRow('data-lmetric',m)+(list.length?vis.map(([v,arr],i)=>`<details class="tier" ${i===0&&arr.length<=8?'open':''}><summary><b>${v===max?'滿分':fmt(v)+' 分'}</b><span>${arr.length} 部</span></summary><div class="chiprow">${arr.sort((a,b)=>updKey(b)-updKey(a)).map(r=>`<button type="button" class="tchip" data-open="${esc(r.id)}">${esc(r.title)}</button>`).join('')}</div></details>`).join('')+(list.length>3?`<button type="button" class="btn" style="width:100%;margin-top:8px" data-ladder-more>${ladderAll?'只看前 3 階':'顯示更多階（共 '+list.length+' 階）'}</button>`:''):lock('還沒有資料','有評分的劇會依分數由高到低排在這裡，同分的最近評的在前。',0,0));
+ return panel('分數階梯榜','各分數有哪些劇',body)}
+function monthPanel(sd){let mm=new Map();sd.forEach(r=>{let k=monthOf(r);if(!k)return;let o=mm.get(k)||{n:0,s:[]};o.n++;let t=total(r);if(t!=null)o.s.push(t);mm.set(k,o)});let ml=[...mm.entries()].sort((a,b)=>b[0].localeCompare(a[0])).slice(0,12),mx=Math.max(1,...ml.map(x=>x[1].n));
+ return panel('每月追劇','部數與平均總分，點一下查看',ml.length?ml.map(([k,o])=>barRow(k,o.n,mx,`${o.n} 部${o.s.length?' · '+fmt(avgOf(o.s)):''}`,`data-month="${k}" style="cursor:pointer"`)).join(''):lock('還沒有資料','新增劇評後，這裡會依月份整理追劇數量與平均分。',0,0))}
+function stats(){renderFilter('s',SF);
+ let showGrp=hasField('group')||hasField('series');if(statsTab==='grp'&&!showGrp)statsTab='over';
+ $('sTabs').innerHTML=[['over','總覽'],...(showGrp?[['grp','組合與系列']]:[]),['tag','標籤']].map(([k,l])=>`<button type="button" data-tab="${k}" class="${statsTab===k?'on':''}">${l}</button>`).join('');
+ let base=scopeData(),sd=base.filter(r=>matchF(r,SF)),full=sd.filter(isFull),fullBase=base.filter(isFull),filt=anyF(SF);
+ $('sInfo').textContent=filt?`範圍內 ${sd.length} 部（共 ${base.length} 部）`:'';$('sView').hidden=!filt;
+ let h='';
+ if(statsTab==='over'){let at=avgOf(full.map(total)),bt=avgOf(fullBase.map(total)),top=full.slice().sort((a,b)=>total(b)-total(a)||updKey(b)-updKey(a))[0];
+  h+=`<div class="statgrid"><div class="stat"><span>劇評數</span><strong>${sd.length}</strong></div><div class="stat"><span>平均總分</span><strong>${at==null?'—':at.toFixed(1)} ${deltaTag(at,bt,filt)}</strong><small>僅計完整評分</small></div><div class="stat" ${top?`data-open="${esc(top.id)}" style="cursor:pointer"`:''}><span>最高總分</span><strong>${top?fmt(total(top)):'—'}</strong><small>${top?esc(top.title):'尚無完整評分'}</small></div></div><div style="height:14px"></div>`;
+  h+=`<div class="cols2"><div>${avgPanel(sd,fullBase,filt)}${distPanel(sd)}</div><div>${ladderPanel(sd)}${monthPanel(sd)}</div></div>`}
+ else if(statsTab==='grp'){let gl=sortName(scopeGroups()).map(g=>{let rs=base.filter(r=>r.groupId===g.id);return {g,n:rs.length,avg:avgOf(rs.map(total).filter(x=>x!=null)),maxN:Math.max(0,...rs.map(r=>r.nth||0))}}).filter(o=>o.n).sort((a,b)=>b.n-a.n);
+  let sl=sortName(scopeSeries()).map(g=>{let rs=base.filter(r=>r.seriesId===g.id);return {g,n:rs.length,avg:avgOf(rs.map(total).filter(x=>x!=null))}}).filter(o=>o.n).sort((a,b)=>b.n-a.n);
+  const rowsG=gl.map(o=>`<div class="arow ${SF.group===o.g.id?'sel':''}" data-g="${esc(o.g.id)}"><span>${esc(labelWithLib(o.g))}　<span class="tiny">${o.n} 部${o.maxN?` · 到第${o.maxN}搭`:''}</span></span><b style="color:var(--red)">${o.avg==null?'—':'均 '+fmt(o.avg)}</b></div>`).join('');
+  const rowsS=sl.map(o=>`<div class="arow ${SF.series===o.g.id?'sel':''}" data-s="${esc(o.g.id)}"><span>${esc(labelWithLib(o.g))}　<span class="tiny">${o.n} 部</span></span><b style="color:var(--red)">${o.avg==null?'—':'均 '+fmt(o.avg)}</b></div>`).join('');
+  let prog='';if(SF.group){let rel=sd.filter(r=>total(r)!=null).sort((a,b)=>(a.nth??999)-(b.nth??999)||createdKey(a)-createdKey(b));prog=panel('追劇進度','每一搭的總分',rel.length?rel.map(r=>barRow(r.nth?`第${r.nth}搭`:'—',total(r),15,fmt(total(r)))+`<div class="tiny" style="margin:-4px 0 4px 78px">《${esc(r.title)}》</div>`).join(''):lock('還沒有評分','這個組合的劇評打分後，就能看到每一搭的變化。',0,0))}
+  let ver='';if(SF.series){let rel=sd.slice().sort((a,b)=>createdKey(a)-createdKey(b));ver=panel('各版本比較','同一系列的總分',rel.map(r=>barRow(r.version||'—',total(r)??0,15,total(r)==null?'—':fmt(total(r)))+`<div class="tiny" style="margin:-4px 0 4px 78px">《${esc(r.title)}》</div>`).join(''))}
+  h+=`<div class="cols2"><div>${hasField('group')?panel('演員組合','點一下看每一搭的變化',gl.length?rowsG:lock('還沒有組合','在「寫劇評」展開「角色與系列」建立組合，並新增兩部以上作品，就能追蹤每一搭。',gl.length,2)):''}${prog}</div><div>${hasField('series')?panel('劇本系列','點一下比較各版本',sl.length?rowsS:lock('還沒有劇本系列','同一套劇本拍成不同版本時，放在同一個系列就能互相比較。',0,0)):''}${ver}</div></div>`}
+ else{let idx=[...tagIndex(sd,scopeLibId()).values()].map(o=>({o,avg:avgOf(sd.filter(r=>isFull(r)&&(r.tags||[]).some(t=>norm(t)===o.n)).map(total))})).sort((a,b)=>b.o.count-a.o.count),vis=statsTagsAll?idx:idx.slice(0,5);
+  const rows=vis.map(x=>`<div class="arow ${SF.tags.includes(x.o.n)?'sel':''}" data-t="${esc(x.o.n)}"><span>#${esc(x.o.name)}${x.o.cat?` <span class="tiny">${esc(catById(x.o.cat)?.name||'')}</span>`:''}　<span class="tiny">${x.o.count} 部</span></span><b style="color:var(--red)">${x.avg==null?'—':'均 '+fmt(x.avg)}</b></div>`).join('');
+  h+=`<div class="cols2"><div>${panel('常用標籤',idx.length>5?`<button type="button" class="mini" data-tags-all style="margin:0">${statsTagsAll?'收合':'查看全部'}</button>`:'',idx.length?rows:lock('還沒有標籤','寫劇評時加上標籤，這裡會統計每個標籤的數量與平均分。',0,0))}</div><div>${(SF.tags.length||SF.cat)?avgPanel(sd,fullBase,true,'標籤對比'):lock('標籤對比','點左邊的標籤，就能看到這類劇和你整體平均的差距。',0,0)}</div></div>`}
+ $('statsBody').innerHTML=h}
+$('sTabs').onclick=e=>{let b=e.target.closest('[data-tab]');if(!b)return;statsTab=b.dataset.tab;stats()};
+$('statsBody').onclick=e=>{let t=e.target.closest('[data-metric]');if(t){statsMetric=t.dataset.metric;stats();return}t=e.target.closest('[data-lmetric]');if(t){ladderMetric=t.dataset.lmetric;stats();return}
+ t=e.target.closest('[data-bin]');if(t){let m=statsMetric,bw=m==='total'?1:.5,nb=Math.round((m==='total'?15:5)/bw),i=+t.dataset.bin;filterByRange(m,i*bw,(i+1)*bw,i===nb-1,`${fmt(i*bw)}–${fmt((i+1)*bw)}`);return}
+ t=e.target.closest('[data-month]');if(t){filterByMonth(t.dataset.month);return}t=e.target.closest('[data-open]');if(t){openDetail(t.dataset.open);return}
+ t=e.target.closest('[data-g]');if(t){SF.group=SF.group===t.dataset.g?'':t.dataset.g;stats();return}t=e.target.closest('[data-s]');if(t){SF.series=SF.series===t.dataset.s?'':t.dataset.s;stats();return}
+ t=e.target.closest('[data-t]');if(t){toggleTagF(SF,t.dataset.t);stats();return}if(e.target.closest('[data-tags-all]')){statsTagsAll=!statsTagsAll;stats();return}if(e.target.closest('[data-ladder-more]')){ladderAll=!ladderAll;stats()}};
+$('sView').onclick=()=>goLibrary(F=>Object.assign(F,structuredClone(SF)));
+
 /* ---------- 輸出 ---------- */
-function build(r){let g=groupOf(r),a=[];if(settings.hashtag)a.push(settings.hashtag);a.push(r.title);if(pairText(r))a.push(pairText(r));if(g||r.nth)a.push([g?.name,r.nth?`第${r.nth}搭`:''].filter(Boolean).join('・'));if(seriesLabel(r))a.push(seriesLabel(r));a.push('劇情：'+fmt(r.plotScore));if(r.plot)a.push(r.plot);a.push('製作：'+fmt(r.productionScore));if(r.production)a.push(r.production);a.push('建模：'+fmt(r.modelScore));if(r.model)a.push(r.model);if(r.quotes)a.push(r.quotes);if(r.tags?.length)a.push('標籤：'+r.tags.join('、'));return a.join('\n')}
+function build(r){let L=libOf(r),f=L.fields,g=f.group?groupOf(r):null,a=[];if(L.hashtag)a.push(L.hashtag);a.push(r.title);if(f.pair&&pairText(r))a.push(pairText(r));if(g||(f.group&&r.nth))a.push([g?.name,r.nth?`第${r.nth}搭`:''].filter(Boolean).join('・'));if(f.series&&seriesLabel(r))a.push(seriesLabel(r));a.push('劇情：'+fmt(r.plotScore));if(r.plot)a.push(r.plot);a.push('製作：'+fmt(r.productionScore));if(r.production)a.push(r.production);a.push('建模：'+fmt(r.modelScore));if(r.model)a.push(r.model);if(r.quotes)a.push(r.quotes);if(r.tags?.length)a.push('標籤：'+r.tags.join('、'));return a.join('\n')}
 function openExport(id){let r=data.find(x=>x.id===id);if(!r)return;exportId=id;$('preview').textContent=build(r);$('imgOut').hidden=true;outBlob=null;$('image').textContent='產生劇評圖片';let has=!!r.images?.length;$('incRow').style.display=has?'flex':'none';$('incImg').checked=has;page('export')}
 $('closeExport').onclick=()=>page('library');
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('preview').textContent);toast('已複製，可以貼文了！')}catch(e){let t=document.createElement('textarea');t.value=$('preview').textContent;document.body.append(t);t.select();document.execCommand('copy');t.remove();toast('已複製')}};
+$('shareText').onclick=async()=>{let text=$('preview').textContent;if(navigator.share){try{await navigator.share({text});return}catch(e){if(e.name==='AbortError')return}}$('copy').click()};
 function loadImg(src){return new Promise(res=>{let i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=src})}
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+/* 圖片排版：依原本比例「等高排列」，不裁切 */
+function justify(imgs,CW,gap,target){if(imgs.length===1){let o=imgs[0],sc=Math.min(1,CW/o.el.naturalWidth,1000/o.el.naturalHeight);return [{items:[{o,w:o.el.naturalWidth*sc,h:o.el.naturalHeight*sc}],h:o.el.naturalHeight*sc,center:true}]}
+ let rows=[],cur=[],sum=0;const flush=(stretch)=>{if(!cur.length)return;let h=stretch?(CW-gap*(cur.length-1))/sum:Math.min(target,(CW-gap*(cur.length-1))/sum);rows.push({items:cur.map(o=>({o,w:o.el.naturalWidth/o.el.naturalHeight*h,h})),h,center:!stretch});cur=[];sum=0};
+ for(let o of imgs){cur.push(o);sum+=o.el.naturalWidth/o.el.naturalHeight;let h=(CW-gap*(cur.length-1))/sum;if(h<=target)flush(true)}flush(false);return rows}
 async function makeCard(r,withImgs){
  const W=1080,M=40,PAD=58,CW=W-M*2-PAD*2,X=M+PAD,FF="'PingFang TC','Noto Sans TC','Microsoft JhengHei',system-ui,sans-serif",INK='#292720',MUT='#847d72',RED='#9d594b';
  let imgs=[];if(withImgs&&r.images?.length){for(let im of r.images){let d=await getImg(im.id),el=d?await loadImg(d):null;if(el)imgs.push({el})}}
  const mc=document.createElement('canvas').getContext('2d');
  const wrap=(text,font,maxW)=>{mc.font=font;let out=[];for(let para of String(text).split('\n')){if(!para.trim()){out.push('');continue}let cur='';for(let tk of para.match(/[A-Za-z0-9_'’\-]+ ?|[\s\S]/gu)||[]){if(mc.measureText(cur+tk).width<=maxW){cur+=tk;continue}if(cur){out.push(cur.trimEnd());cur=''}if(mc.measureText(tk).width<=maxW)cur=tk;else for(let ch of tk){if(mc.measureText(cur+ch).width>maxW){out.push(cur);cur=ch}else cur+=ch}}out.push(cur.trimEnd())}return out};
- let g=groupOf(r);
+ let L=libOf(r),f=L.fields,g=f.group?groupOf(r):null;
  const paint=c=>{let y=M+PAD;c.textBaseline='top';
-  if(settings.hashtag){c.fillStyle=MUT;c.font=`700 26px ${FF}`;c.fillText(settings.hashtag,X,y);y+=56}
+  if(L.hashtag){c.fillStyle=MUT;c.font=`700 26px ${FF}`;c.fillText(L.hashtag,X,y);y+=56}
   c.font=`800 54px ${FF}`;c.fillStyle=INK;for(let l of wrap(r.title,c.font,CW).slice(0,3)){c.fillText(l,X,y);y+=72}y+=2;
-  if(pairText(r)){c.font=`800 34px ${FF}`;c.fillStyle=RED;for(let l of wrap(pairText(r),c.font,CW)){c.fillText(l,X,y);y+=50}y+=4}
-  let sub=[g?.name,r.nth?`第${r.nth}搭`:'',seriesLabel(r),r.status,r.date].filter(Boolean).join('  ·  ');
+  if(f.pair&&pairText(r)){c.font=`800 34px ${FF}`;c.fillStyle=RED;for(let l of wrap(pairText(r),c.font,CW)){c.fillText(l,X,y);y+=50}y+=4}
+  let sub=[g?.name,f.group&&r.nth?`第${r.nth}搭`:'',f.series?seriesLabel(r):'',r.status,r.date].filter(Boolean).join('  ·  ');
   if(sub){c.font=`500 26px ${FF}`;c.fillStyle=MUT;for(let l of wrap(sub,c.font,CW)){c.fillText(l,X,y);y+=40}}y+=22;
   let gap=18,cw=(CW-gap*2)/3,t=total(r);
   [['劇情',r.plotScore],['製作',r.productionScore],['建模',r.modelScore]].forEach(([n,v],i)=>{let bx=X+i*(cw+gap);c.fillStyle='#f3eae0';rr(c,bx,y,cw,128,22);c.fill();c.textAlign='center';c.fillStyle=MUT;c.font=`600 24px ${FF}`;c.fillText(n,bx+cw/2,y+16);c.fillStyle=RED;c.font=`800 58px ${FF}`;c.fillText(fmt(v),bx+cw/2,y+52);c.textAlign='left'});
@@ -555,7 +807,7 @@ async function makeCard(r,withImgs){
    c.font=`400 30px ${FF}`;c.fillStyle=INK;for(let l of wrap(tx,c.font,CW)){c.fillText(l,X,y);y+=l?50:26}y+=34}
   if(r.quotes&&r.quotes.trim()){let font=`500 29px ${FF}`,ls=wrap(r.quotes,font,CW-56),h=ls.length*48+44;c.fillStyle='#f8eee8';rr(c,X,y,CW,h,18);c.fill();c.fillStyle='#c58a72';c.fillRect(X,y+16,7,h-32);c.font=font;c.fillStyle='#75483e';let ly=y+22;for(let l of ls){c.fillText(l,X+34,ly);ly+=48}y+=h+34}
   if(r.tags?.length){c.font=`600 25px ${FF}`;let tx=X,ty=y;for(let tg of r.tags){let w=c.measureText('#'+tg).width+34;if(tx+w>X+CW){tx=X;ty+=60}c.fillStyle='#e9eee6';rr(c,tx,ty,w,46,23);c.fill();c.fillStyle='#52684f';c.fillText('#'+tg,tx+17,ty+9);tx+=w+12}y=ty+46+34}
-  if(imgs.length){let gp=16,cols=imgs.length===1?1:2,cell=(CW-gp*(cols-1))/cols;for(let i=0;i<imgs.length;i+=cols){let row=imgs.slice(i,i+cols),hs=row.map(o=>Math.min(900,Math.min(cell,o.el.naturalWidth)*o.el.naturalHeight/o.el.naturalWidth)),rh=Math.max(...hs);row.forEach((o,j)=>{let bx=X+j*(cell+gp),sc=Math.min(1,cell/o.el.naturalWidth,rh/o.el.naturalHeight),dw=o.el.naturalWidth*sc,dh=o.el.naturalHeight*sc;c.save();rr(c,bx,y,cell,rh,16);c.clip();c.fillStyle='#efe6da';c.fillRect(bx,y,cell,rh);c.drawImage(o.el,bx+(cell-dw)/2,y+(rh-dh)/2,dw,dh);c.restore()});y+=rh+gp}y+=18}
+  if(imgs.length){let gp=14;for(let row of justify(imgs,CW,gp,560)){let total=row.items.reduce((s,i)=>s+i.w,0)+gp*(row.items.length-1),x=row.center?X+(CW-total)/2:X;for(let it of row.items){c.save();rr(c,x,y,it.w,it.h,16);c.clip();c.drawImage(it.o.el,x,y,it.w,it.h);c.restore();x+=it.w+gp}y+=row.h+gp}y+=18}
   if(settings.signature){c.font=`500 24px ${FF}`;c.fillStyle='#b5ab9c';c.textAlign='center';c.fillText(settings.signature,W/2,y+8);c.textAlign='left';y+=48}else y+=12;return y};
  let probe=document.createElement('canvas');probe.width=W;probe.height=100;let H=paint(probe.getContext('2d'))+M;
  let scale=Math.min(1,15000/H),cv=document.createElement('canvas');cv.width=Math.round(W*scale);cv.height=Math.round(H*scale);let c=cv.getContext('2d');c.scale(scale,scale);
@@ -567,23 +819,29 @@ $('saveImg').onclick=async()=>{if(!outBlob)return;let r=data.find(x=>x.id===expo
 
 /* ---------- 備份 / 還原 ---------- */
 function dl(name,blobOrText,type){let a=document.createElement('a'),u=URL.createObjectURL(blobOrText instanceof Blob?blobOrText:new Blob([blobOrText],{type}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)}
-$('backup').onclick=async()=>{try{setStatus('正在打包備份…');let ids=new Set(data.flatMap(r=>(r.images||[]).map(i=>i.id))),images={};for(let id of ids){let d=await getImg(id);if(d)images[id]=d}await kvSet('lastBackup',Date.now());lastBackup=Date.now();dl('ai-drama-reviews-full-backup.json',new Blob([JSON.stringify({format:'ai-drama-review-backup',version:4,exportedAt:new Date().toISOString(),settings,groups,series,reviews:data,images})],{type:'application/json'}));updateBackupAlert();setStatus('已儲存','ok');toast('完整備份已開始下載（含圖片）')}catch(e){setStatus('備份失敗','err');toast('備份失敗，請再試一次')}};
-$('csv').onclick=()=>{let keys=['no','title','left','right','group','nth','series','version','status','date','plotScore','plot','productionScore','production','modelScore','model','quotes','tags'];let s=[keys.join(','),...data.map(r=>keys.map(k=>{let v=k==='group'?groupOf(r)?.name:k==='series'?seriesOf(r)?.name:r[k];return '"'+String(Array.isArray(v)?v.join('|'):v??'').replace(/"/g,'""')+'"'}).join(','))].join('\r\n');dl('ai-drama-reviews.csv','\ufeff'+s,'text/csv;charset=utf-8')};
+async function buildBackup(){let ids=new Set(data.flatMap(r=>(r.images||[]).map(i=>i.id))),images={};for(let id of ids){let d=await getImg(id);if(d)images[id]=d}return new Blob([JSON.stringify({format:'ai-drama-review-backup',version:5,exportedAt:new Date().toISOString(),settings,libs,groups,series,reviews:data,images})],{type:'application/json'})}
+async function markBackup(){await kvSet('lastBackup',Date.now());lastBackup=Date.now();updateBackupAlert();updateDot()}
+$('backup').onclick=async()=>{try{setStatus('正在打包備份…');let blob=await buildBackup();dl('ai-drama-reviews-full-backup.json',blob);await markBackup();setStatus('已儲存','ok');toast('完整備份已開始下載（含圖片）')}catch(e){setStatus('備份失敗','err');toast('備份失敗，請再試一次')}};
+$('shareBackup').onclick=async()=>{try{setStatus('正在打包備份…');let blob=await buildBackup(),file=new File([blob],'ai-drama-reviews-backup.json',{type:'application/json'});setStatus('已儲存','ok');if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:'劇評備份'});await markBackup();return}catch(e){if(e.name==='AbortError')return}}dl('ai-drama-reviews-full-backup.json',blob);await markBackup();toast('此裝置不支援直接分享檔案，已改為下載')}catch(e){setStatus('備份失敗','err');toast('備份失敗，請再試一次')}};
+$('csv').onclick=()=>{let keys=['library','no','title','left','right','group','nth','series','version','status','date','plotScore','plot','productionScore','production','modelScore','model','quotes','tags'];let s=[keys.join(','),...data.map(r=>keys.map(k=>{let v=k==='group'?groupOf(r)?.name:k==='series'?seriesOf(r)?.name:k==='library'?libOf(r).name:r[k];return '"'+String(Array.isArray(v)?v.join('|'):v??'').replace(/"/g,'""')+'"'}).join(','))].join('\r\n');dl('ai-drama-reviews.csv','\ufeff'+s,'text/csv;charset=utf-8')};
 $('import').onclick=()=>$('file').click();
 $('file').onchange=async e=>{let f=e.target.files[0];e.target.value='';if(!f)return;
  try{let parsed=JSON.parse(await f.text()),inc=Array.isArray(parsed)?parsed:parsed.reviews;if(!Array.isArray(inc))throw new Error('format');
-  let res=await dialog({title:'還原備份',msg:`備份內有 ${inc.length} 篇劇評。\n「合併」：保留現有劇評，加入備份內容（同一篇以較新的為準）。\n「取代」：用備份覆蓋全部。\n兩種都會先自動留一份快照，可在備份區按「復原上次還原」。`,buttons:[{key:'merge',label:'合併',primary:true},{key:'replace',label:'取代',danger:true},{key:'cancel',label:'取消'}]});
+  let res=await dialog({title:'還原備份',msg:`備份內有 ${inc.length} 篇劇評。\n「合併」：保留現有劇評，加入備份內容（同一篇以較新的為準）。\n「取代」：用備份覆蓋全部。\n兩種都會先自動留一份快照，可在設定的備份區按「復原上次還原」。`,buttons:[{key:'merge',label:'合併',primary:true},{key:'replace',label:'取代',danger:true},{key:'cancel',label:'取消'}]});
   if(res.key==='cancel')return;setStatus('正在還原…');
-  await kvSet('snapshot',{at:Date.now(),reviews:data,groups,series,trash,settings});
+  await kvSet('snapshot',{at:Date.now(),reviews:data,libs,groups,series,trash,settings});
   let imgs=parsed.images&&typeof parsed.images==='object'?parsed.images:{};for(let [id,d] of Object.entries(imgs))await kvSet('img:'+id,d);
-  let incG=Array.isArray(parsed.groups)?parsed.groups:[],incS=Array.isArray(parsed.series)?parsed.series:[],ps=parsed.settings||{};
-  if(res.key==='replace'){groups=incG.map(g=>({...g}));series=incS.map(g=>({...g}));settings={...settings,...ps,tagCats:ps.tagCats||[],tagMap:ps.tagMap||{}}}
-  else{for(let g of incG)if(!groups.some(x=>x.id===g.id))groups.push({...g});for(let g of incS)if(!series.some(x=>x.id===g.id))series.push({...g});for(let c of ps.tagCats||[])if(!settings.tagCats.some(x=>x.id===c.id))settings.tagCats.push({...c});for(let [k,v] of Object.entries(ps.tagMap||{}))if(!(k in settings.tagMap))settings.tagMap[k]=v}
-  let list=[];for(let r of inc){let c={...r,id:r.id||uid('import')};await migrateReview(c);list.push(c)}
-  if(res.key==='replace'){data=list;list.forEach(r=>{if(!r.no)r.no=0});ensureNos()}else{for(let c of list){let i=data.findIndex(x=>x.id===c.id);if(i<0){if(!c.no||data.some(x=>x.no===c.no))c.no=0;data.push(c)}else if((Date.parse(c.updatedAt)||0)>(Date.parse(data[i].updatedAt)||0)){c.no=data[i].no;data[i]=c}}ensureNos()}
-  await persist();updateBar();await refreshSnapBtn();toast('備份還原完成')}catch(err){setStatus('還原失敗','err');toast('備份檔格式不正確或檔案太大');console.error(err)}};
+  let incL=Array.isArray(parsed.libs)?parsed.libs:[],incG=Array.isArray(parsed.groups)?parsed.groups:[],incS=Array.isArray(parsed.series)?parsed.series:[],ps=parsed.settings||{};
+  let defLib=incL[0]?.id||(res.key==='merge'?(libById(curLib)?curLib:libs[0].id):'');
+  if(res.key==='replace'){libs=incL.map(l=>({...l}));if(!libs.length)libs=[{id:uid('L'),name:'我的收藏',hashtag:ps.hashtag||'',fields:{pair:true,group:true,series:true},nextNo:1}];defLib=libs[0].id;settings={...DEFAULT_SETTINGS(),...ps,tagCats:ps.tagCats||[],tagMap:ps.tagMap||{}};groups=incG.map(g=>({...g}));series=incS.map(g=>({...g}))}
+  else{for(let l of incL)if(!libs.some(x=>x.id===l.id))libs.push({...l,nextNo:l.nextNo||1});for(let g of incG)if(!groups.some(x=>x.id===g.id))groups.push({...g});for(let g of incS)if(!series.some(x=>x.id===g.id))series.push({...g});for(let c of ps.tagCats||[])if(!settings.tagCats.some(x=>x.id===c.id))settings.tagCats.push({...c});for(let [k,v] of Object.entries(ps.tagMap||{}))if(!(k in settings.tagMap))settings.tagMap[k]=v}
+  for(let g of groups.concat(series))if(!g.libId)g.libId=defLib||libs[0].id;
+  let list=[];for(let r of inc){let c={...r,id:r.id||uid('import')};if(!libById(c.libId))c.libId=defLib||libs[0].id;await migrateReview(c);list.push(c)}
+  if(res.key==='replace'){data=list;data.forEach(r=>{if(!r.no)r.no=0});ensureNos()}else{for(let c of list){let i=data.findIndex(x=>x.id===c.id);if(i<0){if(!c.no||data.some(x=>x.libId===c.libId&&x.no===c.no))c.no=0;data.push(c)}else if((Date.parse(c.updatedAt)||0)>(Date.parse(data[i].updatedAt)||0)){c.no=data[i].no;c.libId=data[i].libId;data[i]=c}}ensureNos()}
+  normalizeCur();await persist();renderLibBtn();updateBar();await refreshSnapBtn();toast('備份還原完成')}catch(err){setStatus('還原失敗','err');toast('備份檔格式不正確或檔案太大');console.error(err)}};
 async function refreshSnapBtn(){$('undoImport').hidden=!(await kvGet('snapshot'))}
-$('undoImport').onclick=async()=>{let s=await kvGet('snapshot');if(!s)return;if(!await ask(`還原到 ${new Date(s.at).toLocaleString()} 的狀態（還原備份之前）？目前的資料會被取代。`,'復原上次還原','復原',true))return;data=s.reviews||[];groups=s.groups||[];series=s.series||[];trash=s.trash||[];if(s.settings)settings={...settings,...s.settings};await kvSet('snapshot',null);await persist();await refreshSnapBtn();toast('已復原')};
+$('undoImport').onclick=async()=>{let s=await kvGet('snapshot');if(!s)return;if(!await ask(`還原到 ${new Date(s.at).toLocaleString()} 的狀態（還原備份之前）？目前的資料會被取代。`,'復原上次還原','復原',true))return;data=s.reviews||[];libs=s.libs?.length?s.libs:libs;groups=s.groups||[];series=s.series||[];trash=s.trash||[];if(s.settings)settings={...DEFAULT_SETTINGS(),...s.settings};normalizeCur();await kvSet('snapshot',null);await persist();renderLibBtn();await refreshSnapBtn();toast('已復原')};
+
 /* ---------- 輸入體驗：自動長高、鍵盤偵測 ---------- */
 function grow(t){if(!t.offsetParent)return;t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px'}
 function growAll(){document.querySelectorAll('#write textarea').forEach(grow)}
@@ -594,12 +852,12 @@ kbCheck();window.addEventListener('resize',kbCheck);if(vv)vv.addEventListener('r
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='file'&&!e.target.hasAttribute('data-enter')){e.preventDefault();e.target.blur()}});
 
 /* ---------- 圖片 ---------- */
-function renderImages(){$('imageCount').textContent=`${currentImages.length} / 10 張`;$('imageGrid').innerHTML=currentImages.map((im,i)=>`<div class="image-card"><img src="${im.thumb||''}" alt="${esc(im.name||'劇評圖片')}"><input aria-label="圖片說明" placeholder="圖片說明（選填）" value="${esc(im.caption||'')}" data-caption="${i}"><button type="button" data-remove-image="${i}">移除圖片</button></div>`).join('');noAuto($('imageGrid'));$('imageInput').disabled=currentImages.length>=10;$('imageHint').textContent=currentImages.length>=10?'已達每部劇 10 張上限':'圖片會自動保存到本機'}
-$('imageGrid').addEventListener('input',e=>{let i=e.target.dataset.caption;if(i===undefined)return;currentImages[+i].caption=e.target.value;scheduleDraft()});
-$('imageGrid').addEventListener('click',e=>{let b=e.target.closest('[data-remove-image]');if(!b)return;currentImages.splice(+b.dataset.removeImage,1);renderImages();scheduleDraft()});
+function renderImages(){$('imageCount').textContent=`${currentImages.length} / 10 張`;$('imageGrid').innerHTML=currentImages.map((im,i)=>`<div class="image-card"><img src="${im.thumb||''}" alt="${esc(im.name||'劇評圖片')}"><div class="ce" data-ph="圖片說明（選填）" data-caption="${i}">${esc(im.caption||'')}</div><button type="button" data-cover="${im.id}" class="${(currentCover||currentImages[0]?.id)===im.id?'cov':''}">${(currentCover||currentImages[0]?.id)===im.id?'✓ 列表封面':'設為封面'}</button><button type="button" data-remove-image="${i}">移除圖片</button></div>`).join('');initCE($('imageGrid'));$('imageInput').disabled=currentImages.length>=10;$('imageHint').textContent=currentImages.length>=10?'已達每部劇 10 張上限':'圖片會自動保存到本機，並保留原本比例'}
+$('imageGrid').addEventListener('input',e=>{let i=e.target.dataset.caption;if(i===undefined)return;currentImages[+i].caption=e.target.textContent;scheduleDraft()});
+$('imageGrid').addEventListener('click',e=>{let c=e.target.closest('[data-cover]');if(c){currentCover=c.dataset.cover;renderImages();scheduleDraft();return}let b=e.target.closest('[data-remove-image]');if(!b)return;let rm=currentImages.splice(+b.dataset.removeImage,1)[0];if(rm&&rm.id===currentCover)currentCover='';renderImages();scheduleDraft()});
 function scaled(img,max,q,mimeTry){let s=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight)),w=Math.max(1,Math.round(img.naturalWidth*s)),h=Math.max(1,Math.round(img.naturalHeight*s)),c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);return new Promise(async res=>{let blob=await new Promise(r=>c.toBlob(r,mimeTry,q));if(!blob||blob.type!==mimeTry)blob=await new Promise(r=>c.toBlob(r,'image/jpeg',q+.02));res(blob)})}
 const blobToURL=b=>new Promise((res,rej)=>{let fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=rej;fr.readAsDataURL(b)});
-async function makeThumb(dataURL){let img=await loadImg(dataURL);if(!img)return '';return blobToURL(await scaled(img,560,.78,'image/webp'))}
+async function makeThumb(dataURL){let img=await loadImg(dataURL);if(!img)return'';return blobToURL(await scaled(img,560,.78,'image/webp'))}
 async function compressImage(file){if(!file.type.startsWith('image/'))throw new Error('請選擇圖片檔');let url=URL.createObjectURL(file);try{let img=await loadImg(url);if(!img)throw new Error('無法讀取');let blob=await scaled(img,2000,.9,'image/webp'),dataURL=await blobToURL(blob),id=uid('img');await kvSet('img:'+id,dataURL);return {id,name:file.name||'image',caption:'',thumb:await makeThumb(dataURL),bytes:blob.size,type:blob.type}}finally{URL.revokeObjectURL(url)}}
 $('imageInput').onchange=async e=>{let files=Array.from(e.target.files||[]).slice(0,Math.max(0,10-currentImages.length));if(!files.length){if(currentImages.length>=10)toast('每部劇最多 10 張圖片');e.target.value='';return}setStatus('正在處理圖片…');for(let f of files){try{currentImages.push(await compressImage(f));renderImages();scheduleDraft()}catch(err){toast('有圖片無法處理：'+f.name)}}e.target.value='';setStatus('已儲存','ok')};
 
@@ -608,41 +866,59 @@ function splitPair(p){let s=String(p||'').trim();if(!s)return['',''];let m=s.spl
 async function migrateReview(r){let ch=false;
  if('pair' in r){if(r.left===undefined&&r.right===undefined){[r.left,r.right]=splitPair(r.pair)}delete r.pair;ch=true}
  if(r.left===undefined){r.left='';ch=true}if(r.right===undefined){r.right='';ch=true}
- if(r.actors!==undefined){let name=String(r.actors||'').trim();if(name&&!r.groupId){let g=groups.find(x=>norm(x.name)===norm(name));if(!g){g={id:uid('g'),name};groups.push(g)}r.groupId=g.id}delete r.actors;ch=true}
+ if(r.actors!==undefined){let name=String(r.actors||'').trim();if(name&&!r.groupId){let g=groups.find(x=>norm(x.name)===norm(name)&&x.libId===r.libId);if(!g){g={id:uid('g'),name,libId:r.libId||libs[0]?.id||''};groups.push(g)}r.groupId=g.id}delete r.actors;ch=true}
  if(typeof r.nth==='string'){r.nth=NTH[r.nth]||(+r.nth)||null;ch=true}if(r.nth===undefined){r.nth=null;ch=true}
  if(r.groupId===undefined){r.groupId='';ch=true}
  if(r.seriesId===undefined){r.seriesId='';ch=true}if(r.version===undefined){r.version='';ch=true}
- if(r.status==='重看中'){r.status='已完結';ch=true}
+ if(r.status==='重看中'||!r.status){r.status='已完結';ch=true}
  if(!Array.isArray(r.tags)){r.tags=[];ch=true}
  if(!Array.isArray(r.images)){r.images=[];ch=true}
+ if(r.cover===undefined){r.cover='';ch=true}
  for(let im of r.images){if(!im.id){im.id=uid('img');ch=true}if(im.data){await kvSet('img:'+im.id,im.data);im.thumb=await makeThumb(im.data);delete im.data;ch=true}else if(!im.thumb){let d=await getImg(im.id);if(d){im.thumb=await makeThumb(d);ch=true}}}
  return ch}
-function ensureNos(){let all=data.concat(trash.map(t=>t.r)),used=new Set(),miss=[];for(let r of all.slice().sort((a,b)=>createdKey(a)-createdKey(b))){if(r.no&&!used.has(r.no))used.add(r.no);else miss.push(r)}let mx=Math.max(0,settings.nextNo?settings.nextNo-1:0,...used);for(let r of miss)r.no=++mx;settings.nextNo=mx+1}
+function ensureNos(){for(let l of libs){let all=data.concat(trash.map(t=>t.r)).filter(r=>r.libId===l.id),used=new Set(),miss=[];for(let r of all.slice().sort((a,b)=>createdKey(a)-createdKey(b))){if(r.no&&!used.has(r.no))used.add(r.no);else miss.push(r)}let mx=Math.max(0,(l.nextNo||1)-1,...used);for(let r of miss)r.no=++mx;l.nextNo=mx+1}}
 async function cleanupImages(){try{let keys=await kvKeys(),ref=new Set(),add=r=>(r?.images||[]).forEach(i=>ref.add(i.id));data.forEach(add);trash.forEach(t=>add(t.r));let sn=await kvGet('snapshot');sn?.reviews?.forEach(add);sn?.trash?.forEach(t=>add(t.r));for(let k of ['draft','draftEdit']){let d=await kvGet(k);add(d?.form)}for(let k of keys)if(typeof k==='string'&&k.startsWith('img:')&&!ref.has(k.slice(4)))await kvDel(k)}catch(e){}}
 
 /* ---------- 儲存空間 / 備份提醒 / 更新 ---------- */
 async function updateStorageInfo(){try{let est=navigator.storage?.estimate?await navigator.storage.estimate():null,usage=est?.usage||0,quota=est?.quota||0,fb=n=>n<1048576?(n/1024).toFixed(0)+' KB':(n/1048576).toFixed(1)+' MB';$('storageInfo').textContent=est?`本機網站資料約 ${fb(usage)}；瀏覽器回報的儲存配額上限約 ${fb(quota)}。這是估算值，實際可用容量可能變動。`:'目前瀏覽器未提供儲存容量估算。'}catch(e){$('storageInfo').textContent='無法取得本機儲存容量估算。'}}
-async function updateBackupAlert(){let ts=lastBackup||0;try{ts=ts||await kvGet('lastBackup')||0}catch(e){}lastBackup=ts;let days=ts?Math.floor((Date.now()-ts)/86400000):null;$('backupAlert').textContent=!ts?'備份提醒：你還沒有在這個版本下載過備份，建議現在先下載一次。':days>=14?`備份提醒：距離上次備份已 ${days} 天，建議下載最新完整備份。`:`上次備份約 ${days} 天前；建議每 14 天下載一次完整備份。`}
+function backupDays(){return lastBackup?Math.floor((Date.now()-lastBackup)/86400000):null}
+function updateDot(){$('setDot').hidden=!(data.length&&(!lastBackup||backupDays()>=14))}
+async function updateBackupAlert(){try{lastBackup=lastBackup||await kvGet('lastBackup')||0}catch(e){}let days=backupDays();$('backupAlert').textContent=!lastBackup?'備份提醒：還沒有下載過備份，建議現在先下載一次。':days>=14?`備份提醒：距離上次備份已 ${days} 天，建議下載最新完整備份。`:`上次備份約 ${days} 天前；建議每 14 天備份一次。`;updateDot()}
 $('checkUpdate').onclick=async e=>{e.preventDefault();try{if(!swReg)throw 0;await swReg.update();toast('已檢查更新：若有新版會自動套用，重新開啟 App 即可')}catch(x){toast('目前無法檢查更新（需要用網址開啟並連上網路）')}};
 
 /* ---------- 初始化 ---------- */
 async function init(){try{await openDB();
- let rv=await kvGet('reviews');data=Array.isArray(rv)?rv:[];groups=(await kvGet('groups'))||[];series=(await kvGet('series'))||[];trash=(await kvGet('trash'))||[];
- settings={...settings,...((await kvGet('settings'))||{})};if(!Array.isArray(settings.tagCats))settings.tagCats=[];if(!settings.tagMap||typeof settings.tagMap!=='object')settings.tagMap={};
+ let rv=await kvGet('reviews');data=Array.isArray(rv)?rv:[];groups=(await kvGet('groups'))||[];series=(await kvGet('series'))||[];trash=(await kvGet('trash'))||[];libs=(await kvGet('libs'))||[];
+ let st=(await kvGet('settings'))||{},oldTag=st.hashtag;settings={...DEFAULT_SETTINGS(),...st};delete settings.hashtag;delete settings.nextNo;if(!Array.isArray(settings.tagCats))settings.tagCats=[];if(!settings.tagMap||typeof settings.tagMap!=='object')settings.tagMap={};
  let changed=false;setStatus('正在載入…');
+ if(!libs.length){libs=[{id:uid('L'),name:'我的收藏',hashtag:(oldTag&&oldTag!=='#歐美ai劇#')?oldTag:'',fields:DEF_FIELDS(),nextNo:Math.max(1,st.nextNo||1)}];changed=true}
+ for(let l of libs){if(!l.fields)l.fields=DEF_FIELDS();if(l.hashtag===undefined)l.hashtag='';if(!l.nextNo)l.nextNo=1}
+ let L0=libs[0].id;for(let r of data.concat(trash.map(t=>t.r)))if(!libById(r.libId)){r.libId=L0;changed=true}for(let g of groups.concat(series))if(!libById(g.libId)){g.libId=L0;changed=true}
  for(let r of data){if(await migrateReview(r))changed=true}for(let t of trash){if(await migrateReview(t.r))changed=true}
- let before=JSON.stringify(data.map(r=>r.no)),nx=settings.nextNo;ensureNos();if(before!==JSON.stringify(data.map(r=>r.no))||nx!==settings.nextNo)changed=true;
+ let before=JSON.stringify(data.map(r=>[r.libId,r.no]));ensureNos();if(before!==JSON.stringify(data.map(r=>[r.libId,r.no])))changed=true;
  let cut=Date.now()-30*86400000,nb=trash.length;trash=trash.filter(t=>t.at>cut);if(trash.length!==nb)changed=true;
- if(changed||(await kvGet('schema'))!==4){await kvSetMany({reviews:data,groups,series,trash,settings,schema:4})}
+ if(changed||(await kvGet('schema'))!==5)await kvSetMany({reviews:data,groups,series,trash,libs,settings,schema:5});
  try{if(navigator.storage?.persist)await navigator.storage.persist()}catch(e){}
- $('hashtag').value=settings.hashtag||'';$('signature').value=settings.signature||'';
- renderAll();setStatus('已儲存','ok');
+ curLib=settings.cur||'';normalizeCur();$('sort').value=settings.sort||'upd';refreshPicks();
+ $('signature').value=settings.signature||'';
+ renderLibBtn();renderAll();setStatus('已儲存','ok');
  let de=await kvGet('draftEdit');
  if(de?.form&&de.editId&&data.some(r=>r.id===de.editId)){await migrateReview(de.form);editId=de.editId;fillForm(de.form);setSaveLabel('完成並保存修改')}else await loadNewDraft();
  await cleanupImages();await updateStorageInfo();await updateBackupAlert();await refreshSnapBtn()}catch(e){setStatus('資料庫無法開啟','err');toast('本機資料庫無法開啟。請使用 HTTPS 網址或 localhost，不建議直接用 file:// 開啟。');console.error(e)}}
+const DEF_FIELDS=()=>({pair:true,group:true,series:true});
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('installApp').style.display='inline-block'});$('installApp').onclick=async()=>{if(!installPrompt){toast('請從瀏覽器選單選擇「安裝應用程式」或「加到主畫面」');return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('installApp').style.display='none'};window.addEventListener('appinstalled',()=>toast('已安裝'));
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){let had=!!navigator.serviceWorker.controller,reloading=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!had||reloading)return;reloading=true;if(formEmpty()&&!editId)location.reload();else toast('新版本已就緒，存檔後重新開啟 App 即可')});window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(r=>{swReg=r;r.update()}).catch(()=>{}))}
-function renderAll(){library();stats();refreshSelects();renderGroupAssist();renderSeriesAssist();renderTagUI();renderTrashCount()}
-function renderTrashCount(){$('openTrash').textContent=`最近刪除${trash.length?`（${trash.length}）`:''}`}
-noAuto();updateScore();init();
+function renderAll(){renderLibBtn();library();stats();refreshPicks();renderGroupAssist();renderSeriesAssist();renderTagUI();applyFieldVis();if($('settingsM').classList.contains('show'))renderSettings()}
+/* 啟動：建立各選單、篩選元件 */
+makePicker('libBtn',{plain:true,title:'切換收藏庫',opts:()=>[...libs.map(l=>({value:l.id,label:l.name})),...(settings.allMode!==false?[{value:'all',label:'全部收藏庫'}]:[])],onPick:v=>setCurLib(v)});
+$('libBtn').value=curLib;
+makePicker('formLib',{title:'收藏庫',opts:()=>libs.map(l=>({value:l.id,label:l.name})),onChange:()=>onFormLibChange()});
+makePicker('status',{title:'觀看狀態',opts:()=>STATUSES.map(s=>({value:s,label:s})),value:'已完結',onChange:()=>scheduleDraft()});
+makePicker('group',{title:'演員組合',opts:()=>[{value:'',label:'不指定'},...sortName(libGroups(formLibId())).map(g=>({value:g.id,label:g.name}))],search:true,footer:{label:'＋ 新增組合…',value:'__new'},onPick:async v=>{if(v==='__new'){let id=await newEntity('group',formLibId());if(!id)return;v=id}setPick('group',v);prevGroup=v;if(v&&!$('nth').value&&!nthTouched)$('nth').value=nextNth(v);renderGroupAssist();scheduleDraft()}});
+makePicker('series',{title:'劇本系列',opts:()=>[{value:'',label:'不指定'},...sortName(libSeries(formLibId())).map(g=>({value:g.id,label:g.name}))],search:true,footer:{label:'＋ 新增系列…',value:'__new'},onPick:async v=>{if(v==='__new'){let id=await newEntity('series',formLibId());if(!id)return;v=id}setPick('series',v);prevSeries=v;renderSeriesAssist();scheduleDraft()}});
+makePicker('sort',{title:'排序方式',opts:()=>SORTS.map(([v,l])=>({value:v,label:l})),value:'upd',onChange:v=>{settings.sort=v;kvSetMany({settings}).catch(()=>{});shown=30;library()}});
+wireFilter('l',LF,()=>{shown=30;library()});
+wireFilter('s',SF,()=>stats());
+initCE();noAuto();updateScore();init();
+
 </script></body></html>

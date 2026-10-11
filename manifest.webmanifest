@@ -2,7 +2,7 @@
   "id": "./",
   "name": "AI 劇評室",
   "short_name": "AI 劇評室",
-  "description": "私人 AI 劇評日記，支援本機自動保存與圖片收藏。",
+  "description": "可離線使用的私人劇評日記：分項評分、標籤、收藏庫、統計與圖片輸出，資料只保存在你的裝置。",
   "lang": "zh-Hant",
   "start_url": "./",
   "scope": "./",
@@ -28,5 +28,11 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": [
+    "lifestyle",
+    "productivity",
+    "entertainment"
+  ],
+  "dir": "ltr"
 }
