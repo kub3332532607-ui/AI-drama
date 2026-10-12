@@ -36,7 +36,7 @@ Open the site in a browser and install it like an app; it then works offline.
 
 ## Privacy and backups
 
-Data lives in your browser's IndexedDB on this device only. Switching phones, clearing site data, or uninstalling can erase it, so download a backup regularly from **⚙ Settings → Backup & data**. To move to a new device: export a backup, open the site on the new device, then use *Restore backup*.
+Data lives in your browser's IndexedDB on this device only. Switching phones, clearing site data, or uninstalling can erase it, so download a backup regularly from **Settings → Backup & data** (tap the ✦ icon at the top left). To move to a new device: export a backup, open the site on the new device, then use *Restore backup*.
 
 ## Self-hosting
 
