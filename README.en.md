@@ -34,6 +34,10 @@ Open the site in a browser and install it like an app; it then works offline.
 - **iPhone / iPad (Safari):** Share → *Add to Home Screen*.
 - **Desktop (Chrome / Edge):** the install icon at the right end of the address bar.
 
+## Try it with sample data
+
+Open **Settings → Sample data → Load** to create a separate sample library with fictional reviews that show every feature. It is never mixed into your own data, backups or statistics, and can be removed with one tap.
+
 ## Privacy and backups
 
 Data lives in your browser's IndexedDB on this device only. Switching phones, clearing site data, or uninstalling can erase it, so download a backup regularly from **Settings → Backup & data** (tap the ✦ icon at the top left). To move to a new device: export a backup, open the site on the new device, then use *Restore backup*.
