@@ -1,55 +1,73 @@
-# AI 劇評室 (Drama Review Room)
+# AI 劇評室 (AI Drama Review Room)
 
-**Language: [繁體中文](README.md) | English**
+Click the **Website** link in the **About** section of this page.
 
-An offline-capable, private journal for rating and reviewing TV dramas. Score plot, production and visuals separately, write notes, add tags, keep images, and turn a review into a shareable picture.
-**Everything stays on your own device. Nothing is uploaded, and no account is needed.**
+**Language: [繁體中文](README.md) | [简体中文](README.zh-CN.md) | English**
 
-👉 **Use it online:** click the **Website** link in the **About** section on the right side of this page.
+A simple drama review web app.
 
-> The interface is in Traditional Chinese. The sample content in the screenshots is fictional.
+- **Quick scoring**: score plot, production and visuals separately. Tap a number and you are done; fine-tune by 0.1 when you want to.
+- **Share your thoughts**: turn a review into formatted text or a picture and share it on social media.
+- **Build your own scoring system**: collections and “My Taste” turn the AI dramas you have watched into data, so you can follow how your taste changes over time.
 
-| Write | Library | Taste |
-|:--:|:--:|:--:|
-| <img src="docs/screenshot-write.png" width="250"> | <img src="docs/screenshot-library.png" width="250"> | <img src="docs/screenshot-stats.png" width="250"> |
+**Supports**: dark mode, three languages (Traditional Chinese, Simplified Chinese, English), phones, tablets and desktops.
+
+## Quick start
+
+1. Open **Write**, enter a title, tap the big numbers to score, and add notes if you like.
+2. Tap **Save to library**.
+3. Later, search, filter, read, edit or export from **Library**.
+4. Tap the ✦ icon at the top left to open **Settings**: switch language, manage collections and tags, back up and restore, and check the version.
+
+> Want to look around first? Go to **Settings → Sample data → Load**. It creates a separate sample collection that you can remove with one tap. It never mixes into your data, backups or statistics.
 
 ## Features
 
-- **Three-part scoring** (plot / production / visuals), 0–5 each: tap a big number, then fine-tune in 0.1 steps. Partial scores are fine.
-- **Notes and quotes** with auto-growing fields and automatic draft saving.
-- **Two-level tags** (category → tag). Reviews only store the tag; filtering by a category includes everything under it. Similar-tag hints help avoid duplicates.
-- **Libraries** work like spreadsheet tabs, each with its own numbering, actor groups, script series and export hashtag. With a single library, nothing extra is shown.
-- **Characters, actor groups, "Nth collaboration", script series** are all optional.
-- **Search, seven sort orders, tag filters**, and a reading view for every review.
-- **Taste page**: averages, score distribution (bars + curve), score ladder, monthly activity, per-group progress, and tag comparison.
-- **Export** as text (copy or share) or as a picture with scores, notes, tags and your images, laid out at their original aspect ratios.
-- **Backups** (with images), 30-day trash, and merge-or-replace restore.
-- Dark mode, with layouts tuned for both phones and desktops.
+> This section will later become an illustrated slideshow. For now it is a plain list.
 
-## Install
+- Three-part scores, notes, quotes and tags, with automatic draft saving.
+- Two-level tags: a review only stores tags, and filtering by a category includes every tag under it.
+- Collections work like spreadsheet tabs, each with its own numbering, cast groups, script series and export hashtag.
+- Characters, cast groups, “Nth collaboration” and script series are all optional.
+- Seven sort orders, tag filters and full-text search of your notes.
+- My Taste: averages, score distribution, score ladder, monthly activity, progress per group and series, and tag comparison.
+- Text and picture export (pictures keep each image’s aspect ratio), backups, undo for deletions, and restore.
 
-Open the site in a browser and install it like an app; it then works offline.
+## Install, data and privacy
 
-- **Android (Chrome):** menu → *Install app* / *Add to Home screen*.
-- **iPhone / iPad (Safari):** Share → *Add to Home Screen*.
-- **Desktop (Chrome / Edge):** the install icon at the right end of the address bar.
+Open the site in a browser and install it like an app. It then works offline.
 
-## Try it with sample data
+- **Android (Chrome)**: menu → *Install app* or *Add to Home screen*.
+- **iPhone / iPad (Safari)**: Share → *Add to Home Screen*.
+- **Desktop (Chrome / Edge)**: the install icon at the right end of the address bar.
 
-Open **Settings → Sample data → Load** to create a separate sample library with fictional reviews that show every feature. It is never mixed into your own data, backups or statistics, and can be removed with one tap.
+**Your data stays on your own device.** Reviews and images are stored in the browser’s database (IndexedDB). They are never uploaded, the author cannot see them, and the app does not collect any usage data.
 
-## Privacy and backups
+Because the data lives only on this device, switching phones, clearing browser data or uninstalling the app can erase it. Download a backup regularly from **Settings → Backup & data**. To move to a new device, download a backup on the old one and use **Restore backup** on the new one.
 
-Data lives in your browser's IndexedDB on this device only. Switching phones, clearing site data, or uninstalling can erase it, so download a backup regularly from **Settings → Backup & data** (tap the ✦ icon at the top left). To move to a new device: export a backup, open the site on the new device, then use *Restore backup*.
+This app is provided as is. The author is not responsible for safeguarding your data or for any data loss.
 
-## Self-hosting
+## FAQ
 
-It is a plain static site (a single `index.html`, no build step, no dependencies).
+**The screen did not change after an update.**
+Close the app completely (swipe it away from the app switcher) and open it twice. The version number is at the bottom of Settings, where you can also tap *Check for updates*.
 
-1. **Fork** this repository.
-2. **Settings → Pages** → *Deploy from a branch* → `main` / `(root)` → Save.
-3. Your site URL appears at the top of that page after about a minute.
+**A password, address or credit-card menu pops up when I type.**
+Single-line fields use a component that does not trigger autofill. If your browser still shows the menu, turn off autofill (passwords, payment methods, addresses) in its settings.
 
-## License
+**Does it work offline?**
+Yes. After the first visit and installation it works without a connection.
 
-Released under the [MIT License](LICENSE).
+**How do I change the language?**
+Use **Language** at the top of Settings. The first launch follows your phone’s language.
+
+**How do I erase everything?**
+Use **Erase all data** at the bottom of Settings. This cannot be undone, so back up first.
+
+## License and changelog
+
+Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
+
+- **v6.0.0**: Simplified Chinese and English added; sample data now includes low scores and English character names; new tag picker; the draft hint moved to the top right; sturdier backup, import and error handling.
+- **v5.1.0**: Sample data (a separate collection you can load or remove any time).
+- **v5.0.0**: Collections, two-level tags, script series, permanent numbers, seven sort orders, Settings, tabs and filters on My Taste, equal-height picture layout, dark mode.
