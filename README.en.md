@@ -21,6 +21,7 @@ A simple drama review web app. Free, no sign-up, and your data stays on your dev
 3. Later, search, filter, read, edit or export from **Library**.
 
 > ▸ Want to look around first? Go to **Settings → Sample data → Load**. It creates a separate sample collection that you can remove with one tap, and it never mixes into your data, backups or statistics.
+>
 > ▸ Tap the ✦ icon at the top left to open **Settings**: switch language, manage collections and tags, back up and restore, and check the version.
 
 ## Features
