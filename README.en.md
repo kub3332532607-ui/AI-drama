@@ -1,14 +1,16 @@
 # AI 劇評室 (AI Drama Review Room)
 
-Click the **Website** link in the **About** section of this page.
+**Use it now: [https://kub3332532607-ui.github.io/AI-drama/](https://kub3332532607-ui.github.io/AI-drama/)**
 
 **Language: [繁體中文](README.md) | [简体中文](README.zh-CN.md) | English**
 
-A simple drama review web app.
+A simple drama review web app. Free, no sign-up, and your data stays on your device.
 
-- **Quick scoring**: score plot, production and visuals separately. Tap a number and you are done; fine-tune by 0.1 when you want to.
-- **Share your thoughts**: turn a review into formatted text or a picture and share it on social media.
-- **Build your own scoring system**: collections and “My Taste” turn the AI dramas you have watched into data, so you can follow how your taste changes over time.
+- **Three-part scoring out of 5**: plot, production and visuals. Only the title is required.
+- **Share your thoughts**: turn a review into text or a picture and share it on social media.
+- **Track your data**: charts and analysis that build your own scoring system.
+
+![AI Drama Review Room overview](docs/en/01-overview.png)
 
 **Supports**: dark mode, three languages (Traditional Chinese, Simplified Chinese, English), phones, tablets and desktops.
 
@@ -17,21 +19,25 @@ A simple drama review web app.
 1. Open **Write**, enter a title, tap the big numbers to score, and add notes if you like.
 2. Tap **Save to library**.
 3. Later, search, filter, read, edit or export from **Library**.
-4. Tap the ✦ icon at the top left to open **Settings**: switch language, manage collections and tags, back up and restore, and check the version.
 
-> Want to look around first? Go to **Settings → Sample data → Load**. It creates a separate sample collection that you can remove with one tap. It never mixes into your data, backups or statistics.
+> ▸ Want to look around first? Go to **Settings → Sample data → Load**. It creates a separate sample collection that you can remove with one tap, and it never mixes into your data, backups or statistics.
+> ▸ Tap the ✦ icon at the top left to open **Settings**: switch language, manage collections and tags, back up and restore, and check the version.
 
 ## Features
 
-> This section will later become an illustrated slideshow. For now it is a plain list.
+![Quick scoring](docs/en/02-scoring.png)
 
-- Three-part scores, notes, quotes and tags, with automatic draft saving.
-- Two-level tags: a review only stores tags, and filtering by a category includes every tag under it.
-- Collections work like spreadsheet tabs, each with its own numbering, cast groups, script series and export hashtag.
-- Characters, cast groups, “Nth collaboration” and script series are all optional.
-- Seven sort orders, tag filters and full-text search of your notes.
-- My Taste: averages, score distribution, score ladder, monthly activity, progress per group and series, and tag comparison.
-- Text and picture export (pictures keep each image’s aspect ratio), backups, undo for deletions, and restore.
+![Notes, tags and images](docs/en/03-notes-tags.png)
+
+![Library and search](docs/en/04-library.png)
+
+![Read and share](docs/en/05-export.png)
+
+![Charts](docs/en/06-charts.png)
+
+![Progress](docs/en/07-progress.png)
+
+![Collections and backup](docs/en/08-collections-backup.png)
 
 ## Install, data and privacy
 
@@ -49,20 +55,35 @@ This app is provided as is. The author is not responsible for safeguarding your 
 
 ## FAQ
 
-**The screen did not change after an update.**
+<details>
+<summary>The screen did not change after an update.</summary>
+
 Close the app completely (swipe it away from the app switcher) and open it twice. The version number is at the bottom of Settings, where you can also tap *Check for updates*.
+</details>
 
-**A password, address or credit-card menu pops up when I type.**
+<details>
+<summary>A password, address or credit-card menu pops up when I type.</summary>
+
 Single-line fields use a component that does not trigger autofill. If your browser still shows the menu, turn off autofill (passwords, payment methods, addresses) in its settings.
+</details>
 
-**Does it work offline?**
+<details>
+<summary>Does it work offline?</summary>
+
 Yes. After the first visit and installation it works without a connection.
+</details>
 
-**How do I change the language?**
+<details>
+<summary>How do I change the language?</summary>
+
 Use **Language** at the top of Settings. The first launch follows your phone’s language.
+</details>
 
-**How do I erase everything?**
+<details>
+<summary>How do I erase everything?</summary>
+
 Use **Erase all data** at the bottom of Settings. This cannot be undone, so back up first.
+</details>
 
 ## License and changelog
 
