@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.1.0**: New optional Links field when writing (up to 5, with quick-add name chips) and a per-collection switch for showing links in exports (off by default); choosing “None” for the cast pairing now clears the auto-filled round number; redesigned export picture.
 - **v6.0.0**: Simplified Chinese and English added; sample data now includes low scores and English character names; new tag picker; the draft hint moved to the top right; sturdier backup, import and error handling.
 - **v5.1.0**: Sample data (a separate collection you can load or remove any time).
 - **v5.0.0**: Collections, two-level tags, script series, permanent numbers, seven sort orders, Settings, tabs and filters on My Taste, equal-height picture layout, dark mode.
