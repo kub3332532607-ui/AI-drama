@@ -2,11 +2,11 @@
 
 單檔離線 PWA。主程式只有 `index.html`（約 190 KB，內含 CSS、JS、i18n 字典），另有 `sw.js`、`manifest.webmanifest`、三份 README。
 網站：https://kub3332532607-ui.github.io/AI-drama/　Repo：kub3332532607-ui/AI-drama
-目前版本：v6.5.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
+目前版本：v6.6.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
 
 ## 每次改版必做
 1. `APP_VERSION` 加一。
-2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v12）。
+2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v13）。
 3. 三份 README 的更新紀錄各加一行（繁中、簡中、英文）。
 4. 改完用 `node --check` 檢查 `<script>` 語法，並用 Playwright 跑一次載入與主要流程。
 
@@ -53,6 +53,15 @@
 - 啟動自動備份：`drama_gist` 內 `auto`（預設開，=== false 才關）、`d`（最近一次資料變動時間，`gistSchedule` 寫入）、`at`（最近一次備份「開始」時間）。啟動後若 `!h || !at || d>at` 就 3 秒後靜默 `gistPush(false)`；沒有變動就完全不動作。
 - `cleanupImages` 現在在沒有任何劇評時不執行。
 - `diag.html`：唯讀診斷頁，列出 IndexedDB／localStorage／OPFS／紀錄，可下載原始資料。
+
+## v6.6 雲端同步（取代單向備份）
+- `gistPush` 現在是同步：先 GET gist，若 `history[0].version` ≠ `drama_gist.rv` 就讀 `data.json` 呼叫 `syncMerge`，再上傳；成功後記 `rv` 與 IndexedDB 鍵 `syncBase`（{v:1,h}，上次同步後各項目的雜湊）。
+- `syncMerge` 三方合併（本機／雲端／syncBase）：項目分 R（劇評，含狀態 l／t＝垃圾桶）、L、G、S、C（tagCats）、M（tagMap）、P（只同步 signature、sharedTags）。只有一邊變就採那邊（含刪除）；兩邊都變時劇評取時間較新（垃圾桶用刪除時間），其餘以本機為準；沒有 syncBase 時是聯集。示範資料不參與。雜湊用 `canon`（排序鍵），收藏庫忽略 nextNo，nextNo 取兩邊最大。
+- 撞號：合併後跑 `ensureNos()`（較早建立的保留原號），被改號的劇評 updatedAt 更新並 toast 提示。
+- 第一次同步時，本機沒有劇評且雲端沒有的空收藏庫會丟掉（避免新裝置多一個「我的收藏」）。
+- 本機 0 篇時仍會下載合併，只是不上傳。觸發：開啟 3 秒後、回到前景（距上次 60 秒以上）、資料變動 90 秒去抖、切到背景。設定開關 `auto` 改名「自動同步」。
+- 移除「雲端比本機多 3 篇以上就暫停」的檢查（合併後不需要）；「從雲端還原」維持原本匯入流程。
+- 測試：Playwright 兩個 context 共用模擬的 api.github.com，測過新增、編輯、刪除、永久刪除、撞號、圖片、空裝置首次同步。
 
 ## 之後可考慮（尚未決定）
 - 無。新想法先討論再動作。

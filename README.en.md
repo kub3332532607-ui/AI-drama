@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.6.0**: Cloud backup is now true two-way sync: when the app opens, comes back, or data changes, it first downloads changes from your other devices, merges them, then uploads (additions, edits and deletions all sync; if both sides edited the same review, the newer one wins). If two devices add reviews at the same time and numbers collide, the earlier one keeps its number and the later one gets the next number, with a notice.
 - **v6.5.0**: Data protection now offers "Back up to the cloud when the app opens" (toggle in Settings, on by default, no prompt); it only uploads when something changed since the last backup.
 - **v6.4.0**: New "Data protection": if the database turns up empty at startup but the last record had data, writes are paused and a restore menu is offered (orphan images are no longer purged automatically); a local copy is kept outside the database after every save (OPFS, two rotating files); optional private Gist cloud backup (collapsed section in Settings, token stays on the device); and a startup/database log to help find the cause if something goes wrong.
 - **v6.3.0**: New "Want to watch" status (excluded from taste-page stats and without the rewatch button); "Rewatched today" can now be tapped again to undo, and rewatch dates can be removed one by one.
