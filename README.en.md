@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.6.2**: Fixed the image signature in Settings not being saved (it disappeared after reopening Settings).
 - **v6.6.1**: Updated the data statement in About and the README to explain that, if you turn on cloud backup, your data is stored in a non-public gist under your own GitHub account.
 - **v6.6.0**: Cloud backup is now true two-way sync: when the app opens, comes back, or data changes, it first downloads changes from your other devices, merges them, then uploads (additions, edits and deletions all sync; if both sides edited the same review, the newer one wins). If two devices add reviews at the same time and numbers collide, the earlier one keeps its number and the later one gets the next number, with a notice.
 - **v6.5.0**: Data protection now offers "Back up to the cloud when the app opens" (toggle in Settings, on by default, no prompt); it only uploads when something changed since the last backup.

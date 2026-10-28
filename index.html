@@ -484,7 +484,7 @@ function i18nStatic(){document.documentElement.lang=LANG;if(LANG==='zh-Hant')ret
 i18nStatic();
 
 window.__appReady=true;
-const APP_VERSION='6.6.1';
+const APP_VERSION='6.6.2';
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const LINK_MAX=5;
 function normUrl(u){u=String(u||'').trim();if(!u)return'';if(!/^[a-z][a-z0-9+.-]*:\/\//i.test(u))u='https://'+u;try{let x=new URL(u);return(x.protocol==='http:'||x.protocol==='https:')?x.href:''}catch(e){return''}}
@@ -898,7 +898,9 @@ $('settingsM').onclick=async e=>{if(e.target===$('settingsM')||e.target.closest(
  if(b.id==='swAll'){settings.allMode=settings.allMode===false;normalizeCur();await persist();renderLibBtn();renderSettings();return}
  if(b.dataset.go){let g=b.dataset.go;if(g==='trash'){renderTrash();showModal('trashM')}else openMgr(g);return}
  if(b.id==='clearAll'){if(!await ask(_t("這會永久刪除這台裝置上「所有」劇評、圖片與設定，無法復原。建議先下載備份。"),_t("清除全部資料"),_t("繼續"),true))return;if(!await ask(_t("最後確認：真的要清除全部資料嗎？"),_t("清除全部資料"),_t("全部清除"),true))return;try{await kvClear();try{localStorage.removeItem(GUARD_KEY)}catch(e){}await mirrorClear();blog('clear-all','使用者清除全部資料');location.reload()}catch(err){toast(_t("清除失敗"))}}};
-$('signature').addEventListener('change',async()=>{settings.signature=$('signature').value.trim();await persist();toast(_t("已更新"))});
+let sigT;const saveSig=async(say)=>{clearTimeout(sigT);let v=$('signature').value.trim();if(v===(settings.signature||''))return;settings.signature=v;await persist();if(say)toast(_t("已更新"))};
+$('signature').addEventListener('input',()=>{clearTimeout(sigT);sigT=setTimeout(()=>saveSig(false),600)});
+$('signature').addEventListener('blur',()=>saveSig(true));
 function setShared(on){if(on===shared())return;if(!on){let map={};for(let l of libs){let idm={};for(let c of settings.tagCats.filter(c=>!c.libId)){let nc={id:uid('c'),name:c.name,libId:l.id};settings.tagCats.push(nc);idm[c.id]=nc.id}for(let [k,v] of Object.entries(settings.tagMap)){if(k.includes('|')||!idm[v])continue;map[l.id+'|'+k]=idm[v]}}
   settings.tagCats=settings.tagCats.filter(c=>c.libId);settings.tagMap=map;settings.sharedTags=false}
  else{let cats=[],map={};const getCat=name=>{let c=cats.find(x=>norm(x.name)===norm(name));if(!c){c={id:uid('c'),name};cats.push(c)}return c.id};for(let [k,v] of Object.entries(settings.tagMap)){let c=catById(v);if(!c)continue;let n=k.includes('|')?k.split('|').slice(1).join('|'):k;if(!map[n])map[n]=getCat(c.name)}settings.tagCats=cats;settings.tagMap=map;settings.sharedTags=true}
