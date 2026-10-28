@@ -2,11 +2,11 @@
 
 單檔離線 PWA。主程式只有 `index.html`（約 190 KB，內含 CSS、JS、i18n 字典），另有 `sw.js`、`manifest.webmanifest`、三份 README。
 網站：https://kub3332532607-ui.github.io/AI-drama/　Repo：kub3332532607-ui/AI-drama
-目前版本：v6.3.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
+目前版本：v6.4.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
 
 ## 每次改版必做
 1. `APP_VERSION` 加一。
-2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v10）。
+2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v11）。
 3. 三份 README 的更新紀錄各加一行（繁中、簡中、英文）。
 4. 改完用 `node --check` 檢查 `<script>` 語法，並用 Playwright 跑一次載入與主要流程。
 
@@ -42,6 +42,16 @@
 ## v6.3 已完成
 1. 「今天回看了」可再按取消；回看日期可逐筆移除（×），不動 hist。
 2. 新增狀態「想看」(wish)：不進口味頁統計（統計基準排除 wish、口味頁狀態篩選不列），詳情頁不顯示回看區塊。示範資料未加想看範例。
+
+## v6.4 資料保護（因 2026-10-28 手機 IndexedDB 被重設而加）
+- 事故：Android Chrome 上 `dramaRoomPWA` 變成全新空資料庫，localStorage 與同網域的國考刷題本都正常；原因未確定（疑為 Chrome 重設 IndexedDB）。
+- 同網域（kub3332532607-ui.github.io）所有 repo 共用同一份 IndexedDB／localStorage／Cache Storage；exam-drill 的「更新」會刪全網域快取並取消全部 service worker。**不要把保護用的副本放在 Cache Storage。**
+- localStorage 鍵（與資料庫分開，專門用來偵測與查原因）：`drama_guard`（上次的劇評筆數）、`drama_log`（黑盒子紀錄，最多 150 筆）、`drama_mirror`（本機副本狀態）、`drama_gist`（權杖、gist id、檔案雜湊，不進備份檔）。
+- 啟動時若 guard.n>0 但資料庫非示範劇評＋垃圾桶為 0：設 `window.__lock=true`，kvSetMany／kvDel 變成空操作、persist／save 擋下並顯示提示列，不跑 `cleanupImages`，並跳出還原選單（重新載入／本機副本／雲端／備份檔／從空白開始）。解除用 `unlockWrites()`，匯入完成後 `relockIfEmpty()`。
+- 本機副本：OPFS `drama-mirror/`，`main-a.json`／`main-b.json` 輪替（寫較舊的那個），圖片 `images/i-<id>`；格式同備份檔（含 trash）；沒資料時不更新副本。
+- Gist：私人 gist，描述 `G_DESC`；`data.json`＋`images-001.json…`（每塊約 600 KB）＋`meta.json`；只上傳雜湊有變的檔；資料變動後 90 秒去抖自動上傳；本機為 0 篇時拒絕上傳；首次對既有雲端備份上傳時，若雲端筆數比本機多 3 篇以上會詢問。還原走原本「還原備份」流程（組成 File 後呼叫 `$('file').onchange`）。
+- `cleanupImages` 現在在沒有任何劇評時不執行。
+- `diag.html`：唯讀診斷頁，列出 IndexedDB／localStorage／OPFS／紀錄，可下載原始資料。
 
 ## 之後可考慮（尚未決定）
 - 無。新想法先討論再動作。

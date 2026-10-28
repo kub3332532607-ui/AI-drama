@@ -30,12 +30,14 @@ async function main(){
  log('時間：'+new Date().toLocaleString()+'\n網址：'+location.origin+location.pathname);
  try{const e=await navigator.storage.estimate();log('\n[網站儲存總量] 已用 '+fb(e.usage||0)+'／上限 '+fb(e.quota||0));if(navigator.storage.persisted)log('持久儲存：'+(await navigator.storage.persisted()?'是':'否'))}catch(e){log('\n[網站儲存總量] 無法取得')}
  try{const ks=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ks.push(k+'（'+fb((localStorage.getItem(k)||'').length)+'）')}log('\n[localStorage] '+(ks.length?ks.join('、'):'無'))}catch(e){log('\n[localStorage] 無法讀取')}
+ try{const g=localStorage.getItem('drama_guard');if(g)log('[哨兵 drama_guard] '+g);const m=localStorage.getItem('drama_mirror');if(m)log('[副本狀態 drama_mirror] '+m);const lg=JSON.parse(localStorage.getItem('drama_log')||'[]');if(lg.length){const p=n=>String(n).padStart(2,'0');log('\n[黑盒子紀錄 drama_log] 共 '+lg.length+' 筆，最近 40 筆：');lg.slice(-40).forEach(([t,c,i])=>{const d=new Date(t);log('  '+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+c+(i?' '+i:''))})}}catch(e){log('[紀錄] 無法讀取')}
+ try{if(navigator.storage&&navigator.storage.getDirectory){const root=await navigator.storage.getDirectory();let md=null;try{md=await root.getDirectoryHandle('drama-mirror')}catch(e){}if(!md)log('\n[本機副本 OPFS] 沒有');else{log('\n[本機副本 OPFS]');for await(const [nm,h] of md.entries()){if(h.kind==='file'){const f=await h.getFile();log('  '+nm+'：'+fb(f.size)+'，'+new Date(f.lastModified).toLocaleString())}else{let c=0;for await(const _ of h.entries())c++;log('  '+nm+'/：'+c+' 個檔案')}}}}}catch(e){log('[本機副本 OPFS] 無法讀取')}
  try{log('\n[快取] '+((await caches.keys()).join('、')||'無'))}catch(e){}
  try{const rs=await navigator.serviceWorker.getRegistrations();log('[Service Worker] '+(rs.map(r=>r.scope).join('、')||'無'))}catch(e){}
  if(!indexedDB.databases){log('\n此瀏覽器無法列出資料庫。');return}
  const dbs=await indexedDB.databases();
  log('\n[IndexedDB 資料庫] '+(dbs.length?dbs.map(d=>d.name+' v'+d.version).join('、'):'沒有任何資料庫'));
- dump={tool:'drama-diag',at:new Date().toISOString(),origin:location.origin,dbs:[]};
+ dump={tool:'drama-diag',at:new Date().toISOString(),origin:location.origin,log:(()=>{try{return JSON.parse(localStorage.getItem('drama_log')||'[]')}catch(e){return[]}})(),dbs:[]};
  for(const d of dbs){
   log('\n=== '+d.name+' ===');
   let db;try{db=await openRO(d.name)}catch(e){log('無法開啟：'+(e&&e.message));continue}
