@@ -2,11 +2,11 @@
 
 單檔離線 PWA。主程式只有 `index.html`（約 190 KB，內含 CSS、JS、i18n 字典），另有 `sw.js`、`manifest.webmanifest`、三份 README。
 網站：https://kub3332532607-ui.github.io/AI-drama/　Repo：kub3332532607-ui/AI-drama
-目前版本：v6.6.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
+目前版本：v6.6.1。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
 
 ## 每次改版必做
 1. `APP_VERSION` 加一。
-2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v13）。
+2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v14）。
 3. 三份 README 的更新紀錄各加一行（繁中、簡中、英文）。
 4. 改完用 `node --check` 檢查 `<script>` 語法，並用 Playwright 跑一次載入與主要流程。
 
