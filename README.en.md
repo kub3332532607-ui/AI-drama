@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.3.0**: New "Want to watch" status (excluded from taste-page stats and without the rewatch button); "Rewatched today" can now be tapped again to undo, and rewatch dates can be removed one by one.
 - **v6.2.0**: Export picture redesigned in a magazine score style (big total score, thin color rule, score bars removed); the taste page now opens with a summary line and labels each chart's basis, and Monthly Watching becomes a three-tone stack by watch status; detail page gets “Rewatched today” and a score-change history; the tag quick menu now shows your 3 most recent tags, every category and an “Uncategorized” button; new collapsible “Also known as” aliases (searchable, shown in detail, optional in exports, checked for duplicates); the collection summary shows the next number.
 - **v6.1.0**: New optional Links field when writing (up to 5, with quick-add name chips) and a per-collection switch for showing links in exports (off by default); choosing “None” for the cast pairing now clears the auto-filled round number; redesigned export picture.
 - **v6.0.0**: Simplified Chinese and English added; sample data now includes low scores and English character names; new tag picker; the draft hint moved to the top right; sturdier backup, import and error handling.

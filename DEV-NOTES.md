@@ -2,17 +2,17 @@
 
 單檔離線 PWA。主程式只有 `index.html`（約 190 KB，內含 CSS、JS、i18n 字典），另有 `sw.js`、`manifest.webmanifest`、三份 README。
 網站：https://kub3332532607-ui.github.io/AI-drama/　Repo：kub3332532607-ui/AI-drama
-目前版本：v6.2.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
+目前版本：v6.3.0。**原始碼模組已遺失，只能直接修改編譯後的 index.html**（用 Grep 定位後局部修改，不要整份讀）。
 
 ## 每次改版必做
 1. `APP_VERSION` 加一。
-2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v9）。
+2. `sw.js` 的 `CACHE` 名稱加一（現為 shell-v10）。
 3. 三份 README 的更新紀錄各加一行（繁中、簡中、英文）。
 4. 改完用 `node --check` 檢查 `<script>` 語法，並用 Playwright 跑一次載入與主要流程。
 
 ## 資料與結構
 - IndexedDB：資料庫 `dramaRoomPWA`，store `kv`。鍵：reviews、groups、series、libs、trash、settings、draft、draftEdit、snapshot、schema（現為 7）、lastBackup、demoRefresh、`img:<id>`。
-- 劇評欄位：id、libId、no、title、left/right、groupId、nth、seriesId、version、plotScore/productionScore/modelScore、plot/production/model/quotes、tags[]、images[]、cover、status（done／ongoing／dropped）、date、createdAt、updatedAt、links[{name,url}]、aliases[]（又名）、rewatch[]（回看日期）、hist[{d,o:[劇情,製作,建模],n:[…]}]（分數修改歷史，同日多次修改合併為一筆）。
+- 劇評欄位：id、libId、no、title、left/right、groupId、nth、seriesId、version、plotScore/productionScore/modelScore、plot/production/model/quotes、tags[]、images[]、cover、status（done／ongoing／dropped／wish）、date、createdAt、updatedAt、links[{name,url}]、aliases[]（又名）、rewatch[]（回看日期）、hist[{d,o:[劇情,製作,建模],n:[…]}]（分數修改歷史，同日多次修改合併為一筆）。
 - 收藏庫 `libs`：{id,name,hashtag,fields:{pair,group,series},nextNo,demo?,showLinks}。示範資料放在獨立的 demo 收藏庫，不進統計、備份與「全部」模式。
 - 編號是永久的，刪除後不補號（已決定維持，見下）。
 - 新增欄位時要同步：form()、fillForm、formEmpty、儲存驗證、搜尋、詳情頁、文字／圖片輸出、CSV、遷移（migration）、sanitizeReview、備份匯入、示範資料。
@@ -38,6 +38,10 @@
 5. 標籤快速選單（只用在寫劇評頁的 fStrip，由 `stripQuick` 產生）：最近 3 個＋有小標籤的大標籤（依底下標籤總使用次數）＋「未分類（n）」。收藏頁與口味頁的篩選列仍用舊的 `stripHTML`。
 6. 又名：寫劇評劇名下方收起的「＋ 又名」（最多 10 個）；搜尋、列表命中顯示、詳情小字、輸出（預設不顯示，輸出頁勾選才加）、重複劇名檢查都會比對又名。
 7. 輸出圖片改為 C 雜誌評分風（大字總分、左側色線、拿掉分數長條）。B 社群貼文風樣圖未採用。
+
+## v6.3 已完成
+1. 「今天回看了」可再按取消；回看日期可逐筆移除（×），不動 hist。
+2. 新增狀態「想看」(wish)：不進口味頁統計（統計基準排除 wish、口味頁狀態篩選不列），詳情頁不顯示回看區塊。示範資料未加想看範例。
 
 ## 之後可考慮（尚未決定）
 - 無。新想法先討論再動作。
