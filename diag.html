@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>劇評室資料診斷</title>
+<style>
+body{font:15px/1.6 system-ui,-apple-system,"Noto Sans TC",sans-serif;margin:0;padding:16px;background:#faf6f0;color:#2b2622}
+h1{font-size:18px;margin:0 0 4px}h2{font-size:15px;margin:18px 0 6px}
+.tiny{font-size:12px;color:#7a6f64}
+pre{background:#fff;border:1px solid #e3d9cc;border-radius:8px;padding:10px;white-space:pre-wrap;word-break:break-all;font-size:12.5px}
+button{font:inherit;padding:10px 14px;border-radius:10px;border:1px solid #8a4b3a;background:#8a4b3a;color:#fff;margin:6px 8px 0 0}
+button:disabled{opacity:.5}
+</style></head><body>
+<h1>劇評室資料診斷</h1>
+<p class="tiny">唯讀：只讀取這個網站的本機資料，不會寫入、修改或刪除任何東西。</p>
+<pre id="out">檢查中…</pre>
+<button id="dl" disabled>下載原始資料（JSON）</button>
+<p class="tiny" id="msg"></p>
+<script>
+(function(){
+const out=document.getElementById('out'),dl=document.getElementById('dl'),msg=document.getElementById('msg');
+const L=[];const log=s=>{L.push(s);out.textContent=L.join('\n')};
+const fb=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
+const size=v=>{try{if(v==null)return 0;if(typeof v==='string')return v.length;if(v instanceof Blob)return v.size;return JSON.stringify(v).length}catch(e){return 0}};
+let dump=null;
+// 唯讀開啟：若資料庫不存在就中止升級，避免建立空資料庫
+function openRO(name){return new Promise((res,rej)=>{let created=false;const r=indexedDB.open(name);r.onupgradeneeded=()=>{created=true;try{r.transaction.abort()}catch(e){}};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(created?new Error('資料庫不存在'):r.error);r.onblocked=()=>rej(new Error('被封鎖'))})}
+function getAll(db,store){return new Promise((res,rej)=>{const out=[];const tx=db.transaction(store,'readonly');const c=tx.objectStore(store).openCursor();c.onsuccess=()=>{const cur=c.result;if(cur){out.push({key:cur.key,value:cur.value});cur.continue()}else res(out)};c.onerror=()=>rej(c.error)})}
+async function main(){
+ log('時間：'+new Date().toLocaleString()+'\n網址：'+location.origin+location.pathname);
+ try{const e=await navigator.storage.estimate();log('\n[網站儲存總量] 已用 '+fb(e.usage||0)+'／上限 '+fb(e.quota||0));if(navigator.storage.persisted)log('持久儲存：'+(await navigator.storage.persisted()?'是':'否'))}catch(e){log('\n[網站儲存總量] 無法取得')}
+ try{const ks=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ks.push(k+'（'+fb((localStorage.getItem(k)||'').length)+'）')}log('\n[localStorage] '+(ks.length?ks.join('、'):'無'))}catch(e){log('\n[localStorage] 無法讀取')}
+ try{log('\n[快取] '+((await caches.keys()).join('、')||'無'))}catch(e){}
+ try{const rs=await navigator.serviceWorker.getRegistrations();log('[Service Worker] '+(rs.map(r=>r.scope).join('、')||'無'))}catch(e){}
+ if(!indexedDB.databases){log('\n此瀏覽器無法列出資料庫。');return}
+ const dbs=await indexedDB.databases();
+ log('\n[IndexedDB 資料庫] '+(dbs.length?dbs.map(d=>d.name+' v'+d.version).join('、'):'沒有任何資料庫'));
+ dump={tool:'drama-diag',at:new Date().toISOString(),origin:location.origin,dbs:[]};
+ for(const d of dbs){
+  log('\n=== '+d.name+' ===');
+  let db;try{db=await openRO(d.name)}catch(e){log('無法開啟：'+(e&&e.message));continue}
+  const stores=[...db.objectStoreNames];log('物件庫：'+(stores.join('、')||'無'));
+  const entry={name:d.name,version:d.version,stores:{}};
+  for(const s of stores){
+   let rows;try{rows=await getAll(db,s)}catch(e){log(s+'：讀取失敗 '+(e&&e.message));continue}
+   entry.stores[s]=rows.map(r=>({key:r.key,value:r.value}));
+   log('['+s+'] 共 '+rows.length+' 筆');
+   let imgN=0,imgSz=0;
+   for(const r of rows){
+    const k=String(r.key&&r.key.key!==undefined?r.key:r.key),v=(r.value&&typeof r.value==='object'&&'value' in r.value)?r.value.value:r.value;
+    if(k.startsWith('img:')){imgN++;imgSz+=size(v);continue}
+    let desc=Array.isArray(v)?'陣列 '+v.length+' 項':v&&typeof v==='object'?'物件，欄位 '+Object.keys(v).length+' 個':typeof v;
+    if(k==='snapshot'&&v&&typeof v==='object')desc+='，時間 '+(v.at?new Date(v.at).toLocaleString():'?')+'，劇評 '+(Array.isArray(v.reviews)?v.reviews.length:'?')+' 筆';
+    if(k==='lastBackup'&&typeof v==='number')desc='上次備份 '+new Date(v).toLocaleString();
+    if(k==='schema')desc='schema = '+JSON.stringify(v);
+    log('  '+k+'：'+desc+'（'+fb(size(v))+'）');
+   }
+   if(imgN)log('  圖片 img:*：'+imgN+' 張，約 '+fb(imgSz));
+  }
+  db.close();dump.dbs.push(entry);
+ }
+ dl.disabled=!dump.dbs.length;
+ log('\n完成。把上面的文字截圖或複製給 Claude 即可。');
+}
+main().catch(e=>log('\n發生錯誤：'+(e&&e.message||e)));
+dl.onclick=async()=>{try{
+ msg.textContent='整理檔案中…';
+ const blob=new Blob([JSON.stringify(dump)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='drama-raw-dump-'+new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+ document.body.appendChild(a);a.click();a.remove();msg.textContent='已產生下載檔（'+fb(blob.size)+'）。';
+}catch(e){msg.textContent='下載失敗：'+(e&&e.message||e)}};
+})();
+</script></body></html>
