@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.6.4**: The monthly bars in the Taste page now all have the same length and show only the color split between finished, ongoing and dropped, so bar length no longer varies with how many shows were watched that month and the gray track can't be mistaken for a fourth status.
 - **v6.6.3**: The review image now uses a Polaroid movie-ticket layout (photos shown uncropped in frames, a round score stamp, a tear line), and the export page lets you pick which saved images to include.
 - **v6.6.2**: Fixed the image signature in Settings not being saved (it disappeared after reopening Settings).
 - **v6.6.1**: Updated the data statement in About and the README to explain that, if you turn on cloud backup, your data is stored in a non-public gist under your own GitHub account.

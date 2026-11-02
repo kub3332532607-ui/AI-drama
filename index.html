@@ -486,7 +486,7 @@ function i18nStatic(){document.documentElement.lang=LANG;if(LANG==='zh-Hant')ret
 i18nStatic();
 
 window.__appReady=true;
-const APP_VERSION='6.6.3';
+const APP_VERSION='6.6.4';
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const LINK_MAX=5;
 function normUrl(u){u=String(u||'').trim();if(!u)return'';if(!/^[a-z][a-z0-9+.-]*:\/\//i.test(u))u='https://'+u;try{let x=new URL(u);return(x.protocol==='http:'||x.protocol==='https:')?x.href:''}catch(e){return''}}
@@ -942,9 +942,9 @@ function ladderPanel(sd){let m=ladderMetric,rs=sd.filter(r=>mval(r,m)!=null);let
  let list=[...tiers.entries()].sort((a,b)=>b[0]-a[0]),max=m==='total'?15:5,vis=ladderAll?list:list.slice(0,3);
  let body=chipsRow('data-lmetric',m)+(list.length?vis.map(([v,arr],i)=>`<details class="tier" ${i===0&&arr.length<=8?'open':''}><summary><b>${v===max?_t("滿分"):_t("{0} 分",[fmt(v)])}</b><span>${_t("{0} 部",[arr.length])}</span></summary><div class="chiprow">${arr.sort((a,b)=>updKey(b)-updKey(a)).map(r=>`<button type="button" class="tchip" data-open="${esc(r.id)}">${esc(r.title)}</button>`).join('')}</div></details>`).join('')+(list.length>3?`<button type="button" class="btn" style="width:100%;margin-top:8px" data-ladder-more>${ladderAll?_t("只看前 3 階"):_t("顯示更多階（共 {0} 階）",[list.length])}</button>`:''):lock(_t("還沒有資料"),_t("有評分的劇會依分數由高到低排在這裡，同分的最近評的在前。"),0,0));
  return panel(_t("分數階梯榜"),basisTxt(m,rs.length),body)}
-function monthPanel(sd){let mm=new Map();sd.forEach(r=>{let k=monthOf(r);if(!k)return;let o=mm.get(k)||{n:0,s:[],st:{done:0,ongoing:0,dropped:0}};o.n++;o.st[r.status==='ongoing'||r.status==='dropped'?r.status:'done']++;if(isFull(r))o.s.push(total(r));mm.set(k,o)});let ml=[...mm.entries()].sort((a,b)=>b[0].localeCompare(a[0])).slice(0,12),mx=Math.max(1,...ml.map(x=>x[1].n));
+function monthPanel(sd){let mm=new Map();sd.forEach(r=>{let k=monthOf(r);if(!k)return;let o=mm.get(k)||{n:0,s:[],st:{done:0,ongoing:0,dropped:0}};o.n++;o.st[r.status==='ongoing'||r.status==='dropped'?r.status:'done']++;if(isFull(r))o.s.push(total(r));mm.set(k,o)});let ml=[...mm.entries()].sort((a,b)=>b[0].localeCompare(a[0])).slice(0,12);
  const row=([k,o])=>{let uf=o.st.ongoing+o.st.dropped,lab=_t("{0} 部",[o.n])+(uf?' · '+_t("未看完 {0}%",[Math.round(uf/o.n*100)]):'')+(o.s.length?' · '+fmt(avgOf(o.s)):'');
-  return `<div class="bl" data-month="${k}" style="cursor:pointer"><span>${esc(k)}</span><div class="bar"><div class="stk" style="width:${Math.max(2,o.n/mx*100)}%">${['done','ongoing','dropped'].map((x,i)=>o.st[x]?`<i class="s${i+1}" style="flex:${o.st[x]}"></i>`:'').join('')}</div></div><b>${lab}</b></div>`};
+  return `<div class="bl" data-month="${k}" style="cursor:pointer"><span>${esc(k)}</span><div class="bar"><div class="stk">${['done','ongoing','dropped'].map((x,i)=>o.st[x]?`<i class="s${i+1}" style="flex:${o.st[x]}"></i>`:'').join('')}</div></div><b>${lab}</b></div>`};
  const legend=`<div class="tiny stkleg">${['done','ongoing','dropped'].map((x,i)=>`<span><i class="s${i+1}"></i>${statusLabel(x)}</span>`).join('')}</div>`;
  return panel(_t("每月追劇"),_t("全部 {0} 部｜平均為完整評分",[sd.length]),ml.length?legend+ml.map(row).join(''):lock(_t("還沒有資料"),_t("新增劇評後，這裡會依月份整理追劇數量與平均分。"),0,0))}
 function stats(){renderFilter('s',SF);
