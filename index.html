@@ -486,7 +486,7 @@ function i18nStatic(){document.documentElement.lang=LANG;if(LANG==='zh-Hant')ret
 i18nStatic();
 
 window.__appReady=true;
-const APP_VERSION='6.6.4';
+const APP_VERSION='6.6.5';
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const LINK_MAX=5;
 function normUrl(u){u=String(u||'').trim();if(!u)return'';if(!/^[a-z][a-z0-9+.-]*:\/\//i.test(u))u='https://'+u;try{let x=new URL(u);return(x.protocol==='http:'||x.protocol==='https:')?x.href:''}catch(e){return''}}
@@ -1101,7 +1101,7 @@ async function recoverDialog(){if(recovering)return;recovering=true;try{
  if(mi)btns.push({key:'mirror',label:_t("從本機副本還原（{0} 篇）",[mi.n])});
  if(hasG)btns.push({key:'cloud',label:_t("從雲端還原")});
  btns.push({key:'file',label:_t("還原備份檔")},{key:'blank',label:_t("從空白開始"),danger:true},{key:'later',label:_t("稍後再說")});
- let r=await dialog({title:_t("找不到你的資料"),msg:_t("資料庫是空的，但上次記錄有 {0} 篇劇評，可能是瀏覽器重設了儲存空間，或這次讀取失敗。為了保護資料，目前不會儲存任何變更。建議先重新載入再試一次，仍然是空的再選擇還原來源。",[gd?gd.n:0]),buttons:btns});
+ let r=await dialog({title:_t("找不到你的資料"),msg:_t("資料庫是空的，但上次記錄有 {0} 篇劇評，可能是瀏覽器重設了儲存空間，或這次讀取失敗。為了保護資料，目前不會儲存任何變更。建議先重新載入再試一次，仍然是空的再選擇還原來源。",[gd?gd.n:(window.__mirN||0)]),buttons:btns});
  if(r.key==='reload'){blog('recover','reload');location.reload();return}
  if(r.key==='mirror'){await restoreFromMirror();return}
  if(r.key==='cloud'){await gistPull();return}
@@ -1133,13 +1133,18 @@ async function mirrorRead(){if(!mirOK())return null;try{let dir=await mirDir(),b
 async function mirrorInfo(){let m=await mirrorRead();return m?{n:m.obj.reviews.length,at:m.at}:null}
 async function mirrorImages(obj){let out={};try{let dir=await mirDir(),idir=await dir.getDirectoryHandle('images');for(let id of new Set((obj.reviews||[]).flatMap(r=>(r.images||[]).map(i=>i.id)))){let t=await mirText(idir,'i-'+String(id).replace(/[^\w-]/g,'_'));if(t!=null)out[id]=t}}catch(e){}return out}
 async function mirrorClear(){try{if(navigator.storage&&navigator.storage.getDirectory){let root=await navigator.storage.getDirectory();await root.removeEntry('drama-mirror',{recursive:true})}}catch(e){}try{localStorage.removeItem(MIR_KEY)}catch(e){}}
-async function restoreFromMirror(){let m=await mirrorRead();if(!m){toast(_t("找不到本機副本"));return}let obj={...m.obj,images:await mirrorImages(m.obj)},was=window.__lock;unlockWrites('mirror');let f=new File([JSON.stringify(obj)],'mirror-backup.json',{type:'application/json'});await $('file').onchange({target:{files:[f],value:''}});blog('mirror-restore',{n:m.obj.reviews.length});relockIfEmpty(was)}
+async function restoreFromMirror(){let m=await mirrorRead();if(!m){toast(_t("找不到本機副本"));return}await cfgRestore();let obj={...m.obj,images:await mirrorImages(m.obj)},was=window.__lock;unlockWrites('mirror');let f=new File([JSON.stringify(obj)],'mirror-backup.json',{type:'application/json'});await $('file').onchange({target:{files:[f],value:''}});blog('mirror-restore',{n:m.obj.reviews.length});relockIfEmpty(was)}
 
 /* ---------- 私人 Gist 雲端備份（權杖只存在這台裝置的 localStorage，不進備份檔） ---------- */
 const G_KEY='drama_gist',G_DESC='AI 劇評室雲端備份（自動產生，請勿手動修改）',GAPI='https://api.github.com';
 let gBusy=false,gTimer=0,gDirty=false;
 function gistCfg(){try{let c=JSON.parse(localStorage.getItem(G_KEY)||'{}');return c&&typeof c==='object'?c:{}}catch(e){return{}}}
-function gistSave(c){try{localStorage.setItem(G_KEY,JSON.stringify(c))}catch(e){}}
+function gistSave(c){try{localStorage.setItem(G_KEY,JSON.stringify(c))}catch(e){}cfgMirrorWrite(c)}
+let _cfgSig='';
+async function cfgMirrorWrite(c){try{if(!mirOK())return;if(!c||!c.token){if(_cfgSig==='none')return;_cfgSig='none';try{let d=await (await navigator.storage.getDirectory()).getDirectoryHandle('drama-mirror');await d.removeEntry('cfg.json')}catch(e){}return}
+ let sig=JSON.stringify({token:c.token,id:c.id||'',auto:c.auto});if(sig===_cfgSig)return;_cfgSig=sig;await mirWrite(await mirDir(),'cfg.json',sig)}catch(e){}}
+async function cfgMirrorRead(){try{if(!mirOK())return null;let d=await (await navigator.storage.getDirectory()).getDirectoryHandle('drama-mirror'),t=await mirText(d,'cfg.json'),o=t&&JSON.parse(t);return o&&o.token?o:null}catch(e){return null}}
+async function cfgRestore(){if(gistCfg().token)return false;let c=await cfgMirrorRead();if(!c)return false;let o={token:c.token};if(c.id)o.id=c.id;if(c.auto!==undefined)o.auto=c.auto;gistSave(o);blog('gist','從本機副本帶回權杖');return true}
 function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(36)+'.'+s.length.toString(36)}
 function gistErr(e){let s=e&&e.status;return s===401?_t("GitHub 權杖無效或已過期"):s===403||s===404?_t("權杖沒有 gist 權限，請用 classic 權杖並勾選 gist"):s===-2?_t("連不上網路，稍後再試"):s===0?_t("尚未設定雲端備份"):s===-3?_t("雲端備份內容不完整"):_t("雲端備份失敗（{0}）",[s||(e&&e.message)||'?'])}
 async function gapi(path,opt={}){let c=gistCfg();if(!c.token){let e=new Error('no-token');e.status=0;throw e}let res;try{res=await fetch(GAPI+path,{...opt,headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json','Content-Type':'application/json'}})}catch(e){let x=new Error('network');x.status=-2;throw x}if(!res.ok){let x=new Error('http '+res.status);x.status=res.status;throw x}return res.status===204?null:res.json()}
@@ -1354,8 +1359,9 @@ $('checkUpdate').onclick=async e=>{e.preventDefault();try{if(!swReg)throw 0;awai
 async function init(){try{await openDB();
  let rv=await kvGet('reviews');data=Array.isArray(rv)?rv:[];groups=(await kvGet('groups'))||[];series=(await kvGet('series'))||[];trash=(await kvGet('trash'))||[];libs=(await kvGet('libs'))||[];
  let st=(await kvGet('settings'))||{},oldTag=st.hashtag;settings={...DEFAULT_SETTINGS(),...st};delete settings.hashtag;delete settings.nextNo;if(!Array.isArray(settings.tagCats))settings.tagCats=[];if(!settings.tagMap||typeof settings.tagMap!=='object')settings.tagMap={};if(!Array.isArray(settings.demoTagKeys))settings.demoTagKeys=[];
- {let gd=readGuard(),rn=data.filter(r=>!isDemoR(r)).length+trash.length;blog('boot',{v:APP_VERSION,rv:data.length,tr:trash.length,lib:libs.length,created:!!window.__dbCreated,guard:gd?gd.n:null,app:!!(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)});try{navigator.storage&&navigator.storage.estimate&&navigator.storage.estimate().then(e=>blog('usage',Math.round((e.usage||0)/1024)+'KB')).catch(()=>{})}catch(e){}
-  if(gd&&gd.n>0&&rn===0){window.__lock=true;blog('ANOMALY','資料庫是空的，但上次記錄有 '+gd.n+' 筆（'+new Date(gd.at).toISOString()+'，v'+(gd.v||'?')+'）')}else if(gd&&gd.n>=10&&rn<gd.n*0.5)blog('WARN','筆數大幅減少：'+gd.n+' → '+rn)}
+ {let gd=readGuard(),rn=data.filter(r=>!isDemoR(r)).length+trash.length;blog('boot',{v:APP_VERSION,rv:data.length,tr:trash.length,lib:libs.length,created:!!window.__dbCreated,guard:gd?gd.n:null,app:!!(window.matchMedia&&matchMedia('(display-mode: standalone)').matches),ls:(()=>{try{return localStorage.length}catch(e){return -1}})()});try{navigator.storage&&navigator.storage.estimate&&navigator.storage.estimate().then(e=>blog('usage',Math.round((e.usage||0)/1024)+'KB')).catch(()=>{})}catch(e){}
+  if(gd&&gd.n>0&&rn===0){window.__lock=true;blog('ANOMALY','資料庫是空的，但上次記錄有 '+gd.n+' 筆（'+new Date(gd.at).toISOString()+'，v'+(gd.v||'?')+'）')}else if(gd&&gd.n>=10&&rn<gd.n*0.5)blog('WARN','筆數大幅減少：'+gd.n+' → '+rn);
+  if(!window.__lock&&!gd&&rn===0){let mi=await mirrorInfo();if(mi&&mi.n>0){window.__lock=true;window.__mirN=mi.n;blog('ANOMALY','資料庫與 localStorage 都是空的，但本機副本有 '+mi.n+' 筆（'+new Date(mi.at).toISOString()+'）');await cfgRestore()}}}
  window.__appReady=true;
  if((await kvGet('schema'))!==7&&data.length&&!(await kvGet('snapshot')))await kvSet('snapshot',{at:Date.now(),reviews:structuredClone(data),libs:structuredClone(libs),groups:structuredClone(groups),series:structuredClone(series),trash:structuredClone(trash),settings:structuredClone(st)});
  let changed=false;setStatus(_t("正在載入…"));
