@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.6.6**: The data-protection section now shows a red line when the cloud backup has not succeeded for over 7 days. No pop-up is shown.
 - **v6.6.5**: Stronger data protection: if the browser wipes both the database and localStorage (so even the last-count record is gone), the restore menu now appears on launch as long as the local copy survives. The cloud-backup token is also kept next to the local copy and brought back on restore. The launch log now records the number of localStorage items to help find out what cleared it.
 - **v6.6.4**: The monthly bars in the Taste page now all have the same length and show only the color split between finished, ongoing and dropped, so bar length no longer varies with how many shows were watched that month and the gray track can't be mistaken for a fourth status.
 - **v6.6.3**: The review image now uses a Polaroid movie-ticket layout (photos shown uncropped in frames, a round score stamp, a tear line), and the export page lets you pick which saved images to include.
