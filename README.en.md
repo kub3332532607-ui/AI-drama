@@ -90,6 +90,7 @@ Use **Erase all data** at the bottom of Settings. This cannot be undone, so back
 
 Released under the [MIT License](LICENSE). The code was written and revised by the author together with Claude, Anthropic’s AI assistant. Feel free to adjust and update it as you need.
 
+- **v6.7.1**: The data-protection note now says the local copy is also removed when you clear the browser's site data.
 - **v6.7.0**: Image output has a collapsed "Image style" option for a dark card and a backdrop color, so Weibo no longer turns the transparent corners white.
 - **v6.6.6**: The data-protection section now shows a red line when the cloud backup has not succeeded for over 7 days. No pop-up is shown.
 - **v6.6.5**: Stronger data protection: if the browser wipes both the database and localStorage (so even the last-count record is gone), the restore menu now appears on launch as long as the local copy survives. The cloud-backup token is also kept next to the local copy and brought back on restore. The launch log now records the number of localStorage items to help find out what cleared it.
